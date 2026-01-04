@@ -113,21 +113,6 @@ export default function Hero() {
             Building products that feel as good as they look.
           </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ ...elegantEase, delay: 0.6 }}
-            style={{
-              fontSize: 'var(--size-lg)',
-              fontFamily: 'var(--font-accent)',
-              fontStyle: 'italic',
-              color: 'var(--color-text-tertiary)',
-              marginBottom: 'var(--spacing-md)',
-            }}
-          >
-            Where code meets aesthetics.
-          </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
