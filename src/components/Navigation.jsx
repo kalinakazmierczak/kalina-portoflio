@@ -1,22 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function Navigation() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
+  const navigate = useNavigate();
 
+  // Navigation items that scroll to sections on homepage
   const tabs = [
-    { id: 'home', label: 'HOME', path: '/' },
-    { id: 'work', label: 'WORK', path: '/work' },
-    { id: 'projects', label: 'PROJECTS', path: '/projects' },
-    { id: 'about', label: 'ABOUT', path: '/', sectionId: 'about-section' },
+    { id: 'home', label: 'HOME', sectionId: 'hero-section' },
+    { id: 'experience', label: 'EXPERIENCE', sectionId: 'experience-section' },
+    { id: 'projects', label: 'PROJECTS', sectionId: 'projects-section' },
+    { id: 'about', label: 'ABOUT', sectionId: 'about-section' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+
+      // Add background blur when scrolled
+      setScrolled(currentScrollY > 50);
 
       // Hide navbar when scrolling down, show when scrolling up
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
@@ -26,126 +33,164 @@ export default function Navigation() {
       }
       setLastScrollY(currentScrollY);
 
-      // Detect which section is in view on home page
-      if (location.pathname === '/') {
-        const aboutSection = document.getElementById('about-section');
-        if (aboutSection) {
-          const rect = aboutSection.getBoundingClientRect();
-          if (rect.top < window.innerHeight / 2) {
-            setActiveSection('about');
-          } else {
-            setActiveSection('home');
-          }
+      // Detect which section is in view
+      const sections = tabs.map(tab => document.getElementById(tab.sectionId));
+      const scrollPosition = currentScrollY + window.innerHeight / 3;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(tabs[i].id);
+          break;
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, location.pathname]);
+  }, [lastScrollY]);
+
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    
+    // If not on homepage, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ 
+        y: isVisible ? 0 : -100, 
+        opacity: isVisible ? 1 : 0 
+      }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: 'var(--color-background)',
-        zIndex: 50,
-        transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
-        transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        zIndex: 100,
+        padding: 'var(--spacing-sm) var(--spacing-md)',
+        background: scrolled 
+          ? 'rgba(250, 249, 247, 0.85)' 
+          : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled 
+          ? '1px solid var(--color-border)' 
+          : '1px solid transparent',
+        transition: 'background 0.3s, backdrop-filter 0.3s, border-color 0.3s',
       }}
     >
-      {/* Main Nav Bar */}
       <div
         style={{
-          padding: 'var(--spacing-sm) var(--spacing-md)',
+          maxWidth: '1400px',
+          margin: '0 auto',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          maxWidth: '100%',
-          gap: 'var(--spacing-lg)',
         }}
       >
         {/* Logo */}
-        <Link
-          to="/"
+        <a
+          href="#hero-section"
+          onClick={(e) => handleNavClick(e, 'hero-section')}
           style={{
-            fontSize: '14px',
-            fontWeight: 700,
+            fontSize: 'var(--size-sm)',
+            fontWeight: 600,
             fontFamily: 'var(--font-heading)',
             color: 'var(--color-text-primary)',
             letterSpacing: 'var(--letter-spacing-tight)',
             textDecoration: 'none',
-            whiteSpace: 'nowrap',
-            cursor: 'pointer',
           }}
         >
-          KALINA KAZMIERCZAK
-        </Link>
+          KALINA K.
+        </a>
 
-        {/* Tabs */}
+        {/* Navigation Links */}
         <div
           style={{
             display: 'flex',
             gap: 'var(--spacing-md)',
-            flex: 1,
-            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           {tabs.map((tab) => {
-            const isActive = tab.id === 'about' 
-              ? (location.pathname === '/' && activeSection === 'about')
-              : location.pathname === tab.path;
-
-            const handleAboutClick = (e) => {
-              if (tab.id === 'about') {
-                e.preventDefault();
-                const aboutSection = document.getElementById('about-section');
-                if (aboutSection) {
-                  aboutSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }
-            };
-
+            const isActive = activeSection === tab.id;
+            
             return (
-              <Link
+              <a
                 key={tab.id}
-                to={tab.path}
-                onClick={handleAboutClick}
+                href={`#${tab.sectionId}`}
+                onClick={(e) => handleNavClick(e, tab.sectionId)}
                 style={{
                   fontSize: 'var(--size-xs)',
                   fontWeight: 500,
-                  fontFamily: 'var(--font-body)',
-                  color: isActive ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer',
-                  letterSpacing: 'var(--letter-spacing-tight)',
-                  transition: 'all 0.3s ease',
-                  whiteSpace: 'nowrap',
-                  paddingBottom: '4px',
-                  transform: isActive ? 'scale(1.1)' : 'scale(1)',
+                  color: isActive 
+                    ? 'var(--color-text-primary)' 
+                    : 'var(--color-text-tertiary)',
+                  letterSpacing: 'var(--letter-spacing-normal)',
                   textDecoration: 'none',
-                }}
-                onMouseEnter={(e) => {
-                  if (!isActive) {
-                    e.target.style.opacity = '0.6';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) {
-                    e.target.style.opacity = '1';
-                  }
+                  position: 'relative',
+                  padding: '4px 0',
+                  transition: 'color 0.3s',
                 }}
               >
                 {tab.label}
-              </Link>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTab"
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: '1px',
+                      background: 'var(--color-text-primary)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  />
+                )}
+              </a>
             );
           })}
+
+          {/* Contact CTA */}
+          <motion.a
+            href="#contact-section"
+            onClick={(e) => handleNavClick(e, 'contact-section')}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              fontSize: 'var(--size-xs)',
+              fontWeight: 500,
+              color: 'var(--color-background)',
+              background: 'var(--color-text-primary)',
+              padding: '10px 20px',
+              letterSpacing: 'var(--letter-spacing-normal)',
+              textDecoration: 'none',
+              marginLeft: 'var(--spacing-sm)',
+            }}
+          >
+            CONTACT
+          </motion.a>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

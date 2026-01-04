@@ -1,49 +1,63 @@
 /**
- * Global Styles - Editorial Design System
+ * Global Styles - NYC Cool Girl SWE Aesthetic
  * 
  * Design Philosophy:
- * - Clean, magazine-style layout with generous whitespace
- * - Typography-driven: Let type do the talking
- * - Minimal decoration and effects
- * - High-quality content as main visual element
- * - Simple, snappy interactions
+ * - Effortlessly minimal, magazine-editorial feel
+ * - Typography-driven with subtle sophistication
+ * - Smooth, intentional micro-interactions
+ * - Clean whitespace with purposeful hierarchy
+ * - "I didn't try too hard but still look amazing" energy
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap');
 
 :root {
-  /* Color System */
-  --color-background: #f4f1de;
-  --color-text-primary: #3d405b;
-  --color-text-secondary: #3d405b;
-  --color-text-tertiary: #3d405b;
-  --color-border: #3d405b;
-  --color-border-light: #3d405b;
-
-  /* Typography */
-  --font-heading: 'Syne', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Refined Color System - Warm neutral with subtle contrast */
+  --color-background: #faf9f7;
+  --color-background-alt: #f5f4f0;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-tertiary: #8a8a8a;
+  --color-accent: #2d2d2d;
+  --color-accent-subtle: #e8e6e1;
+  --color-border: rgba(26, 26, 26, 0.1);
+  --color-border-light: rgba(26, 26, 26, 0.05);
   
-  /* Spacing */
+  /* Subtle highlight for interactions */
+  --color-highlight: #ff6b35;
+
+  /* Typography - Clean, modern with personality */
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-accent: 'DM Serif Display', Georgia, serif;
+  
+  /* Refined Spacing */
   --spacing-xs: 12px;
   --spacing-sm: 24px;
   --spacing-md: 48px;
-  --spacing-lg: 96px;
+  --spacing-lg: 80px;
   --spacing-xl: 120px;
+  --spacing-2xl: 160px;
 
   /* Typography Sizes */
   --size-xs: 11px;
-  --size-sm: 12px;
-  --size-base: 15px;
-  --size-lg: 16px;
-  --size-xl: 20px;
-  --size-2xl: 32px;
-  --size-3xl: 56px;
+  --size-sm: 13px;
+  --size-base: 16px;
+  --size-lg: 18px;
+  --size-xl: 22px;
+  --size-2xl: 36px;
+  --size-3xl: clamp(48px, 8vw, 72px);
+  --size-4xl: clamp(64px, 12vw, 96px);
 
   /* Letter Spacing */
-  --letter-spacing-tight: 0.08em;
-  --letter-spacing-normal: 0.12em;
+  --letter-spacing-tight: 0.02em;
+  --letter-spacing-normal: 0.08em;
   --letter-spacing-wide: 0.15em;
+  
+  /* Smooth transitions */
+  --transition-fast: 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 * {
@@ -55,12 +69,12 @@
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
+  scrollbar-color: var(--color-accent-subtle) transparent;
 }
 
-/* Custom scrollbar for webkit browsers */
+/* Minimal custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -68,12 +82,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+  background: var(--color-accent-subtle);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-secondary);
+  background: var(--color-text-tertiary);
 }
 
 body {
@@ -85,50 +99,58 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
   font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-/* Editorial Typography Hierarchy */
+/* Selection styling */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+/* Editorial Typography */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
   font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: #000000;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
 }
 
 h1 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 400;
+  font-size: var(--size-3xl);
+  font-weight: 500;
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: var(--size-sm);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 600;
-  color: #1a1a1a;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: 500;
+  color: var(--color-text-tertiary);
   margin-bottom: 2rem;
 }
 
 h3 {
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-size: var(--size-2xl);
   font-weight: 500;
 }
 
 p {
   font-weight: 400;
-  color: #1a1a1a;
-  line-height: 1.7;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
 }
 
-/* Links & Interactions */
+/* Clean link styling */
 a {
-  color: #ff6b6b; /* Accent color */
+  color: var(--color-text-primary);
   text-decoration: none;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
-/* Underline animation for links */
+/* Subtle underline animation */
 a::after {
   content: '';
   position: absolute;
@@ -136,8 +158,8 @@ a::after {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: currentColor;
-  transition: width 0.4s ease;
+  background-color: var(--color-text-primary);
+  transition: width var(--transition-smooth);
 }
 
 a:hover::after {
@@ -145,7 +167,7 @@ a:hover::after {
 }
 
 a:hover {
-  color: #ff5252;
+  color: var(--color-text-secondary);
 }
 
 button {
@@ -154,18 +176,18 @@ button {
   border: none;
   outline: none;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
+  background: transparent;
 }
 
 button:focus-visible {
-  outline: 2px solid #ff6b6b;
-  outline-offset: 2px;
+  outline: 1px solid var(--color-text-primary);
+  outline-offset: 4px;
 }
 
-/* Focus visible for accessibility */
 :focus-visible {
-  outline: 2px solid #ff6b6b;
-  outline-offset: 2px;
+  outline: 1px solid var(--color-text-primary);
+  outline-offset: 4px;
 }
 
 /* Input styling */
@@ -173,108 +195,59 @@ input,
 textarea,
 select {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: var(--size-base);
   color: inherit;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--color-border);
   border-radius: 0;
-  padding: 0.75rem;
-  transition: border-color 0.3s ease;
+  padding: 1rem;
+  background: transparent;
+  transition: border-color var(--transition-fast);
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #ff6b6b;
+  border-color: var(--color-text-primary);
 }
 
-textarea {
-  scrollbar-width: thin;
-  scrollbar-color: #e5e5e5 transparent;
-  resize: vertical;
-}
-
-/* Remove default tap highlight on mobile */
+/* Remove default tap highlight */
 input,
 button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Smooth transitions */
-* {
-  transition-property: color, background-color, border-color, opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-}
-
-/* Disable animations for reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Image optimization */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Selection color */
-::selection {
-  background-color: #ff6b6b;
-  color: white;
-}
-
-::-moz-selection {
-  background-color: #ff6b6b;
-  color: white;
-}
-
 /* Utility classes */
-.caps {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  font-size: 0.875rem;
+.accent-text {
+  font-family: var(--font-accent);
+  font-style: italic;
 }
 
-.caps-wide {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 600;
-  font-size: 0.875rem;
+.mono-text {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.9em;
 }
 
-/* Navigation link with underline animation */
-.nav-link-animated {
-  position: relative;
-  padding-bottom: 4px;
-  color: #000000;
-  text-decoration: none;
+/* Smooth image loading */
+img {
+  transition: opacity var(--transition-smooth);
 }
 
-.nav-link-animated::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #000000;
-  transition: width 0.4s ease;
+/* Horizontal rule styling */
+hr {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--spacing-lg) 0;
 }
 
-.nav-link-animated:hover::after {
-  width: 100%;
-}
-
-.nav-link-animated.active::after {
-  width: 100%;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --spacing-lg: 60px;
+    --spacing-xl: 80px;
+    --spacing-2xl: 100px;
+  }
 }
 

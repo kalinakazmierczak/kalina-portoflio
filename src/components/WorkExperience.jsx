@@ -1,199 +1,305 @@
+import { motion } from 'framer-motion';
+import { useScrollAnimation, fadeUpVariants, staggerContainer, elegantEase, slowReveal } from '../hooks/useScrollAnimation';
+
 export default function WorkExperience() {
+  const { ref, isInView } = useScrollAnimation();
+
   const experiences = [
     {
       id: 1,
       title: 'Associate Software Engineer',
       company: 'CoStar Group',
       period: 'Jul 2025 - Present',
-      location: 'Arlington, Virginia, United States',
+      location: 'Arlington, VA',
+      type: 'Full-time',
     },
     {
       id: 2,
-      title: 'Social Media Chair',
-      company: 'Data Structures and Algorithms @ Virginia Tech',
-      period: 'Aug 2024 - May 2025',
-      location: 'Blacksburg, Virginia',
+      title: 'Software Engineer Intern',
+      company: 'CoStar Group',
+      period: 'Jun 2024 - Aug 2024',
+      location: 'Richmond, VA',
+      type: 'Internship',
       highlights: [
-        'Designed and published graphics to promote events and meetings, aligning visuals with club branding and student interests.',
-        'Increased social media followers by 50% and doubled profile engagement through strategic posting and story content.',
-        'Collaborated with executive board to streamline event marketing and boost turnout.',
+        'Built production-ready React dashboard for AWS SQS queue visualization',
+        'Integrated CloudWatch APIs with Highcharts for real-time data',
+        'Deployed to production, actively used by Case Management team',
       ],
     },
     {
       id: 3,
-      title: 'Undergraduate Research Assistant - SeeMore',
+      title: 'Research Assistant — SeeMore',
       company: 'Virginia Tech',
       period: 'May 2024 - May 2025',
-      location: 'Blacksburg, Virginia',
+      location: 'Blacksburg, VA',
+      type: 'Research',
       highlights: [
-        'Revitalized SeeMore kinetic sculpture from non-functional state on old Mac Mini system',
-        'Migrated legacy codebase to modern Raspberry Pi 4B platform',
-        'Restored Lil SeeMore functionality into new iSeeMore design, bridging 10+ years of technological advancement',
-        'Repaired original servo motor control systems and mechanical components from 2014 installation',
-        'Adapted legacy software drivers and hardware interfaces to work with current Linux distributions',
-        'Documented original system architecture and created integration pathway for incorporating proven SeeMore features',
+        'Revitalized kinetic sculpture, migrating legacy codebase to Raspberry Pi 4B',
+        'Bridged 10+ years of tech advancement in iSeeMore design',
       ],
     },
     {
       id: 4,
-      title: 'Software Engineer Intern',
-      company: 'CoStar Group',
-      period: 'Jun 2024 - Aug 2024',
-      location: 'Richmond, Virginia, United States',
-      highlights: [
-        'Built production-ready React-based dashboard for Case Management team to visualize AWS SQS queues',
-        'Integrated AWS CloudWatch APIs to fetch real-time queue metrics and implemented Highcharts for interactive data visualization',
-        'Developed comprehensive user input functionality with dynamic filtering and customizable dashboard layouts',
-        'Successfully deployed dashboard to production, actively used by Case Management team for daily operations',
-        'Implemented error handling, loading states, and responsive design for reliable performance',
-      ],
-    },
-    {
-      id: 5,
-      title: 'Undergraduate Research Assistant - Hidden Figures',
+      title: 'Research Assistant — Hidden Figures',
       company: 'Virginia Tech',
       period: 'Jan 2023 - May 2024',
-      location: 'Blacksburg, Virginia',
+      location: 'Blacksburg, VA',
+      type: 'Research',
       highlights: [
-        'Developed front-end visualizations in JavaScript to highlight underrepresented individuals in HPC',
-        'Contributed to Python backend development using Flask, SQLAlchemy, and RESTful API integration',
-        'Conducted extensive data collection and cleanup to build database of 300+ "hidden figures" in HPC',
-        'Selected as one of 5 students to receive full scholarship to present at SC23 International Conference (13,000+ attendees)',
-        'Collaborated across multidisciplinary teams of 20+ students to build equity-focused tool',
-        'Contributed to open-source project featured as 35th anniversary exhibit under "I am HPC" diversity initiative',
-        'Mentored and trained new students on codebase contribution and development workflows',
-      ],
-    },
-    {
-      id: 6,
-      title: 'Lead Technology Volunteer',
-      company: 'Mabawa',
-      period: 'Jan 2024 - Apr 2024',
-      location: 'Rwanda',
-      highlights: [
-        'Designed and delivered computer literacy lessons for women and children, including storytelling through Scratch coding',
-        'Taught P3 (3rd grade) students the fundamentals of programming and computational thinking',
-        'Made technology accessible and empowered underserved communities through creative and inclusive learning',
-        'Rewarded with the Emily Specchio Foundation Scholarship',
+        'Built front-end visualizations for underrepresented individuals in HPC',
+        'Selected to present at SC23 International Conference (13,000+ attendees)',
+        'Contributed to open-source project under "I am HPC" diversity initiative',
       ],
     },
   ];
 
-  const jobTitleStyle = {
-    fontSize: 'var(--size-lg)',
-    fontWeight: 700,
-    fontFamily: 'var(--font-heading)',
-    color: 'var(--color-text-primary)',
-    margin: '0 0 var(--spacing-xs) 0',
-  };
-
-  const companyStyle = {
-    fontSize: 'var(--size-base)',
-    fontWeight: 500,
-    color: 'var(--color-text-secondary)',
-    margin: '0 0 var(--spacing-xs) 0',
-  };
-
-  const metaStyle = {
-    fontSize: 'var(--size-sm)',
-    color: 'var(--color-text-tertiary)',
-    margin: '0 0 var(--spacing-sm) 0',
-  };
-
-  const highlightStyle = {
-    fontSize: 'var(--size-base)',
-    lineHeight: 1.7,
-    color: 'var(--color-text-secondary)',
-    paddingLeft: 'var(--spacing-sm)',
-    position: 'relative',
-  };
-
   return (
     <section
-      id="work-experience-section"
+      ref={ref}
+      id="experience-section"
       style={{
-        backgroundColor: 'var(--color-background)',
-        paddingTop: 'var(--spacing-xl)',
-        paddingBottom: 'var(--spacing-xl)',
-        paddingLeft: 'var(--spacing-md)',
-        paddingRight: 'var(--spacing-md)',
+        padding: 'var(--spacing-2xl) var(--spacing-md)',
+        background: 'var(--color-background-alt)',
+        position: 'relative',
       }}
     >
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      {/* Decorative element */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, var(--color-border), transparent)',
+        }}
+      />
+
+      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Section Header */}
-        <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-          <h2
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={elegantEase}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 'var(--spacing-lg)',
+            marginBottom: 'var(--spacing-lg)',
+          }}
+        >
+          <div>
+            <p
+              style={{
+                fontSize: 'var(--size-xs)',
+                fontWeight: 500,
+                color: 'var(--color-text-tertiary)',
+                letterSpacing: 'var(--letter-spacing-wide)',
+                marginBottom: '8px',
+              }}
+            >
+              01
+            </p>
+            <h2
+              style={{
+                fontSize: 'var(--size-2xl)',
+                fontFamily: 'var(--font-heading)',
+                fontWeight: 500,
+                color: 'var(--color-text-primary)',
+                letterSpacing: '-0.02em',
+                margin: 0,
+              }}
+            >
+              Experience
+            </h2>
+          </div>
+          <p
             style={{
-              fontSize: 'var(--size-sm)',
-              fontWeight: 500,
-              fontFamily: 'var(--font-body)',
-              color: 'var(--color-text-tertiary)',
-              letterSpacing: 'var(--letter-spacing-normal)',
-              margin: 0,
-              textTransform: 'uppercase',
+              fontSize: 'var(--size-base)',
+              color: 'var(--color-text-secondary)',
+              lineHeight: 1.7,
+              maxWidth: '400px',
+              alignSelf: 'end',
             }}
           >
-            EXPERIENCE
-          </h2>
-        </div>
+            Building at the intersection of design and engineering, 
+            from research labs to production systems.
+          </p>
+        </motion.div>
 
-        {/* Experiences */}
-        <div
+        {/* Experience Timeline */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 'var(--spacing-lg)',
-            maxWidth: '800px',
           }}
         >
           {experiences.map((exp, index) => (
-            <div
+            <motion.div
               key={exp.id}
+              variants={fadeUpVariants}
+              transition={{ ...slowReveal, delay: index * 0.1 }}
               style={{
-                paddingBottom: index !== experiences.length - 1 ? 'var(--spacing-lg)' : 0,
-                borderBottom: index !== experiences.length - 1 ? '1px solid var(--color-border)' : 'none',
+                display: 'grid',
+                gridTemplateColumns: '200px 1fr',
+                gap: 'var(--spacing-md)',
+                padding: 'var(--spacing-md) 0',
+                borderTop: '1px solid var(--color-border)',
+                position: 'relative',
               }}
             >
-              <h3 style={jobTitleStyle}>{exp.title}</h3>
-              <p style={companyStyle}>{exp.company}</p>
+              {/* Timeline dot */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={isInView ? { scale: 1 } : {}}
+                transition={{ delay: 0.3 + index * 0.1, type: 'spring' }}
+                style={{
+                  position: 'absolute',
+                  left: '192px',
+                  top: 'calc(var(--spacing-md) + 8px)',
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: index === 0 ? 'var(--color-text-primary)' : 'var(--color-background)',
+                  border: '2px solid var(--color-text-primary)',
+                }}
+              />
 
-              {/* Period and Location */}
-              <div style={metaStyle}>
-                <span>{exp.period}</span>
-                {exp.location && <span> • {exp.location}</span>}
-              </div>
-
-              {/* Highlights */}
-              {exp.highlights && (
-                <ul
+              {/* Period & Type */}
+              <div>
+                <p
                   style={{
-                    margin: '0 0 0 var(--spacing-sm)',
-                    padding: 0,
-                    listStyle: 'none',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 'var(--spacing-xs)',
+                    fontSize: 'var(--size-sm)',
+                    color: 'var(--color-text-tertiary)',
+                    marginBottom: '4px',
                   }}
                 >
-                  {exp.highlights.map((highlight, idx) => (
-                    <li key={idx} style={highlightStyle}>
-                      <span
+                  {exp.period}
+                </p>
+                <span
+                  style={{
+                    fontSize: 'var(--size-xs)',
+                    color: 'var(--color-text-tertiary)',
+                    letterSpacing: 'var(--letter-spacing-normal)',
+                    textTransform: 'uppercase',
+                    padding: '2px 8px',
+                    background: 'var(--color-accent-subtle)',
+                  }}
+                >
+                  {exp.type}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div style={{ paddingLeft: 'var(--spacing-sm)' }}>
+                <h3
+                  style={{
+                    fontSize: 'var(--size-lg)',
+                    fontFamily: 'var(--font-heading)',
+                    fontWeight: 500,
+                    color: 'var(--color-text-primary)',
+                    marginBottom: '4px',
+                  }}
+                >
+                  {exp.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: 'var(--size-base)',
+                    color: 'var(--color-text-secondary)',
+                    marginBottom: exp.highlights ? 'var(--spacing-xs)' : 0,
+                  }}
+                >
+                  {exp.company} <span style={{ color: 'var(--color-text-tertiary)' }}>• {exp.location}</span>
+                </p>
+
+                {/* Highlights */}
+                {exp.highlights && (
+                  <ul
+                    style={{
+                      listStyle: 'none',
+                      padding: 0,
+                      margin: 0,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '4px',
+                    }}
+                  >
+                    {exp.highlights.map((highlight, idx) => (
+                      <li
+                        key={idx}
                         style={{
-                          position: 'absolute',
-                          left: 0,
+                          fontSize: 'var(--size-sm)',
                           color: 'var(--color-text-tertiary)',
+                          lineHeight: 1.6,
+                          paddingLeft: '16px',
+                          position: 'relative',
                         }}
                       >
-                        •
-                      </span>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+                        <span
+                          style={{
+                            position: 'absolute',
+                            left: 0,
+                            color: 'var(--color-text-tertiary)',
+                          }}
+                        >
+                          ↳
+                        </span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Resume Link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ ...elegantEase, delay: 0.8 }}
+          style={{
+            marginTop: 'var(--spacing-md)',
+            paddingTop: 'var(--spacing-md)',
+            borderTop: '1px solid var(--color-border)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <p
+            style={{
+              fontSize: 'var(--size-sm)',
+              color: 'var(--color-text-tertiary)',
+              fontFamily: 'var(--font-accent)',
+              fontStyle: 'italic',
+            }}
+          >
+            Always learning, always building
+          </p>
+          <motion.a
+            href="#"
+            whileHover={{ x: 5 }}
+            style={{
+              fontSize: 'var(--size-sm)',
+              fontWeight: 500,
+              color: 'var(--color-text-primary)',
+              letterSpacing: 'var(--letter-spacing-normal)',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+            }}
+          >
+            DOWNLOAD RESUME
+            <span>↓</span>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

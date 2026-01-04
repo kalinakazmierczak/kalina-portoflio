@@ -1,7 +1,7 @@
 {
   "name": "kalina-portfolio",
   "description": "A minimalistic, fast-loading personal portfolio website for software engineers",
-  "author": "Alex",
+  "author": "Kalina",
   "private": true,
   "version": "1.0.0",
   "type": "module",
