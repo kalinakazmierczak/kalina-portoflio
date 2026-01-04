@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { useScrollAnimation, fadeUpVariants, elegantEase, slowReveal } from '../hooks/useScrollAnimation';
-import { Mail, Linkedin, Github, ArrowUpRight } from 'lucide-react';
+import { useScrollAnimation, elegantEase, slowReveal } from '../hooks/useScrollAnimation';
+import { Mail, Linkedin, Github, ArrowUpRight, MapPin } from 'lucide-react';
 
 export default function Contact() {
   const { ref, isInView } = useScrollAnimation();
@@ -54,50 +54,92 @@ export default function Contact() {
       />
 
       <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
-        {/* Main CTA */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={slowReveal}
           style={{
-            marginBottom: 'var(--spacing-xl)',
+            marginBottom: 'var(--spacing-lg)',
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
+            gap: 'var(--spacing-md)',
+            alignItems: 'start',
           }}
         >
-          <p
-            style={{
-              fontSize: 'var(--size-xs)',
-              fontWeight: 500,
-              color: 'rgba(250, 249, 247, 0.5)',
-              letterSpacing: 'var(--letter-spacing-wide)',
-              marginBottom: 'var(--spacing-sm)',
-            }}
-          >
-            LET'S CONNECT
-          </p>
-          <h2
-            style={{
-              fontSize: 'var(--size-3xl)',
-              fontFamily: 'var(--font-heading)',
-              fontWeight: 500,
-              color: 'var(--color-background)',
-              letterSpacing: '-0.03em',
-              lineHeight: 1.1,
-              margin: 0,
-              maxWidth: '800px',
-            }}
-          >
-            Looking for someone who can{' '}
-            <span
+          <div>
+            <p
               style={{
-                fontFamily: 'var(--font-accent)',
-                fontStyle: 'italic',
-                fontWeight: 400,
+                fontSize: 'var(--size-xs)',
+                fontWeight: 500,
+                color: 'rgba(250, 249, 247, 0.5)',
+                letterSpacing: 'var(--letter-spacing-wide)',
+                marginBottom: 'var(--spacing-xs)',
               }}
             >
-              design & build?
-            </span>{' '}
-            Let's talk!
-          </h2>
+              GET IN TOUCH
+            </p>
+            <h2
+              style={{
+                fontSize: 'var(--size-3xl)',
+                fontFamily: 'var(--font-heading)',
+                fontWeight: 500,
+                color: 'var(--color-background)',
+                letterSpacing: '-0.03em',
+                lineHeight: 1.1,
+                margin: 0,
+                marginBottom: 'var(--spacing-sm)',
+              }}
+            >
+              LET'S KEEP IN TOUCH!
+              <span
+                style={{
+                  fontFamily: 'var(--font-accent)',
+                  fontStyle: 'italic',
+                  fontWeight: 400,
+                }}
+              >
+              </span>
+            </h2>
+            <p
+              style={{
+                fontSize: 'var(--size-base)',
+                color: 'rgba(250, 249, 247, 0.6)',
+                lineHeight: 1.7,
+                maxWidth: '500px',
+              }}
+            >
+              Open to new opportunities and always happy to chat.
+            </p>
+          </div>
+
+          {/* Location Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ ...elegantEase, delay: 0.3 }}
+            style={{
+              padding: 'var(--spacing-sm) var(--spacing-md)',
+              border: '1px solid rgba(250, 249, 247, 0.15)',
+              background: 'rgba(250, 249, 247, 0.03)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <MapPin size={12} style={{ opacity: 0.5 }} />
+              <span
+                style={{
+                  fontSize: 'var(--size-xs)',
+                  color: 'rgba(250, 249, 247, 0.7)',
+                  fontWeight: 500,
+                  letterSpacing: 'var(--letter-spacing-normal)',
+                }}
+              >
+                WASHINGTON, DC
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Contact Grid */}
@@ -109,7 +151,7 @@ export default function Contact() {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: 'var(--spacing-sm)',
-            marginBottom: 'var(--spacing-xl)',
+            marginBottom: 'var(--spacing-lg)',
           }}
         >
           {contactLinks.map((link, index) => (
@@ -209,6 +251,8 @@ export default function Contact() {
                 fontWeight: 500,
                 color: 'var(--color-background)',
                 marginBottom: '4px',
+                fontFamily: 'var(--font-heading)',
+                letterSpacing: 'var(--letter-spacing-tight)',
               }}
             >
               KALINA KAZMIERCZAK
@@ -216,14 +260,23 @@ export default function Contact() {
             <p
               style={{
                 fontSize: 'var(--size-xs)',
-                color: 'rgba(250, 249, 247, 0.5)',
+                color: 'rgba(250, 249, 247, 0.4)',
               }}
             >
-              © 2025 • Designed & built with care by me!
+              © 2025 · Built with care by Kalina!
             </p>
           </div>
 
-          
+          <p
+            style={{
+              fontSize: 'var(--size-xs)',
+              color: 'rgba(250, 249, 247, 0.4)',
+              fontFamily: 'var(--font-accent)',
+              fontStyle: 'italic',
+            }}
+          >
+            Thanks for scrolling this far
+          </p>
         </motion.div>
       </div>
     </footer>

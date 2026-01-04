@@ -1,7 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import kalinaImage from '../assets/kalina.jpg';
-import { fadeUpVariants, elegantEase, slowReveal } from '../hooks/useScrollAnimation';
+import resumePDF from '../assets/Kalina_Kazmierczak_2026_Resume_Final.pdf';
+import { elegantEase, slowReveal } from '../hooks/useScrollAnimation';
 
 export default function Hero() {
   const containerRef = useRef(null);
@@ -74,7 +75,7 @@ export default function Hero() {
               textTransform: 'uppercase',
             }}
           >
-            Software Engineer & Product Designer
+            Full-Stack Engineer · Virginia Tech '25
           </motion.p>
 
           <motion.h1
@@ -91,8 +92,7 @@ export default function Hero() {
               letterSpacing: '-0.04em',
             }}
           >
-            Hey, I'm Kalina!
-          
+            Kalina Kazmierczak
           </motion.h1>
 
           <motion.p
@@ -107,9 +107,22 @@ export default function Hero() {
               marginBottom: 'var(--spacing-md)',
             }}
           >
-            Building products that feel as good as they look. 
-            I obsess over the details that make interfaces feel 
-            <span style={{ fontFamily: 'var(--font-accent)', fontStyle: 'italic' }}> alive</span>.
+            Building products that feel as good as they look.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...elegantEase, delay: 0.6 }}
+            style={{
+              fontSize: 'var(--size-lg)',
+              fontFamily: 'var(--font-accent)',
+              fontStyle: 'italic',
+              color: 'var(--color-text-tertiary)',
+              marginBottom: 'var(--spacing-md)',
+            }}
+          >
+            Where code meets aesthetics.
           </motion.p>
 
           <motion.div
@@ -120,11 +133,12 @@ export default function Hero() {
               display: 'flex',
               gap: 'var(--spacing-md)',
               alignItems: 'center',
+              flexWrap: 'wrap',
             }}
           >
             <motion.a
               href="#experience-section"
-              whileHover={{ x: 4 }}
+              whileHover={{ opacity: 0.7 }}
               style={{
                 fontSize: 'var(--size-sm)',
                 fontWeight: 500,
@@ -138,17 +152,13 @@ export default function Hero() {
                 borderBottom: '1px solid var(--color-text-primary)',
               }}
             >
-              VIEW EXPERIENCE
-              <span style={{ fontSize: '14px' }}>→</span>
+              SEE MY WORK
             </motion.a>
-            
-            <span style={{ color: 'var(--color-text-tertiary)', fontSize: 'var(--size-sm)' }}>
-              or
-            </span>
 
             <motion.a
-              href="#contact-section"
-              whileHover={{ x: 4 }}
+              href={resumePDF}
+              download="Kalina_Kazmierczak_Resume.pdf"
+              whileHover={{ opacity: 0.7 }}
               style={{
                 fontSize: 'var(--size-sm)',
                 fontWeight: 500,
@@ -158,9 +168,30 @@ export default function Hero() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
+                paddingBottom: '4px',
+                borderBottom: '1px solid var(--color-border)',
               }}
             >
-              GET IN TOUCH
+              RÉSUMÉ
+            </motion.a>
+
+            <motion.a
+              href="mailto:kalinakazmie@gmail.com"
+              whileHover={{ opacity: 0.7 }}
+              style={{
+                fontSize: 'var(--size-sm)',
+                fontWeight: 500,
+                color: 'var(--color-text-tertiary)',
+                letterSpacing: 'var(--letter-spacing-normal)',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                paddingBottom: '4px',
+                borderBottom: '1px solid var(--color-border)',
+              }}
+            >
+              LET'S KEEP IN TOUCH!
             </motion.a>
           </motion.div>
         </motion.div>
@@ -185,8 +216,8 @@ export default function Hero() {
             {/* Circle image container */}
             <div
               style={{
-                width: '600px',
-                height: '600px',
+                width: '420px',
+                height: '420px',
                 borderRadius: '50%',
                 overflow: 'hidden',
                 position: 'relative',
@@ -210,7 +241,7 @@ export default function Hero() {
               transition={{ ...elegantEase, delay: 0.9 }}
               style={{
                 position: 'absolute',
-                bottom: '-40px',
+                bottom: '-30px',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 fontSize: 'var(--size-xs)',

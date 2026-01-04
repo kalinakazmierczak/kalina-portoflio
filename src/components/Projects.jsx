@@ -1,5 +1,9 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation, fadeUpVariants, staggerContainer, elegantEase, slowReveal } from '../hooks/useScrollAnimation';
+import sc23Image from '../assets/sc23.jpg';
+import bunapetitImage from '../assets/bunapetit.jpeg';
+import scratchCodingImage from '../assets/scratch_coding_rwanda.jpeg';
+import researchImage from '../assets/research.jpeg';
 
 export default function Projects() {
   const { ref, isInView } = useScrollAnimation();
@@ -8,14 +12,15 @@ export default function Projects() {
     {
       id: 1,
       title: 'Bun Appétit',
-      category: 'AI / HCI RESEARCH',
+      category: 'AI / HCI',
       year: '2025',
       highlights: [
-        'Built AI-powered recipe recommendation system for college students with limited kitchen resources',
-        'Developed smart ingredient substitution engine using GPT-4 and nutritional APIs',
-        'Designed conversational UI for dietary restrictions and budget-conscious meal planning',
+        'Gamified food journaling app for families using AI meal recognition',
+        'Computer vision for food identification and nutrition tracking',
+        '1st Place, Virginia Tech Undergraduate Research Competition',
       ],
       link: null,
+      image: bunapetitImage,
     },
     {
       id: 2,
@@ -23,35 +28,38 @@ export default function Projects() {
       category: 'RESEARCH • SC24',
       year: '2024',
       highlights: [
-        'Presented research poster at SC24 Supercomputing Conference in Atlanta',
-        'Revitalized 10-year-old kinetic sculpture, migrating legacy codebase to Raspberry Pi 4B',
-        'Bridged decade of technological advancement in iSeeMore interactive display design',
+        'Revived a 10-year-old kinetic art installation, migrated to Raspberry Pi',
+        'Reverse-engineered 2014 servo motor controls',
+        'Presented at SC24 in Atlanta',
       ],
       link: 'https://sc24.supercomputing.org/proceedings/poster/poster_files/post214s2-file3.pdf',
+      image: researchImage,
     },
     {
       id: 3,
+      title: 'Mabawa Scratch Coding',
+      category: 'VOLUNTEER • RWANDA',
+      year: '2024',
+      highlights: [
+        'Taught coding in Nyamyumba using Scratch and creative storytelling',
+        'Designed curriculum for women and 3rd graders',
+        'Emily Specchio Foundation Scholarship recipient',
+      ],
+      link: null,
+      image: scratchCodingImage,
+    },
+    {
+      id: 4,
       title: 'Hidden Figures in HPC',
       category: 'RESEARCH • SC23',
       year: '2023',
       highlights: [
-        'Built front-end visualizations highlighting underrepresented individuals in high-performance computing',
-        'Selected as 1 of 5 students to present at SC23 International Conference (13,000+ attendees)',
-        'Contributed to open-source "I am HPC" diversity initiative, featured as 35th anniversary exhibit',
+        'Interactive visualizations for underrepresented voices in HPC',
+        'Built database of 300+ profiles for "I am HPC" initiative',
+        'Full scholarship to present at SC23 (13,000+ attendees)',
       ],
       link: 'https://news.vt.edu/articles/2024/02/eng-cs-students-find-hidden-figures-in-computing.html',
-    },
-    {
-      id: 4,
-      title: 'Mabawa Tech Education',
-      category: 'VOLUNTEER • RWANDA',
-      year: '2024',
-      highlights: [
-        'Designed and delivered computer literacy curriculum for women and children in Nyamyumba',
-        'Taught programming fundamentals through creative storytelling with Scratch coding',
-        'Awarded Emily Specchio Foundation Scholarship for community impact',
-      ],
-      link: null,
+      image: sc23Image,
     },
   ];
 
@@ -72,49 +80,32 @@ export default function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={elegantEase}
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
             marginBottom: 'var(--spacing-lg)',
-            paddingBottom: 'var(--spacing-sm)',
-            borderBottom: '1px solid var(--color-border)',
           }}
         >
-          <div>
-            <p
-              style={{
-                fontSize: 'var(--size-xs)',
-                fontWeight: 500,
-                color: 'var(--color-text-tertiary)',
-                letterSpacing: 'var(--letter-spacing-wide)',
-                marginBottom: '8px',
-              }}
-            >
-              02
-            </p>
-            <h2
-              style={{
-                fontSize: 'var(--size-2xl)',
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 500,
-                color: 'var(--color-text-primary)',
-                letterSpacing: '-0.02em',
-                margin: 0,
-              }}
-            >
-              Projects & Research
-            </h2>
-          </div>
           <p
             style={{
-              fontSize: 'var(--size-sm)',
+              fontSize: 'var(--size-xs)',
+              fontWeight: 500,
               color: 'var(--color-text-tertiary)',
-              fontFamily: 'var(--font-accent)',
-              fontStyle: 'italic',
+              letterSpacing: 'var(--letter-spacing-wide)',
+              marginBottom: '8px',
             }}
           >
-            other cool things i've done!
+            02
           </p>
+          <h2
+            style={{
+              fontSize: 'var(--size-2xl)',
+              fontFamily: 'var(--font-heading)',
+              fontWeight: 500,
+              color: 'var(--color-text-primary)',
+              letterSpacing: '-0.02em',
+              margin: 0,
+            }}
+          >
+            Projects & Research
+          </h2>
         </motion.div>
 
         {/* Projects List */}
@@ -138,6 +129,7 @@ export default function Projects() {
                 gap: 'var(--spacing-md)',
                 padding: 'var(--spacing-md) 0',
                 borderTop: '1px solid var(--color-border)',
+                alignItems: 'start',
               }}
             >
               {/* Left - Year & Category */}
@@ -164,74 +156,106 @@ export default function Projects() {
               </div>
 
               {/* Right - Content */}
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <h3
-                    style={{
-                      fontSize: 'var(--size-lg)',
-                      fontFamily: 'var(--font-heading)',
-                      fontWeight: 500,
-                      color: 'var(--color-text-primary)',
-                      marginBottom: 'var(--spacing-xs)',
-                    }}
-                  >
-                    {project.title}
-                  </h3>
-                  {project.link && (
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ x: 3, y: -3 }}
+              <div style={{ display: 'flex', gap: 'var(--spacing-md)', alignItems: 'flex-start' }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-sm)', marginBottom: 'var(--spacing-xs)' }}>
+                    <h3
                       style={{
-                        fontSize: 'var(--size-xs)',
-                        color: 'var(--color-text-tertiary)',
-                        textDecoration: 'none',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '4px',
+                        fontSize: 'var(--size-lg)',
+                        fontFamily: 'var(--font-heading)',
+                        fontWeight: 500,
+                        color: 'var(--color-text-primary)',
+                        margin: 0,
                       }}
                     >
-                      VIEW ↗
-                    </motion.a>
-                  )}
-                </div>
-
-                {/* Highlights */}
-                <ul
-                  style={{
-                    listStyle: 'none',
-                    padding: 0,
-                    margin: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '4px',
-                  }}
-                >
-                  {project.highlights.map((highlight, idx) => (
-                    <li
-                      key={idx}
-                      style={{
-                        fontSize: 'var(--size-sm)',
-                        color: 'var(--color-text-tertiary)',
-                        lineHeight: 1.6,
-                        paddingLeft: '16px',
-                        position: 'relative',
-                      }}
-                    >
-                      <span
+                      {project.title}
+                    </h3>
+                    {project.link && (
+                      <motion.a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ x: 3, y: -3 }}
                         style={{
-                          position: 'absolute',
-                          left: 0,
+                          fontSize: 'var(--size-xs)',
                           color: 'var(--color-text-tertiary)',
+                          textDecoration: 'none',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
                         }}
                       >
-                        ↳
-                      </span>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
+                        VIEW ↗
+                      </motion.a>
+                    )}
+                  </div>
+
+                  {/* Highlights */}
+                  <ul
+                    style={{
+                      listStyle: 'none',
+                      padding: 0,
+                      margin: 0,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '4px',
+                    }}
+                  >
+                    {project.highlights.map((highlight, idx) => (
+                      <li
+                        key={idx}
+                        style={{
+                          fontSize: 'var(--size-sm)',
+                          color: 'var(--color-text-tertiary)',
+                          lineHeight: 1.6,
+                          paddingLeft: '16px',
+                          position: 'relative',
+                        }}
+                      >
+                        <span
+                          style={{
+                            position: 'absolute',
+                            left: 0,
+                            color: 'var(--color-text-tertiary)',
+                          }}
+                        >
+                          ↳
+                        </span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Project Image */}
+                {project.image && (
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.3 }}
+                    style={{
+                      width: '220px',
+                      height: '150px',
+                      borderRadius: '4px',
+                      overflow: 'hidden',
+                      flexShrink: 0,
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                    }}
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        filter: 'grayscale(15%)',
+                        transition: 'filter 0.3s ease',
+                      }}
+                      onMouseOver={(e) => e.target.style.filter = 'grayscale(0%)'}
+                      onMouseOut={(e) => e.target.style.filter = 'grayscale(15%)'}
+                    />
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           ))}

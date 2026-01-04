@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
@@ -8,10 +9,30 @@ import { useScrollAnimation, elegantEase, slowReveal } from '../hooks/useScrollA
 function AboutSection() {
   const { ref, isInView } = useScrollAnimation();
 
-  const skills = [
-    'React', 'TypeScript', 'Next.js', 'Node.js', 
-    'Tailwind', 'Figma', 'Python', 'AWS'
-  ];
+  const languages = ['C#', 'C', 'Python', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'SQL'];
+  const technologies = ['React', '.NET', 'Node.js', 'Flask', 'Git', 'Linux', 'AWS', 'Figma', 'Highcharts'];
+  const concepts = ['Full-Stack Dev', 'UI/UX Design', 'Data Viz', 'REST APIs'];
+
+  const SkillTag = ({ skill, delay }) => (
+    <motion.span
+      initial={{ opacity: 0, y: 10 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.3, delay }}
+      style={{
+        display: 'inline-block',
+        padding: '6px 14px',
+        fontSize: 'var(--size-xs)',
+        fontWeight: 500,
+        color: 'var(--color-text-secondary)',
+        backgroundColor: 'var(--color-accent-subtle)',
+        borderRadius: '20px',
+        whiteSpace: 'nowrap',
+        letterSpacing: '0.01em',
+      }}
+    >
+      {skill}
+    </motion.span>
+  );
 
   return (
     <section
@@ -19,7 +40,7 @@ function AboutSection() {
       id="about-section"
       style={{
         padding: 'var(--spacing-2xl) var(--spacing-md)',
-        background: 'var(--color-background)',
+        background: 'var(--color-background-alt)',
         position: 'relative',
       }}
     >
@@ -47,7 +68,7 @@ function AboutSection() {
                 marginBottom: '8px',
               }}
             >
-              02
+              03
             </p>
             <h2
               style={{
@@ -63,31 +84,39 @@ function AboutSection() {
             </h2>
 
             {/* Skills */}
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '8px',
-                marginTop: 'var(--spacing-md)',
-              }}
-            >
-              {skills.map((skill, index) => (
-                <motion.span
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ ...elegantEase, delay: 0.4 + index * 0.05 }}
-                  style={{
-                    fontSize: 'var(--size-xs)',
-                    padding: '8px 16px',
-                    background: 'var(--color-accent-subtle)',
-                    color: 'var(--color-text-secondary)',
-                    letterSpacing: 'var(--letter-spacing-tight)',
-                  }}
-                >
-                  {skill}
-                </motion.span>
-              ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-sm)' }}>
+              <div>
+                <p style={{ fontSize: 'var(--size-xs)', color: 'var(--color-text-tertiary)', letterSpacing: 'var(--letter-spacing-normal)', marginBottom: '8px' }}>
+                  LANGUAGES
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {languages.map((skill, index) => (
+                    <SkillTag key={skill} skill={skill} delay={0.3 + index * 0.03} />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p style={{ fontSize: 'var(--size-xs)', color: 'var(--color-text-tertiary)', letterSpacing: 'var(--letter-spacing-normal)', marginBottom: '8px' }}>
+                  TECHNOLOGIES
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {technologies.map((skill, index) => (
+                    <SkillTag key={skill} skill={skill} delay={0.4 + index * 0.03} />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p style={{ fontSize: 'var(--size-xs)', color: 'var(--color-text-tertiary)', letterSpacing: 'var(--letter-spacing-normal)', marginBottom: '8px' }}>
+                  OTHER
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {concepts.map((skill, index) => (
+                    <SkillTag key={skill} skill={skill} delay={0.5 + index * 0.03} />
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -109,11 +138,7 @@ function AboutSection() {
                 color: 'var(--color-text-secondary)',
               }}
             >
-              I'm a software engineer who lives at the intersection of{' '}
-              <span style={{ fontFamily: 'var(--font-accent)', fontStyle: 'italic' }}>
-                design and code
-              </span>
-              . I build digital products that feel intuitive, perform smoothly, and look beautiful.
+             Nice to meet you! I'm a full-stack software engineer, and I love combining design and code. 
             </p>
 
             <p
@@ -123,7 +148,7 @@ function AboutSection() {
                 color: 'var(--color-text-tertiary)',
               }}
             >
-              My journey started with curiosity about how things work. That curiosity evolved into an obsession with creating elegant solutions to complex problems. I think about the user first, then the developer experience—because good code should be beautiful from every angle.
+             I'm a Virginia Tech CS grad with an HCI minor. I've presented research at supercomputing conferences, taught coding in Rwanda, and won undergraduate competitions. Now I'm at CoStar Group in Arlington!
             </p>
 
             <p
@@ -133,39 +158,8 @@ function AboutSection() {
                 color: 'var(--color-text-tertiary)',
               }}
             >
-              When I'm not coding, you'll find me exploring DC's best coffee shops, getting lost in design Twitter, or perfecting my mechanical keyboard setup.
+              Outside of coding, you can find me at a hot yoga class, going to concerts, and traveling the world!
             </p>
-
-            {/* Location badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ ...elegantEase, delay: 0.5 }}
-              style={{
-                marginTop: 'var(--spacing-sm)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              <span
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: '#22c55e',
-                  animation: 'pulse 2s infinite',
-                }}
-              />
-              <span
-                style={{
-                  fontSize: 'var(--size-sm)',
-                  color: 'var(--color-text-tertiary)',
-                }}
-              >
-                Based in DC • Open to opportunities
-              </span>
-            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -181,6 +175,11 @@ function AboutSection() {
 }
 
 export default function HomePage() {
+  // Scroll to top on page load/refresh
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <motion.main
       initial={{ opacity: 0 }}

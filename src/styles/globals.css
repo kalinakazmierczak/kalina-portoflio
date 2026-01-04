@@ -1,45 +1,28 @@
-/**
- * Global Styles - NYC Cool Girl SWE Aesthetic
- * 
- * Design Philosophy:
- * - Effortlessly minimal, magazine-editorial feel
- * - Typography-driven with subtle sophistication
- * - Smooth, intentional micro-interactions
- * - Clean whitespace with purposeful hierarchy
- * - "I didn't try too hard but still look amazing" energy
- */
-
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap');
 
 :root {
-  /* Refined Color System - Warm neutral with subtle contrast */
-  --color-background: #faf9f7;
-  --color-background-alt: #f5f4f0;
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #4a4a4a;
-  --color-text-tertiary: #8a8a8a;
-  --color-accent: #2d2d2d;
-  --color-accent-subtle: #e8e6e1;
-  --color-border: rgba(26, 26, 26, 0.1);
-  --color-border-light: rgba(26, 26, 26, 0.05);
-  
-  /* Subtle highlight for interactions */
-  --color-highlight: #ff6b35;
+  --color-background: #faf8f5;
+  --color-background-alt: #f3f0eb;
+  --color-text-primary: #2c2825;
+  --color-text-secondary: #5c5652;
+  --color-text-tertiary: #9a9590;
+  --color-accent: #4a4540;
+  --color-accent-subtle: #ebe7e2;
+  --color-border: rgba(44, 40, 37, 0.12);
+  --color-border-light: rgba(44, 40, 37, 0.06);
+  --color-highlight: #c4a77d;
 
-  /* Typography - Clean, modern with personality */
   --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-accent: 'DM Serif Display', Georgia, serif;
   
-  /* Refined Spacing */
-  --spacing-xs: 12px;
-  --spacing-sm: 24px;
-  --spacing-md: 48px;
-  --spacing-lg: 80px;
-  --spacing-xl: 120px;
-  --spacing-2xl: 160px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 32px;
+  --spacing-lg: 56px;
+  --spacing-xl: 80px;
+  --spacing-2xl: 120px;
 
-  /* Typography Sizes */
   --size-xs: 11px;
   --size-sm: 13px;
   --size-base: 16px;
@@ -49,12 +32,10 @@
   --size-3xl: clamp(48px, 8vw, 72px);
   --size-4xl: clamp(64px, 12vw, 96px);
 
-  /* Letter Spacing */
   --letter-spacing-tight: 0.02em;
   --letter-spacing-normal: 0.08em;
   --letter-spacing-wide: 0.15em;
   
-  /* Smooth transitions */
   --transition-fast: 0.2s cubic-bezier(0.22, 1, 0.36, 1);
   --transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   --transition-slow: 0.8s cubic-bezier(0.22, 1, 0.36, 1);
@@ -72,7 +53,6 @@ html {
   scrollbar-color: var(--color-accent-subtle) transparent;
 }
 
-/* Minimal custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -102,13 +82,11 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Selection styling */
 ::selection {
   background: var(--color-accent);
   color: var(--color-background);
 }
 
-/* Editorial Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 500;
@@ -142,7 +120,6 @@ p {
   line-height: 1.75;
 }
 
-/* Clean link styling */
 a {
   color: var(--color-text-primary);
   text-decoration: none;
@@ -150,7 +127,6 @@ a {
   transition: color var(--transition-fast);
 }
 
-/* Subtle underline animation */
 a::after {
   content: '';
   position: absolute;
@@ -190,7 +166,6 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* Input styling */
 input,
 textarea,
 select {
@@ -211,14 +186,12 @@ select:focus {
   border-color: var(--color-text-primary);
 }
 
-/* Remove default tap highlight */
 input,
 button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Utility classes */
 .accent-text {
   font-family: var(--font-accent);
   font-style: italic;
@@ -229,12 +202,10 @@ a {
   font-size: 0.9em;
 }
 
-/* Smooth image loading */
 img {
   transition: opacity var(--transition-smooth);
 }
 
-/* Horizontal rule styling */
 hr {
   border: none;
   height: 1px;
@@ -242,12 +213,33 @@ hr {
   margin: var(--spacing-lg) 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   :root {
     --spacing-lg: 60px;
     --spacing-xl: 80px;
     --spacing-2xl: 100px;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

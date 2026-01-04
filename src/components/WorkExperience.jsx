@@ -7,11 +7,16 @@ export default function WorkExperience() {
   const experiences = [
     {
       id: 1,
-      title: 'Associate Software Engineer',
+      title: 'Full-Stack Software Engineer',
       company: 'CoStar Group',
       period: 'Jul 2025 - Present',
       location: 'Arlington, VA',
       type: 'Full-time',
+      highlights: [
+        'Full-stack development with React, C#, and .NET',
+        'Building reusable UI component libraries',
+        'Taking features from Figma to production',
+      ],
     },
     {
       id: 2,
@@ -21,34 +26,22 @@ export default function WorkExperience() {
       location: 'Richmond, VA',
       type: 'Internship',
       highlights: [
-        'Built production-ready React dashboard for AWS SQS queue visualization',
-        'Integrated CloudWatch APIs with Highcharts for real-time data',
-        'Deployed to production, actively used by Case Management team',
+        'Built a React dashboard for real-time AWS SQS monitoring',
+        'Integrated CloudWatch APIs with Highcharts visualizations',
+        'Added filtering and drag-and-drop layout customization',
       ],
     },
     {
       id: 3,
-      title: 'Research Assistant — SeeMore',
+      title: 'Undergraduate Researcher',
       company: 'Virginia Tech',
-      period: 'May 2024 - May 2025',
+      period: 'Jan 2023 - May 2025',
       location: 'Blacksburg, VA',
       type: 'Research',
       highlights: [
-        'Revitalized kinetic sculpture, migrating legacy codebase to Raspberry Pi 4B',
-        'Bridged 10+ years of tech advancement in iSeeMore design',
-      ],
-    },
-    {
-      id: 4,
-      title: 'Research Assistant — Hidden Figures',
-      company: 'Virginia Tech',
-      period: 'Jan 2023 - May 2024',
-      location: 'Blacksburg, VA',
-      type: 'Research',
-      highlights: [
-        'Built front-end visualizations for underrepresented individuals in HPC',
-        'Selected to present at SC23 International Conference (13,000+ attendees)',
-        'Contributed to open-source project under "I am HPC" diversity initiative',
+        'Led projects on kinetic sculpture revival and HPC diversity visualizations',
+        'Presented at SC23 and SC24 supercomputing conferences',
+        'Mentored students on open-source workflows',
       ],
     },
   ];
@@ -113,18 +106,6 @@ export default function WorkExperience() {
               Experience
             </h2>
           </div>
-          <p
-            style={{
-              fontSize: 'var(--size-base)',
-              color: 'var(--color-text-secondary)',
-              lineHeight: 1.7,
-              maxWidth: '400px',
-              alignSelf: 'end',
-            }}
-          >
-            Building at the intersection of design and engineering, 
-            from research labs to production systems.
-          </p>
         </motion.div>
 
         {/* Experience Timeline */}
@@ -256,49 +237,6 @@ export default function WorkExperience() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Resume Link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ ...elegantEase, delay: 0.8 }}
-          style={{
-            marginTop: 'var(--spacing-md)',
-            paddingTop: 'var(--spacing-md)',
-            borderTop: '1px solid var(--color-border)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <p
-            style={{
-              fontSize: 'var(--size-sm)',
-              color: 'var(--color-text-tertiary)',
-              fontFamily: 'var(--font-accent)',
-              fontStyle: 'italic',
-            }}
-          >
-            Always learning, always building
-          </p>
-          <motion.a
-            href="#"
-            whileHover={{ x: 5 }}
-            style={{
-              fontSize: 'var(--size-sm)',
-              fontWeight: 500,
-              color: 'var(--color-text-primary)',
-              letterSpacing: 'var(--letter-spacing-normal)',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-            }}
-          >
-            DOWNLOAD RESUME
-            <span>↓</span>
-          </motion.a>
         </motion.div>
       </div>
     </section>
