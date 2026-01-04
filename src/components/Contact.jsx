@@ -67,17 +67,6 @@ export default function Contact() {
           }}
         >
           <div>
-            <p
-              style={{
-                fontSize: 'var(--size-xs)',
-                fontWeight: 500,
-                color: 'rgba(250, 249, 247, 0.5)',
-                letterSpacing: 'var(--letter-spacing-wide)',
-                marginBottom: 'var(--spacing-xs)',
-              }}
-            >
-              GET IN TOUCH
-            </p>
             <h2
               style={{
                 fontSize: 'var(--size-3xl)',
@@ -108,7 +97,7 @@ export default function Contact() {
                 maxWidth: '500px',
               }}
             >
-              Open to new opportunities and always happy to chat.
+              I'd love to chat! 
             </p>
           </div>
 
