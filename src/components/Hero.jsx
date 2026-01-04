@@ -216,8 +216,8 @@ export default function Hero() {
             {/* Circle image container */}
             <div
               style={{
-                width: '420px',
-                height: '420px',
+                width: '600px',
+                height: '600px',
                 borderRadius: '50%',
                 overflow: 'hidden',
                 position: 'relative',
