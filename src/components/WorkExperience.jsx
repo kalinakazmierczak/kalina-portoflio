@@ -71,6 +71,7 @@ export default function WorkExperience() {
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Section Header */}
         <motion.div
+          className="experience-grid"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={elegantEase}
@@ -121,6 +122,7 @@ export default function WorkExperience() {
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.id}
+              className="experience-item"
               variants={fadeUpVariants}
               transition={{ ...slowReveal, delay: index * 0.1 }}
               style={{
@@ -134,6 +136,7 @@ export default function WorkExperience() {
             >
               {/* Timeline dot */}
               <motion.div
+                className="timeline-dot"
                 initial={{ scale: 0 }}
                 animate={isInView ? { scale: 1 } : {}}
                 transition={{ delay: 0.3 + index * 0.1, type: 'spring' }}

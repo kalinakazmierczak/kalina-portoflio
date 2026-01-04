@@ -124,6 +124,7 @@ export default function Navigation() {
 
         {/* Navigation Links */}
         <div
+          className="nav-links"
           style={{
             display: 'flex',
             gap: 'var(--spacing-md)',
@@ -172,6 +173,7 @@ export default function Navigation() {
 
           {/* Contact CTA */}
           <motion.a
+            className="nav-contact"
             href="#contact-section"
             onClick={(e) => handleNavClick(e, 'contact-section')}
             whileHover={{ scale: 1.02 }}

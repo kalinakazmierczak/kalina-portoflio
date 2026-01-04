@@ -19,6 +19,7 @@ export default function Hero() {
     <section
       ref={containerRef}
       id="hero-section"
+      className="hero-section"
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -44,6 +45,7 @@ export default function Hero() {
       />
 
       <div
+        className="hero-grid"
         style={{
           maxWidth: '1400px',
           margin: '0 auto',
@@ -56,6 +58,7 @@ export default function Hero() {
       >
         {/* Text Content - Takes 7 columns */}
         <motion.div
+          className="hero-text"
           style={{
             gridColumn: '1 / 8',
             y: textY,
@@ -198,6 +201,7 @@ export default function Hero() {
 
         {/* Image Section - Takes 4 columns with offset */}
         <motion.div
+          className="hero-image-wrapper"
           style={{
             gridColumn: '9 / 13',
             y: imageY,
@@ -215,9 +219,10 @@ export default function Hero() {
           >
             {/* Circle image container */}
             <div
+              className="hero-image"
               style={{
-                width: '600px',
-                height: '600px',
+                width: '420px',
+                height: '420px',
                 borderRadius: '50%',
                 overflow: 'hidden',
                 position: 'relative',

@@ -46,6 +46,7 @@ function AboutSection() {
     >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <div
+          className="about-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',

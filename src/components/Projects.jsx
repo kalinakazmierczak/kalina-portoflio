@@ -121,6 +121,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
+              className="project-card"
               variants={fadeUpVariants}
               transition={{ ...slowReveal, delay: index * 0.1 }}
               style={{

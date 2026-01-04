@@ -55,6 +55,7 @@ export default function Contact() {
 
       <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
         <motion.div
+          className="contact-header"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={slowReveal}
@@ -133,6 +134,7 @@ export default function Contact() {
 
         {/* Contact Grid */}
         <motion.div
+          className="contact-grid"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ ...elegantEase, delay: 0.2 }}
@@ -222,6 +224,7 @@ export default function Contact() {
 
         {/* Footer Bottom */}
         <motion.div
+          className="footer-bottom"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ ...elegantEase, delay: 0.6 }}
