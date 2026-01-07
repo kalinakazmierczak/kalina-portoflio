@@ -125,7 +125,7 @@ export default function Hero() {
             }}
           >
             <motion.a
-              href="#experience-section"
+              href="#projects-section"
               whileHover={{ opacity: 0.7 }}
               style={{
                 fontSize: 'var(--size-sm)',

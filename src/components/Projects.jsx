@@ -4,6 +4,9 @@ import sc23Image from '../assets/sc23.jpg';
 import bunapetitImage from '../assets/bunapetit.jpeg';
 import scratchCodingImage from '../assets/scratch_coding_rwanda.jpeg';
 import researchImage from '../assets/research.jpeg';
+import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
+import bunapetitPresentation from '../assets/Copy of Capstone Project .pptx.pdf';
+import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
 
 export default function Projects() {
   const { ref, isInView } = useScrollAnimation();
@@ -12,14 +15,17 @@ export default function Projects() {
     {
       id: 1,
       title: 'Bun Appétit',
-      category: 'AI / HCI',
+      category: 'AI • HCI',
       year: '2025',
       highlights: [
         'Gamified food journaling app for families using AI meal recognition',
         'Computer vision for food identification and nutrition tracking',
         '1st Place, Virginia Tech Undergraduate Research Competition',
       ],
-      link: null,
+      links: [
+        { label: 'CASE STUDY', url: bunapetitPaper },
+        { label: 'OVERVIEW', url: bunapetitPresentation },
+      ],
       image: bunapetitImage,
     },
     {
@@ -32,7 +38,7 @@ export default function Projects() {
         'Reverse-engineered 2014 servo motor controls',
         'Presented at SC24 in Atlanta',
       ],
-      link: 'https://sc24.supercomputing.org/proceedings/poster/poster_files/post214s2-file3.pdf',
+      links: [{ label: 'VIEW', url: 'https://sc24.supercomputing.org/proceedings/poster/poster_files/post214s2-file3.pdf' }],
       image: researchImage,
     },
     {
@@ -45,7 +51,7 @@ export default function Projects() {
         'Designed curriculum for women and 3rd graders',
         'Emily Specchio Foundation Scholarship recipient',
       ],
-      link: null,
+      links: [{ label: 'SLIDES', url: scratchCodingDeck }],
       image: scratchCodingImage,
     },
     {
@@ -58,7 +64,10 @@ export default function Projects() {
         'Built database of 300+ profiles for "I am HPC" initiative',
         'Full scholarship to present at SC23 (13,000+ attendees)',
       ],
-      link: 'https://news.vt.edu/articles/2024/02/eng-cs-students-find-hidden-figures-in-computing.html',
+      links: [
+        { label: 'DEMO', url: 'https://csgenome.org/hidden_figures/contribution_network' },
+        { label: 'ARTICLE', url: 'https://news.vt.edu/articles/2024/02/eng-cs-students-find-hidden-figures-in-computing.html' },
+      ],
       image: sc23Image,
     },
   ];
@@ -171,23 +180,28 @@ export default function Projects() {
                     >
                       {project.title}
                     </h3>
-                    {project.link && (
-                      <motion.a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ x: 3, y: -3 }}
-                        style={{
-                          fontSize: 'var(--size-xs)',
-                          color: 'var(--color-text-tertiary)',
-                          textDecoration: 'none',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '4px',
-                        }}
-                      >
-                        VIEW ↗
-                      </motion.a>
+                    {project.links && project.links.length > 0 && (
+                      <div style={{ display: 'flex', gap: '12px' }}>
+                        {project.links.map((link, linkIdx) => (
+                          <motion.a
+                            key={linkIdx}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ x: 2, y: -2 }}
+                            style={{
+                              fontSize: 'var(--size-xs)',
+                              color: 'var(--color-text-tertiary)',
+                              textDecoration: 'none',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                            }}
+                          >
+                            {link.label} ↗
+                          </motion.a>
+                        ))}
+                      </div>
                     )}
                   </div>
 
