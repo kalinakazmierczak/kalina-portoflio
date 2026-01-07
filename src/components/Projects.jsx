@@ -20,7 +20,7 @@ export default function Projects() {
       highlights: [
         'Gamified food journaling app for families using AI meal recognition',
         'Computer vision for food identification and nutrition tracking',
-        '1st Place, Virginia Tech Undergraduate Research Competition',
+        '1st Place, VTURCS',
       ],
       links: [
         { label: 'CASE STUDY', url: bunapetitPaper },
