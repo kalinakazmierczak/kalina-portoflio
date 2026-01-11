@@ -22,6 +22,7 @@ export default function Projects() {
         'Designed and deployed a vinyl-inspired UI to visualize Spotify listening data',
         'Integrated NextAuth for OAuth and Canvas API for exportable story images',
         'Built responsive interactions with smooth hover-to-spin animations that link you directly to Spotify',
+        'Mobile friendly design with optimized performance for all devices',
       ],
       links: [
         { label: 'SPINDLE', url: 'https://spindlevinyl.netlify.app/' },
