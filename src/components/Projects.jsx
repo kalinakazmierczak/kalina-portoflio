@@ -7,6 +7,7 @@ import researchImage from '../assets/research.jpeg';
 import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import bunapetitPresentation from '../assets/Copy of Capstone Project .pptx.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
+import SpinningVinylPreview from './SpinningVinylPreview';
 
 export default function Projects() {
   const { ref, isInView } = useScrollAnimation();
@@ -14,6 +15,22 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
+      title: 'Spindle',
+      category: 'NEXT.JS • SPOTIFY API',
+      year: '2026',
+      highlights: [
+        'Designed and deployed a vinyl-inspired UI to visualize Spotify listening data',
+        'Integrated NextAuth for OAuth and Canvas API for exportable story images',
+        'Built responsive interactions with smooth hover-to-spin animations that link you directly to Spotify',
+      ],
+      links: [
+        { label: 'SPINDLE', url: 'https://spindlevinyl.netlify.app/' },
+        { label: 'GITHUB', url: 'https://github.com/kalinakazmierczak/SpotifyAlbumCollage' },
+      ],
+      customPreview: 'vinyl',
+    },
+    {
+      id: 2,
       title: 'Bun Appétit',
       category: 'AI • HCI',
       year: '2025',
@@ -29,7 +46,7 @@ export default function Projects() {
       image: bunapetitImage,
     },
     {
-      id: 2,
+      id: 3,
       title: 'SeeMore Kinetic Sculpture',
       category: 'RESEARCH • SC24',
       year: '2024',
@@ -42,7 +59,7 @@ export default function Projects() {
       image: researchImage,
     },
     {
-      id: 3,
+      id: 4,
       title: 'Mabawa Scratch Coding',
       category: 'VOLUNTEER • RWANDA',
       year: '2024',
@@ -55,7 +72,7 @@ export default function Projects() {
       image: scratchCodingImage,
     },
     {
-      id: 4,
+      id: 5,
       title: 'Hidden Figures in HPC',
       category: 'RESEARCH • SC23',
       year: '2023',
@@ -242,8 +259,12 @@ export default function Projects() {
                   </ul>
                 </div>
 
-                {/* Project Image */}
-                {project.image && (
+                {/* Project Image or Custom Preview */}
+                {project.customPreview === 'vinyl' ? (
+                  <div style={{ width: '220px', display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
+                    <SpinningVinylPreview />
+                  </div>
+                ) : project.image && (
                   <motion.div
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.3 }}
