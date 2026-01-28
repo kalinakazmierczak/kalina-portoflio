@@ -98,21 +98,6 @@ export default function Hero() {
             Kalina Kazmierczak
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ ...elegantEase, delay: 0.5 }}
-            style={{
-              fontSize: 'var(--size-lg)',
-              lineHeight: 1.8,
-              color: 'var(--color-text-secondary)',
-              maxWidth: '540px',
-              marginBottom: 'var(--spacing-md)',
-            }}
-          >
-            Building products that feel as good as they look.
-          </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
