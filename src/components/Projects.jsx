@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollAnimation, fadeUpVariants, staggerContainer, elegantEase, slowReveal } from '../hooks/useScrollAnimation';
 import sc23Image from '../assets/sc23.jpg';
 import bunapetitImage from '../assets/bunapetit.jpeg';
@@ -9,8 +10,11 @@ import bunapetitPresentation from '../assets/Copy of Capstone Project .pptx.pdf'
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
 import SpinningVinylPreview from './SpinningVinylPreview';
 
+const spindleDemo = '/spindle-demo.mp4';
+
 export default function Projects() {
   const { ref, isInView } = useScrollAnimation();
+  const [showDemoModal, setShowDemoModal] = useState(false);
 
   const projects = [
     {
@@ -25,10 +29,10 @@ export default function Projects() {
         'Mobile friendly design with optimized performance for all devices',
       ],
       links: [
-        { label: 'SPINDLE', url: 'https://spindlevinyl.netlify.app/' },
         { label: 'GITHUB', url: 'https://github.com/kalinakazmierczak/SpotifyAlbumCollage' },
       ],
       customPreview: 'vinyl',
+      demoGif: spindleDemo,
     },
     {
       id: 2,
@@ -262,8 +266,49 @@ export default function Projects() {
 
                 {/* Project Image or Custom Preview */}
                 {project.customPreview === 'vinyl' ? (
-                  <div style={{ width: '220px', display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
+                  <div 
+                    style={{ width: '220px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', flexShrink: 0 }}
+                    onClick={() => setShowDemoModal(true)}
+                  >
                     <SpinningVinylPreview />
+                  </div>
+                ) : project.demoGif ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+                    <motion.div
+                      whileHover={{ scale: 1.03 }}
+                      transition={{ duration: 0.3 }}
+                      style={{
+                        width: '220px',
+                        height: '150px',
+                        borderRadius: '4px',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                      }}
+                    >
+                      <img
+                        src={project.demoGif}
+                        alt={`${project.title} demo`}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                        }}
+                      />
+                    </motion.div>
+                    {project.note && (
+                      <p
+                        style={{
+                          fontSize: '10px',
+                          color: 'var(--color-text-tertiary)',
+                          textAlign: 'center',
+                          margin: 0,
+                          opacity: 0.7,
+                          maxWidth: '220px',
+                        }}
+                      >
+                        {project.note}
+                      </p>
+                    )}
                   </div>
                 ) : project.image && (
                   <motion.div
@@ -298,6 +343,80 @@ export default function Projects() {
           ))}
         </motion.div>
       </div>
+
+      {/* Demo Modal */}
+      <AnimatePresence>
+        {showDemoModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowDemoModal(false)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              background: 'rgba(0, 0, 0, 0.85)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1000,
+              cursor: 'pointer',
+              padding: 'var(--spacing-md)',
+            }}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                position: 'relative',
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)',
+              }}
+            >
+              <video
+                src={spindleDemo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '85vh',
+                  objectFit: 'contain',
+                  borderRadius: '12px',
+                }}
+              />
+              <button
+                onClick={() => setShowDemoModal(false)}
+                style={{
+                  position: 'absolute',
+                  top: '12px',
+                  right: '12px',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  border: 'none',
+                  background: 'rgba(0, 0, 0, 0.6)',
+                  color: 'white',
+                  fontSize: '18px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                ×
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

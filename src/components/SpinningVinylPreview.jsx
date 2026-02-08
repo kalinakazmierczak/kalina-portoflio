@@ -4,10 +4,6 @@ import purpleRain from '../assets/purple_rain.jpg';
 export default function SpinningVinylPreview() {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleClick = () => {
-    window.open('https://open.spotify.com/track/1uvyZBs4IZYRebHIB1747m?si=9ae4fb879e984b0f', '_blank');
-  };
-
   return (
     <div
       style={{
@@ -18,11 +14,11 @@ export default function SpinningVinylPreview() {
         justifyContent: 'center',
         flexShrink: 0,
         position: 'relative',
+        cursor: 'pointer',
       }}
     >
       {/* The vinyl record */}
       <div
-        onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
@@ -118,7 +114,7 @@ export default function SpinningVinylPreview() {
           fontWeight: '500',
         }}
       >
-        {isHovered ? '▶ PLAY ON SPOTIFY' : 'HOVER TO SPIN'}
+        {isHovered ? '▶ VIEW DEMO' : 'HOVER TO SPIN'}
       </div>
       
       <style>{`
