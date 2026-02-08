@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import kalinaImage from '../assets/kalina.jpg';
-import resumePDF from '../assets/Kalina_Kazmierczak_2026_Resume_Final.pdf';
+import resumePDF from '../assets/Kalina_Kazmierczak_Resume_Feb_2026.pdf';
 import { elegantEase, slowReveal } from '../hooks/useScrollAnimation';
 
 export default function Hero() {
