@@ -48,9 +48,9 @@ export default function HomeTab() {
         <p className="now-label">currently —</p>
         <div className="now-items">
           <p className="now-item">at costar group in arlington, va</p>
+          <p className="now-item">really into hot yoga </p>
           <p className="now-item">working with react, c#, and .net</p>
-          <p className="now-item">building a personal fitness trainer app for fun</p>
-          <p className="now-item">really into hot yoga atm</p>
+          <p className="now-item">amtraking to nyc</p>
         </div>
       </div>
 
