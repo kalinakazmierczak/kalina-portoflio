@@ -33,10 +33,10 @@ export default function HomeTab() {
           <hr className="home-rule" />
 
           <p className="home-bio">
-            hi i'm a full-stack software engineer who loves combining design and code. i studied cs at virginia tech with an hci minor. I've spent my career so far all over the place, i've presented research at supercomputing conferences, taught coding in rwanda, been in coorporate software engineering internships, and won undergraduate competitions, but i'm always looking for new challenges and opportunities to learn and grow.
+            hi i'm a full-stack software engineer who loves combining design and code. i studied cs at virginia tech with an hci minor. I've spent my career so far all over the place, i've presented research at supercomputing conferences, taught coding in rwanda, been in coorporate software engineering, won undergraduate competitions etc. but i'm always looking for new challenges and opportunities to learn and grow.
           </p>
           <p className="home-bio">
-            outside of coding, you can find me at the gym or on a long walk with friends, going to concerts, and traveling as much as i can.
+            outside of coding, you can find me at the gym or on a long walk with friends, going to concerts, and probably replaying pokemon heartgold.
           </p>
           <div className="home-links" style={{ alignItems: 'center' }}>
             <a className="home-link" href={resumePDF} download="Kalina_Kazmierczak_Resume.pdf">
