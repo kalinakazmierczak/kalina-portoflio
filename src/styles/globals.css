@@ -308,6 +308,35 @@ img {
   line-height: 1.7;
 }
 
+/* spotify now playing */
+.spotify-now-playing {
+  margin-top: 4px;
+}
+
+.spotify-status {
+  font-size: var(--size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.spotify-dot {
+  --spotify-accent: var(--color-accent);
+  color: var(--spotify-accent);
+  display: inline-block;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.spotify-idle {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
 .home-bio {
   font-size: var(--size-base);
   color: var(--color-text-secondary);

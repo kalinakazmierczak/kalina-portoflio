@@ -1,5 +1,6 @@
 import resumePDF from '../assets/Kalina_Kazmierczak_Resume_Website.pdf';
 import kalinaImage from '../assets/kalina.jpg';
+import SpotifyNowPlaying from './SpotifyNowPlaying';
 
 export default function HomeTab() {
   return (
@@ -51,6 +52,7 @@ export default function HomeTab() {
           <p className="now-item">really into hot yoga </p>
           <p className="now-item">working with react, c#, and .net</p>
           <p className="now-item">amtraking to nyc</p>
+          <SpotifyNowPlaying />
         </div>
       </div>
 
