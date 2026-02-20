@@ -1,3 +1,6 @@
+import snorlaxImage from '../assets/snorlax.png';
+import gengarImage from '../assets/gengar.png';
+
 export default function WorkTab() {
   const experiences = [
     {
@@ -37,23 +40,33 @@ export default function WorkTab() {
 
   return (
     <div className="page">
-      <h1 className="section-header">work</h1>
-      <div className="work-list">
-        {experiences.map((exp, i) => (
-          <div key={i} className="work-entry">
-            <div className="work-top">
-              <span className="work-company">{exp.company}</span>
-              <span className="work-role-date">
-                {exp.role} · {exp.period}
-              </span>
-            </div>
-            <div className="work-description">
-              {exp.highlights.map((h, j) => (
-                <p key={j} className="work-highlight">{h}</p>
-              ))}
-            </div>
+      <div className="page-with-sprites">
+        <div className="sprite-col">
+          <img src={snorlaxImage} alt="" className="pokemon-sprite" />
+        </div>
+        <div className="page-content">
+          <h1 className="section-header">work</h1>
+          <div className="work-list">
+            {experiences.map((exp, i) => (
+              <div key={i} className="work-entry">
+                <div className="work-top">
+                  <span className="work-company">{exp.company}</span>
+                  <span className="work-role-date">
+                    {exp.role} · {exp.period}
+                  </span>
+                </div>
+                <div className="work-description">
+                  {exp.highlights.map((h, j) => (
+                    <p key={j} className="work-highlight">{h}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        <div className="sprite-col">
+          <img src={gengarImage} alt="" className="pokemon-sprite delay-2" />
+        </div>
       </div>
     </div>
   );

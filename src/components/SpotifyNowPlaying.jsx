@@ -26,21 +26,40 @@ export default function SpotifyNowPlaying() {
 
   if (loading) return null;
 
+  const spotifySearchUrl = nowPlaying?.title
+    ? `https://open.spotify.com/search/${encodeURIComponent(
+        `${nowPlaying.artist} ${nowPlaying.title}`
+      )}`
+    : 'https://open.spotify.com';
+
   return (
     <div className="spotify-now-playing">
       {nowPlaying?.isPlaying ? (
-        <p className="spotify-status">
-          <span className="spotify-dot" aria-hidden="true">
-            ⟡
-          </span>{' '}
-          {nowPlaying.artist.toLowerCase()} —{' '}
-          {nowPlaying.title.toLowerCase()}
-        </p>
+        <a
+          href={spotifySearchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="spotify-link"
+        >
+          <span className="spotify-icon" aria-hidden="true"></span>
+          <span className="spotify-text">
+            currently listening to {nowPlaying.artist.toLowerCase()} —{' '}
+            {nowPlaying.title.toLowerCase()}
+          </span>
+        </a>
       ) : nowPlaying?.title ? (
-        <p className="spotify-status spotify-idle">
-          last listened to {nowPlaying.artist.toLowerCase()} —{' '}
-          {nowPlaying.title.toLowerCase()}
-        </p>
+        <a
+          href={spotifySearchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="spotify-link spotify-idle"
+        >
+          <span className="spotify-icon-muted" aria-hidden="true"></span>
+          <span className="spotify-text">
+            last listened to {nowPlaying.artist.toLowerCase()} —{' '}
+            {nowPlaying.title.toLowerCase()}
+          </span>
+        </a>
       ) : null}
     </div>
   );

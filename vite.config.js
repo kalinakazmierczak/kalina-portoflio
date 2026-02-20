@@ -8,8 +8,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   
-  // Include pptx files as assets
-  assetsInclude: ['**/*.pptx'],
+  // Include additional file types as assets
+  assetsInclude: ['**/*.pptx', '**/*.PNG'],
   
   build: {
     // Code splitting for better caching

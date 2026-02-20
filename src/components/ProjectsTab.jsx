@@ -1,6 +1,8 @@
 import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import bunapetitPresentation from '../assets/Copy of Capstone Project .pptx.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
+import mewImage from '../assets/mew.png';
+import dragonairImage from '../assets/dragonair.png';
 
 export default function ProjectsTab() {
   const projects = [
@@ -65,32 +67,42 @@ export default function ProjectsTab() {
 
   return (
     <div className="page">
-      <h1 className="section-header">projects</h1>
-      <div className="projects-list">
-        {projects.map((project, i) => (
-          <div key={i} className="project-entry">
-            <div className="project-top">
-              <span className="project-title">{project.title}</span>
-              <span className="project-year">{project.year}</span>
-            </div>
-            <p className="project-desc">{project.description}</p>
-            {project.links && project.links.length > 0 && (
-              <div className="project-links">
-                {project.links.map((link, j) => (
-                  <a
-                    key={j}
-                    className="project-link"
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.label} ↗
-                  </a>
-                ))}
+      <div className="page-with-sprites">
+        <div className="sprite-col">
+          <img src={mewImage} alt="" className="pokemon-sprite delay-1" />
+        </div>
+        <div className="page-content">
+          <h1 className="section-header">projects</h1>
+          <div className="projects-list">
+            {projects.map((project, i) => (
+              <div key={i} className="project-entry">
+                <div className="project-top">
+                  <span className="project-title">{project.title}</span>
+                  <span className="project-year">{project.year}</span>
+                </div>
+                <p className="project-desc">{project.description}</p>
+                {project.links && project.links.length > 0 && (
+                  <div className="project-links">
+                    {project.links.map((link, j) => (
+                      <a
+                        key={j}
+                        className="project-link"
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link.label} ↗
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
+            ))}
           </div>
-        ))}
+        </div>
+        <div className="sprite-col">
+          <img src={dragonairImage} alt="" className="pokemon-sprite delay-3" />
+        </div>
       </div>
     </div>
   );

@@ -313,28 +313,131 @@ img {
   margin-top: 4px;
 }
 
-.spotify-status {
+.spotify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: var(--size-sm);
   color: var(--color-text-secondary);
   font-weight: 300;
   line-height: 1.7;
+  text-decoration: none;
+  transition: all var(--transition);
+  position: relative;
 }
 
-.spotify-dot {
-  --spotify-accent: var(--color-accent);
-  color: var(--spotify-accent);
+.spotify-link:hover {
+  color: var(--color-text);
+}
+
+.spotify-link:hover .spotify-icon {
+  animation: bounce 0.6s ease-in-out infinite;
+}
+
+/* 8-bit pixel headphones sprite */
+.spotify-icon {
+  --c: var(--color-accent);
+  width: 1px;
+  height: 1px;
+  position: relative;
   display: inline-block;
-  animation: pulse 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+  margin-right: 13px;
+  margin-bottom: 8px;
+  image-rendering: pixelated;
+  animation: pixelPulse 2s ease-in-out infinite;
+  box-shadow:
+    /* headband top */
+    4px 0 0 var(--c), 5px 0 0 var(--c), 6px 0 0 var(--c), 7px 0 0 var(--c),
+    8px 0 0 var(--c), 9px 0 0 var(--c),
+    /* headband sides */
+    3px 1px 0 var(--c), 10px 1px 0 var(--c),
+    2px 2px 0 var(--c), 11px 2px 0 var(--c),
+    2px 3px 0 var(--c), 11px 3px 0 var(--c),
+    /* side arms */
+    1px 4px 0 var(--c), 12px 4px 0 var(--c),
+    1px 5px 0 var(--c), 12px 5px 0 var(--c),
+    1px 6px 0 var(--c), 12px 6px 0 var(--c),
+    /* left ear cup */
+    0px 7px 0 var(--c), 1px 7px 0 var(--c), 2px 7px 0 var(--c),
+    0px 8px 0 var(--c), 1px 8px 0 var(--c), 2px 8px 0 var(--c),
+    0px 9px 0 var(--c), 1px 9px 0 var(--c), 2px 9px 0 var(--c),
+    0px 10px 0 var(--c), 1px 10px 0 var(--c), 2px 10px 0 var(--c),
+    /* right ear cup */
+    11px 7px 0 var(--c), 12px 7px 0 var(--c), 13px 7px 0 var(--c),
+    11px 8px 0 var(--c), 12px 8px 0 var(--c), 13px 8px 0 var(--c),
+    11px 9px 0 var(--c), 12px 9px 0 var(--c), 13px 9px 0 var(--c),
+    11px 10px 0 var(--c), 12px 10px 0 var(--c), 13px 10px 0 var(--c);
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+.spotify-icon-muted {
+  --c: var(--color-text-muted);
+  width: 1px;
+  height: 1px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 13px;
+  margin-bottom: 8px;
+  opacity: 0.6;
+  image-rendering: pixelated;
+  transition: opacity var(--transition);
+  box-shadow:
+    /* headband top */
+    4px 0 0 var(--c), 5px 0 0 var(--c), 6px 0 0 var(--c), 7px 0 0 var(--c),
+    8px 0 0 var(--c), 9px 0 0 var(--c),
+    /* headband sides */
+    3px 1px 0 var(--c), 10px 1px 0 var(--c),
+    2px 2px 0 var(--c), 11px 2px 0 var(--c),
+    2px 3px 0 var(--c), 11px 3px 0 var(--c),
+    /* side arms */
+    1px 4px 0 var(--c), 12px 4px 0 var(--c),
+    1px 5px 0 var(--c), 12px 5px 0 var(--c),
+    1px 6px 0 var(--c), 12px 6px 0 var(--c),
+    /* left ear cup */
+    0px 7px 0 var(--c), 1px 7px 0 var(--c), 2px 7px 0 var(--c),
+    0px 8px 0 var(--c), 1px 8px 0 var(--c), 2px 8px 0 var(--c),
+    0px 9px 0 var(--c), 1px 9px 0 var(--c), 2px 9px 0 var(--c),
+    0px 10px 0 var(--c), 1px 10px 0 var(--c), 2px 10px 0 var(--c),
+    /* right ear cup */
+    11px 7px 0 var(--c), 12px 7px 0 var(--c), 13px 7px 0 var(--c),
+    11px 8px 0 var(--c), 12px 8px 0 var(--c), 13px 8px 0 var(--c),
+    11px 9px 0 var(--c), 12px 9px 0 var(--c), 13px 9px 0 var(--c),
+    11px 10px 0 var(--c), 12px 10px 0 var(--c), 13px 10px 0 var(--c);
+}
+
+.spotify-link:hover .spotify-icon-muted {
+  opacity: 1;
+}
+
+@keyframes pixelPulse {
+  0%, 100% { 
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% { 
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-3px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-1px); }
+}
+
+.spotify-text {
+  display: inline;
 }
 
 .spotify-idle {
   color: var(--color-text-muted);
-  font-style: italic;
+}
+
+.spotify-idle:hover {
+  color: var(--color-text-secondary);
 }
 
 .home-bio {
@@ -608,7 +711,56 @@ img {
   font-weight: 300;
 }
 
+/* pokemon sprites */
+.pokemon-sprite {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  animation: pokemonBounce 3.6s steps(3, end) infinite;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+  flex-shrink: 0;
+}
+
+.pokemon-sprite.delay-1 { animation-delay: 0.6s; }
+.pokemon-sprite.delay-2 { animation-delay: 1.3s; }
+.pokemon-sprite.delay-3 { animation-delay: 2.0s; }
+
+@keyframes pokemonBounce {
+  0%   { transform: translateY(0); }
+  33%  { transform: translateY(-7px); }
+  66%  { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+/* sprite side column layout */
+.page-with-sprites {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.page-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sprite-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 8px;
+  flex-shrink: 0;
+}
+
 @media (max-width: 768px) {
+  .sprite-col {
+    display: none;
+  }
+
   .nav {
     padding: 16px 20px;
   }
