@@ -7,10 +7,32 @@ import WritingTab from './components/WritingTab';
 import ContactTab from './components/ContactTab';
 import './styles/globals.css';
 
+import spriteJrtrainerf from './assets/jrtrainerf.png';
+import spriteVaporeon from './assets/vaporeon.png';
+import spriteSnorlax from './assets/snorlax.png';
+import spriteGengar from './assets/gengar.png';
+import spriteMew from './assets/mew.png';
+import spriteDragonair from './assets/dragonair.png';
+import spriteChansey from './assets/chansey.png';
+import spriteSquirtle from './assets/squirtle.png';
+import spriteVulpix from './assets/vulpix.png';
+
+const ALL_SPRITES = [
+  spriteJrtrainerf, spriteVaporeon, spriteSnorlax, spriteGengar,
+  spriteMew, spriteDragonair, spriteChansey, spriteSquirtle, spriteVulpix,
+];
+
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [transitioning, setTransitioning] = useState(false);
   const contentRef = useRef(null);
+
+  useEffect(() => {
+    ALL_SPRITES.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   const handleTabChange = (tab) => {
     if (tab === activeTab) return;
