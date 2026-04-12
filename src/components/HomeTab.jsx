@@ -15,9 +15,9 @@ export default function HomeTab() {
       </h1>
 
       <p className="home-tagline">
-        <strong>software engineer</strong> & <strong>design engineer</strong> — building
-        things that feel as good as they work. virginia tech cs '25, currently in dc,
-        manifesting my move to <strong>nyc</strong>.
+        <strong>software engineer</strong> & <strong>design engineer</strong>  crafting
+        interfaces that are as thoughtful as they are functional. virginia tech cs '25,
+        based in dc.
       </p>
 
       <hr className="home-rule" />
@@ -28,21 +28,21 @@ export default function HomeTab() {
           <p className="now-item">full-stack engineer @ costar group</p>
           <p className="now-item">working with react, c#, and .net</p>
           <p className="now-item">really into hot yoga</p>
-          <p className="now-item">looking for my next role in nyc</p>
           <SpotifyNowPlaying />
         </div>
       </div>
 
       <p className="home-bio">
-        i'm a full-stack engineer who cares deeply about the intersection of design
-        and code. i studied cs at virginia tech with an hci minor — which basically
-        means i obsess over the little details that make software feel intentional.
+        i'm a full-stack engineer with a deep appreciation for the intersection of
+        design and engineering. i studied computer science at virginia tech with an
+        hci minor, which shaped my focus on the details that make software feel
+        intentional and polished.
       </p>
       <p className="home-bio">
         i've presented research at supercomputing conferences, taught coding in
-        rwanda, won undergraduate competitions, and built component libraries from
-        figma to production. when i'm not coding, you'll find me thrifting, making
-        spotify playlists that go unreasonably hard, or deep in a wikipedia rabbit hole.
+        rwanda, placed first in undergraduate competitions, and built component
+        libraries from figma to production. outside of work, i enjoy vintage shopping,
+        going to festivals, and being outside on a 70 degree day!
       </p>
 
       <div className="home-links">

@@ -7,13 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Clean, editorial color palette (Alyssa Long inspired)
-        'cream': '#F5F3F0',
-        'dark': '#000000',
-        'dark-text': '#1A1A1A',
-        'secondary': '#666666',
-        'light-gray': '#E5E5E5',
-        'border-light': '#F0F0F0',
+        // Warm beige palette with coral & turquoise pops
+        'cream': '#FAF7F4',
+        'dark': '#2C2825',
+        'dark-text': '#2C2825',
+        'secondary': '#5A5450',
+        'light-gray': '#EDE7E0',
+        'border-light': '#E3DCD4',
+        'coral': '#E07460',
+        'turquoise': '#3AAFA9',
+        'turquoise-dark': '#2B7A78',
       },
       fontFamily: {
         serif: ['Playfair Display', 'Georgia', 'serif'],

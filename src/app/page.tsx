@@ -47,9 +47,7 @@ export default function Home() {
             <span className="gradient-text">Software Developer</span>
           </h2>
           <p className="font-sans text-warm-gray text-lg max-w-xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            I&apos;m a software developer based in Toronto, hopefully relocating to 
-            NYC. I enjoy building clean, user-centered digital experiences 
-            and thoughtful applications.
+            Hi, I&apos;m Kalina. I build software that works well and looks good.
           </p>
           <div className="mt-10 flex gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <a href="#projects" className="px-6 py-3 bg-rose text-white rounded-full text-sm font-sans hover:bg-rose-deep transition-all duration-300 hover-lift">

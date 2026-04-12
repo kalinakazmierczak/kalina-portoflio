@@ -24,8 +24,8 @@ export default function ContactTab() {
       <p className="section-subheader">get in touch</p>
       <h1 className="section-header">contact</h1>
       <p className="contact-note">
-        i'd love to chat — whether it's about a role, a project, or just to say hi.
-        currently based in dc, relocating to nyc soon.
+        i'd love to chat, whether it's about a role, a project, or just to say hi.
+        currently based in dc.
       </p>
       <div className="contact-links">
         {links.map((link, i) => (
@@ -46,7 +46,7 @@ export default function ContactTab() {
       </div>
       <div className="contact-footer">
         <p className="contact-footer-text">
-          built with care by kalina · dc → nyc ♡
+          built with care by kalina · dc ♡
         </p>
       </div>
     </div>
