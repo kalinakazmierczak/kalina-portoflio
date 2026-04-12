@@ -1,6 +1,5 @@
 import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
-import vulpixImage from '../assets/vulpix.png';
 
 export default function WritingTab() {
   const entries = [
@@ -28,31 +27,24 @@ export default function WritingTab() {
 
   return (
     <div className="page">
-      <div className="page-with-sprites">
-        <div className="page-content">
-          <h1 className="section-header">writing</h1>
-          <p className="contact-note">
-            papers, presentations, and things i've written about along the way.
-          </p>
-          <div className="writing-list">
-            {entries.map((entry, i) => (
-              <a
-                key={i}
-                className="writing-entry"
-                href={entry.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: 'block', textDecoration: 'none' }}
-              >
-                <p className="writing-title">{entry.title} ↗</p>
-                <p className="writing-meta">{entry.meta}</p>
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className="sprite-col">
-          <img src={vulpixImage} alt="" className="pokemon-sprite delay-1" />
-        </div>
+      <p className="section-subheader">publications & talks</p>
+      <h1 className="section-header">writing</h1>
+      <p className="section-desc">
+        papers, presentations, and things i've written about along the way.
+      </p>
+      <div className="writing-list">
+        {entries.map((entry, i) => (
+          <a
+            key={i}
+            className="writing-entry"
+            href={entry.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p className="writing-title">{entry.title} ↗</p>
+            <p className="writing-meta">{entry.meta}</p>
+          </a>
+        ))}
       </div>
     </div>
   );

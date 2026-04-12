@@ -9,7 +9,11 @@ export default function Navigation({ activeTab, onTabChange }) {
 
   return (
     <nav className="nav">
-      <span className="nav-name">kalina k.</span>
+      <div className="nav-left">
+        <span className="nav-prompt">~/kalina</span>
+        <span className="nav-name">$</span>
+        <div className="nav-status" title="open to work" />
+      </div>
       <div className="nav-tabs">
         {tabs.map((tab) => (
           <button

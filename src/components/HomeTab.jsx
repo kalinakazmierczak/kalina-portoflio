@@ -1,56 +1,64 @@
 import resumePDF from '../assets/Kalina_Kazmierczak_Resume_Website.pdf';
-import spriteImage from '../assets/jrtrainerf.png';
-import vaporeonImage from '../assets/vaporeon.png';
 import SpotifyNowPlaying from './SpotifyNowPlaying';
+import Terminal from './Terminal';
 
 export default function HomeTab() {
   return (
     <div className="page">
-      <div className="page-with-sprites">
-        <div className="page-content">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
-            <img src={spriteImage} alt="" className="pokemon-sprite" style={{ width: '84px', height: '84px' }} />
-            <div>
-              <h1 className="home-name" style={{ marginBottom: '8px' }}>kalina kazmierczak</h1>
-              <p className="home-tagline" style={{ marginBottom: 0 }}>
-                full-stack engineer · virginia tech '25 · washington, dc
-              </p>
-            </div>
-          </div>
+      <div className="home-greeting">
+        hello world<span className="cursor-blink" />
+      </div>
 
-          <hr className="home-rule" />
+      <h1 className="home-name">
+        kalina<br />
+        kazmierczak<span className="accent">.</span>
+      </h1>
 
-          <div className="now-section">
-            <p className="now-label">at this current moment i am,</p>
-            <div className="now-items">
-              <p className="now-item">at costar group in arlington, va</p>
-              <p className="now-item">really into hot yoga </p>
-              <p className="now-item">working with react, c#, and .net</p>
-              <SpotifyNowPlaying />
-            </div>
-          </div>
+      <p className="home-tagline">
+        <strong>software engineer</strong> & <strong>design engineer</strong> — building
+        things that feel as good as they work. virginia tech cs '25, currently in dc,
+        manifesting my move to <strong>nyc</strong>.
+      </p>
 
-          <hr className="home-rule" />
+      <hr className="home-rule" />
 
-          <p className="home-bio">
-            hi i'm a full-stack software engineer who loves combining design and code. i studied cs at virginia tech with an hci minor. I've spent my career so far all over the place, i've presented research at supercomputing conferences, taught coding in rwanda, been in coorporate software engineering, won undergraduate competitions etc. but i'm always looking for new challenges and opportunities to learn and grow.
-          </p>
-          <p className="home-bio">
-            outside of coding, you can find me at the gym or on a long walk with friends, going to concerts, and probably replaying pokemon heartgold.
-          </p>
-          <div className="home-links" style={{ alignItems: 'center' }}>
-            <a className="home-link" href={resumePDF} download="Kalina_Kazmierczak_Resume.pdf">
-              résumé ↓
-            </a>
-            <a className="home-link" href="mailto:kalinakazmie@gmail.com">email</a>
-            <a className="home-link" href="https://github.com/kalinakazmierczak" target="_blank" rel="noopener noreferrer">github</a>
-            <a className="home-link" href="https://www.linkedin.com/in/kalinakazmierczak/" target="_blank" rel="noopener noreferrer">linkedin</a>
-          </div>
-        </div>
-        <div className="sprite-col">
-          <img src={vaporeonImage} alt="" className="pokemon-sprite delay-1" />
+      <div className="now-section">
+        <p className="now-label">currently</p>
+        <div className="now-items">
+          <p className="now-item">full-stack engineer @ costar group</p>
+          <p className="now-item">working with react, c#, and .net</p>
+          <p className="now-item">really into hot yoga</p>
+          <p className="now-item">looking for my next role in nyc</p>
+          <SpotifyNowPlaying />
         </div>
       </div>
+
+      <p className="home-bio">
+        i'm a full-stack engineer who cares deeply about the intersection of design
+        and code. i studied cs at virginia tech with an hci minor — which basically
+        means i obsess over the little details that make software feel intentional.
+      </p>
+      <p className="home-bio">
+        i've presented research at supercomputing conferences, taught coding in
+        rwanda, won undergraduate competitions, and built component libraries from
+        figma to production. when i'm not coding, you'll find me thrifting, making
+        spotify playlists that go unreasonably hard, or deep in a wikipedia rabbit hole.
+      </p>
+
+      <div className="home-links">
+        <a className="home-link" href={resumePDF} download="Kalina_Kazmierczak_Resume.pdf">
+          résumé ↓
+        </a>
+        <a className="home-link" href="mailto:kalinakazmie@gmail.com">email</a>
+        <a className="home-link" href="https://github.com/kalinakazmierczak" target="_blank" rel="noopener noreferrer">
+          github
+        </a>
+        <a className="home-link" href="https://www.linkedin.com/in/kalinakazmierczak/" target="_blank" rel="noopener noreferrer">
+          linkedin
+        </a>
+      </div>
+
+      <Terminal />
     </div>
   );
 }

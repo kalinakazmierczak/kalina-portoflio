@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useRef } from 'react';
 import Navigation from './components/Navigation';
 import HomeTab from './components/HomeTab';
 import WorkTab from './components/WorkTab';
@@ -7,32 +7,10 @@ import WritingTab from './components/WritingTab';
 import ContactTab from './components/ContactTab';
 import './styles/globals.css';
 
-import spriteJrtrainerf from './assets/jrtrainerf.png';
-import spriteVaporeon from './assets/vaporeon.png';
-import spriteSnorlax from './assets/snorlax.png';
-import spriteGengar from './assets/gengar.png';
-import spriteMew from './assets/mew.png';
-import spriteDragonair from './assets/dragonair.png';
-import spriteChansey from './assets/chansey.png';
-import spriteSquirtle from './assets/squirtle.png';
-import spriteVulpix from './assets/vulpix.png';
-
-const ALL_SPRITES = [
-  spriteJrtrainerf, spriteVaporeon, spriteSnorlax, spriteGengar,
-  spriteMew, spriteDragonair, spriteChansey, spriteSquirtle, spriteVulpix,
-];
-
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [transitioning, setTransitioning] = useState(false);
   const contentRef = useRef(null);
-
-  useEffect(() => {
-    ALL_SPRITES.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
 
   const handleTabChange = (tab) => {
     if (tab === activeTab) return;
@@ -46,7 +24,7 @@ function App() {
   const renderTab = () => {
     switch (activeTab) {
       case 'home':
-        return <HomeTab />;
+        return <HomeTab onNavigate={handleTabChange} />;
       case 'work':
         return <WorkTab />;
       case 'projects':
@@ -56,51 +34,9 @@ function App() {
       case 'contact':
         return <ContactTab />;
       default:
-        return <HomeTab />;
+        return <HomeTab onNavigate={handleTabChange} />;
     }
   };
-
-  const lastSpeckTime = useRef(0);
-
-  const handleMouseMove = useCallback(
-    (e) => {
-      const now = Date.now();
-      if (now - lastSpeckTime.current < 40) return;
-      lastSpeckTime.current = now;
-
-      const speck = document.createElement('div');
-      const size = 5;
-      const duration = 600;
-
-      speck.style.cssText = `
-        position: fixed;
-        left: ${e.clientX}px;
-        top: ${e.clientY}px;
-        width: ${size}px;
-        height: ${size}px;
-        border-radius: 50%;
-        background-color: rgba(196, 145, 124, 0.6);
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.6;
-      `;
-
-      document.body.appendChild(speck);
-
-      requestAnimationFrame(() => {
-        speck.style.transition = `opacity ${duration}ms ease-out`;
-        speck.style.opacity = '0';
-      });
-
-      setTimeout(() => speck.remove(), duration + 50);
-    },
-    [],
-  );
-
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [handleMouseMove]);
 
   return (
     <>
