@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Kalina | Software Developer",
   description: "Kalina's personal portfolio — software developer based in Toronto.",
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({

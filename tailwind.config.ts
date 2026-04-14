@@ -9,16 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#FAF7F4',
-        foreground: '#2C2825',
-        primary: '#5A5450',
-        secondary: '#8A8480',
-        accent: '#E07460',
-        muted: '#F5F0EB',
-        'muted-foreground': '#8A8480',
-        card: '#F5F0EB',
-        'card-hover': '#EDE7E0',
-        border: '#EDE7E0',
+        background: '#f5ede6',
+        foreground: '#2d2d2d',
+        primary: '#3d3d3d',
+        secondary: '#6b6b6b',
+        accent: '#e8735a',
+        'accent-secondary': '#3bbfad',
+        muted: '#ebe3db',
+        'muted-foreground': '#8a8a8a',
+        card: '#faf5ef',
+        'card-hover': '#f0e8df',
+        border: '#ddd5cc',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

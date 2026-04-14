@@ -15,11 +15,9 @@ const COMMANDS = {
     { text: '  software engineer & design engineer based in dc.', type: 'output' },
     { text: '', type: 'output' },
     { text: '  i focus on building interfaces that are as thoughtful', type: 'output' },
-    { text: '  as they are functional — the details that make software', type: 'output' },
+    { text: '  as they are functional. The details that make software', type: 'output' },
     { text: '  feel intentional and polished.', type: 'output' },
     { text: '', type: 'output' },
-    { text: '  outside of work, i enjoy thrifting, curating spotify', type: 'output' },
-    { text: '  playlists, and exploring wikipedia rabbit holes.', type: 'output' },
   ],
   skills: () => [
     { text: '→ frontend:  react · next.js · typescript · tailwind · framer motion', type: 'highlight' },
