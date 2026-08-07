@@ -27,7 +27,6 @@ export default function HomeTab() {
         <div className="now-items">
           <p className="now-item">full-stack engineer @ costar group</p>
           <p className="now-item">working with react, c#, and .net</p>
-          <p className="now-item">building ai-powered developer tools with amazon bedrock</p>
           <SpotifyNowPlaying />
         </div>
       </div>
