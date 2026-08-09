@@ -1,11 +1,14 @@
-/** 11 · Catalogue — hairline-ruled index of experience. */
-export default function WorkTab() {
+import Sticker from './Sticker';
+
+/** Experience, as pinned cards. Copy unchanged from the tabbed build. */
+export default function Work() {
   const experiences = [
     {
       company: 'costar group',
-      role: 'full-stack software engineer',
+      role: 'software engineer 1',
       period: 'jul 2025 – present',
       location: 'arlington, va',
+      wash: 'cherry',
       highlights: [
         'full-stack development with react, c#, and .net',
         'building reusable ui component libraries',
@@ -17,6 +20,7 @@ export default function WorkTab() {
       role: 'software engineer intern',
       period: 'jun 2024 – aug 2024',
       location: 'richmond, va',
+      wash: 'marigold',
       highlights: [
         'built a react dashboard for real-time aws sqs monitoring',
         'integrated cloudwatch apis with highcharts visualizations',
@@ -28,6 +32,7 @@ export default function WorkTab() {
       role: 'undergraduate researcher',
       period: 'jan 2023 – may 2025',
       location: 'blacksburg, va',
+      wash: 'olive',
       highlights: [
         'led projects on kinetic sculpture revival and hpc diversity visualizations',
         'presented at sc23 and sc24 supercomputing conferences',
@@ -42,38 +47,34 @@ export default function WorkTab() {
   ];
 
   return (
-    <div className="shell page">
-      <section className="band band--tight">
-        <div className="band__head">
-          <p className="eyebrow">experience</p>
-          <h1 className="band__title">work</h1>
-          <p className="band__desc">places i&rsquo;ve built things that mattered.</p>
-        </div>
+    <section className="band" id="work">
+      <div className="band__head">
+        <h2 className="band__title">work</h2>
+        <p className="band__desc">places i&rsquo;ve built things that mattered.</p>
+        <Sticker of="bee" className="band__mark" width="4rem" />
+      </div>
 
-        <div className="entries">
-          {experiences.map((exp, i) => (
-            <article key={i} className="entry">
-              <div className="entry__top">
-                <h2 className="entry__title">{exp.company}</h2>
-                <p className="entry__meta">
-                  {exp.role} · {exp.period}
-                </p>
-              </div>
-              <p className="entry__where">{exp.location}</p>
-              <div className="entry__points">
-                {exp.highlights.map((h, j) => (
-                  <p key={j} className="entry__point">
-                    {h}
-                  </p>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <div className="stack">
+        {experiences.map((exp, i) => (
+          <article key={i} className={`pin pin--${exp.wash} entry`}>
+            <div className="entry__top">
+              <h3 className="entry__title">{exp.company}</h3>
+              <p className="entry__meta">{exp.period}</p>
+            </div>
+            <p className="entry__role">
+              {exp.role} · {exp.location}
+            </p>
+            <ul className="entry__points">
+              {exp.highlights.map((h, j) => (
+                <li key={j}>{h}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
 
-      <section className="band band--tight toolkit">
-        <p className="eyebrow">toolkit</p>
+      <div className="toolkit">
+        <p className="pin__label">toolkit</p>
         <div className="tags">
           {toolkit.map((tag) => (
             <span key={tag} className="tag">
@@ -81,7 +82,7 @@ export default function WorkTab() {
             </span>
           ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

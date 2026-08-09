@@ -1,189 +1,238 @@
-/* Hallmark · tokens · kalina kazmierczak portfolio
- * theme: custom (tuned) · vibe: "retro-editorial, earthy, graphic, high-contrast"
- * axes: light+dark / roman-serif / chromatic-burnt-orange
+/* Hallmark · genre: playful · macrostructure: Bento Grid · nav: N3 side-rail · footer: Ft8 marquee
+ * theme: custom (tuned) · vibe: "vintage scrapbook, pinned, sun-warmed, graphic"
+ * paper: oklch(95.5% 0.016 78) · accent: oklch(48% 0.175 25)
+ * display: Bricolage Grotesque · body: Newsreader · outlier: Space Mono
+ * axes: light+dark / geometric-sans / warm-cherry ~25deg
+ * studied: no · context: user-provided · v0.8.0
  *
- * Retuned from the pinterest.com/kalinakazmie board: olive, rust, cherry and
- * slate off nail-art and mid-century interiors, warm cream grounds, true black
- * carrying graphic weight. Not pastel — muted but saturated.
+ * Canonical token set. Colour is defined here and nowhere else -- globals.css
+ * references these by name only. See design.md for the system this encodes.
  *
- * Portable token set. Every colour + font + space value in the build resolves
- * here. Dark mode redefines ONLY colour; type, space, motion and shape are
- * mode-independent and live outside the theme blocks.
- *
- * Contrast verified in BOTH modes (WCAG AA — body 4.5, large/UI 3.0):
- *   light  ink 16.5 · ink-2 8.9 · muted 5.4 · accent-deep 7.3 · rule-strong 3.5
- *   dark   ink 15.8 · ink-2 9.0 · muted 5.3 · accent-deep 8.7 · rule-strong 4.0
- *   ink-2 clears 4.5 on every surface wash in both modes.
+ * The palette is sampled from Kalina's own sticker cut-outs (public/stickers/),
+ * not invented: marigold ~74deg off the embroidered cat patch, cherry ~27deg off
+ * the beaded horses and the lotus, olive ~108deg off the hummingbird and the
+ * pressed flower, ink-blue ~248deg off the kitty's shirt and the Ctrl legend.
+ * That is why the page and the stickers sit together instead of arguing.
  */
 
 :root {
-  /* ── mode-independent · type ───────────────────────────── */
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-body:    "Switzer", ui-sans-serif, system-ui, sans-serif;
-  --font-outlier: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  /* ---- Type families -----------------------------------------------------
+     Three is the ceiling. Space Mono is an outlier carrying exactly one role
+     -- machine/meta text (labels, years, tags, the terminal, now-playing).
+     It never sets body copy and never sets a heading. */
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Newsreader', ui-serif, Georgia, serif;
+  --font-outlier: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
 
-  /* Fraunces variable axes — soft, slightly wonky, never corporate */
-  --display-axes: "SOFT" 32, "WONK" 1;
+  /* ---- Type scale · major third (1.25) from a 16px body ------------------ */
+  --text-xs: 0.7rem;
+  --text-sm: 0.82rem;
+  --text-base: 1.0625rem;   /* Newsreader runs small; 17px is its 16 */
+  --text-md: 1.25rem;
+  --text-lg: 1.5625rem;
+  --text-xl: 1.9531rem;
+  --text-2xl: 2.4414rem;
+  --text-3xl: 3.0518rem;
+  --text-4xl: 3.8147rem;
+  /* Bricolage 800 is a wide face. The floor is set so "kazmierczak." still
+     clears a 320px viewport minus gutters rather than by what looks big. */
+  --text-display: clamp(2.35rem, 10.5vw, 5.75rem);
+  --text-display-s: clamp(1.9rem, 4.5vw + 0.6rem, 3.25rem);
 
-  /* ── scale · major third 1.25 from 16px ────────────────── */
-  --text-xs:      0.75rem;
-  --text-sm:      0.875rem;
-  --text-base:    1rem;
-  --text-md:      1.125rem;
-  --text-lg:      1.375rem;
-  --text-xl:      1.75rem;
-  --text-2xl:     2.25rem;
-  --text-3xl:     2.875rem;
-  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.5rem);
-  --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --leading-display: 0.94;
+  --leading-tight: 1.15;
+  --leading-body: 1.6;
+  --tracking-display: -0.035em;
+  --tracking-label: 0.14em;
 
-  /* ── space · 4pt scale (4xs is the sub-grid hairline step) ─ */
-  --space-4xs: 0.125rem;
+  /* ---- Spacing · 4pt named scale ----------------------------------------- */
   --space-3xs: 0.25rem;
   --space-2xs: 0.5rem;
-  --space-xs:  0.75rem;
-  --space-sm:  1rem;
-  --space-md:  1.5rem;
-  --space-lg:  2rem;
-  --space-xl:  3rem;
-  --space-2xl: 4.5rem;
-  --space-3xl: 7rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 8rem;
 
-  /* ── motion ────────────────────────────────────────────── */
-  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --measure: 62ch;
+  --shell: 78rem;
+  /* Wide enough that every rail row reads as sticker + label. A 3rem icon-only
+     rail would make the labels hover-only, which is not an affordance. */
+  --rail-w: 9.5rem;
+
+  /* ---- Radii -------------------------------------------------------------
+     Playful allows 12px on cards, 8px on inputs. Pins are stiff paper, not
+     pill-shaped -- the softness comes from the tilt, not the corner. */
+  --radius-pin: 10px;
+  --radius-input: 8px;
+  --radius-chip: 999px;
+
+  /* ---- Motion ------------------------------------------------------------ */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-short:  180ms;
-  --dur-mid:    280ms;
-  --dur-long:   520ms;
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
 
-  /* ── shape ─────────────────────────────────────────────── */
-  --radius-card:  10px;
-  --radius-pill:  999px;
-  --radius-input: 6px;
-  --rule-hair:    1px;
-  --rule-thick:   2px;   /* editorial double-rule + section rules */
+  /* ---- Z-index · six named levels, no magic numbers ---------------------- */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticker: 20;
+  --z-trail: 30;
+  --z-rail: 40;
+  --z-overlay: 60;
 
-  /* ── elevation · named z-scale, no magic numbers ───────── */
-  --z-base:       0;
-  --z-raised:     10;
-  --z-sticky:     100;
-  --z-sticky-nav: 300;
-  --z-overlay:    200;
-  --z-modal:      400;
-  --z-toast:      500;
-}
+  /* ---- Rules -------------------------------------------------------------- */
+  --rule-hair: 1px;
+  --rule-thick: 3px;
 
-/* ═══════════════════════════════════════════════════════════
-   LIGHT · the default. Warm cream ground, near-black ink.
-   ═══════════════════════════════════════════════════════════ */
+  /* Opaque stop for mask gradients. A mask only reads the alpha channel, but it
+     still needs a *colour*, and `currentColor` is invalid there -- Chrome drops
+     the whole declaration. Named here so no raw value appears in the stylesheet. */
+  --mask-opaque: oklch(0% 0.005 50);
 
-:root,
-:root[data-theme='light'] {
+  /* ======================================================================
+     LIGHT (default). Dark overrides live in the two blocks below; nothing
+     but lightness and chroma move between modes -- hue anchors are fixed.
+     ====================================================================== */
+
+  --color-paper: oklch(95.5% 0.016 78);
+  --color-paper-2: oklch(92.2% 0.020 76);
+  --color-paper-3: oklch(98.6% 0.009 80);
+
+  --color-ink: oklch(19% 0.018 42);
+  --color-ink-2: oklch(38% 0.016 44);
+  --color-muted: oklch(50% 0.014 50);
+
+  --color-rule: oklch(83% 0.018 74);
+  --color-rule-strong: oklch(56% 0.018 62);
+
+  /* Tonal-flip surface for the footer band. Inverts between modes; it is a
+     surface colour only, never a text colour. Text on it is --color-on-flip. */
+  --color-flip: oklch(17% 0.014 50);
+  --color-on-flip: oklch(94.5% 0.014 78);
+
+  /* L48, not L51: links sit on the wash-tinted pins, not on paper, and the
+     wash is the tighter constraint — at L51 the link cleared paper easily but
+     landed on 4.43:1 against --wash-cherry. */
+  --color-accent: oklch(48% 0.175 25);
+  --color-accent-deep: oklch(41% 0.150 24);
+  --color-on-accent: oklch(97% 0.012 80);
+  --color-focus: oklch(54% 0.200 25);
+
+  /* Washes are SURFACE TINTS ONLY -- pin backgrounds. Never text, never
+     borders, never state. --color-muted must not sit on a wash (it only
+     clears ~4.2:1 there); use --color-ink-2. */
+  --wash-marigold: oklch(91% 0.070 80);
+  --wash-olive: oklch(89.5% 0.055 112);
+  --wash-rose: oklch(90% 0.045 10);
+  --wash-blue: oklch(89.5% 0.042 248);
+  --wash-cherry: oklch(89% 0.055 26);
+
+  /* Pin-board furniture: the tape strip and the pinhead. */
+  --color-tape: oklch(88% 0.050 92);
+  --color-tape-edge: oklch(80% 0.055 90);
+
+  --shadow-pin:
+    0 1px 1px oklch(19% 0.018 42 / 0.05),
+    0 6px 14px -8px oklch(19% 0.018 42 / 0.22);
+  --shadow-pin-lift:
+    0 2px 3px oklch(19% 0.018 42 / 0.06),
+    0 14px 28px -12px oklch(19% 0.018 42 / 0.28);
+  --shadow-sticker: 0 4px 10px -6px oklch(19% 0.018 42 / 0.35);
+
+  --grain-opacity: 0.055;
+  --sticker-blend: normal;
+
   color-scheme: light;
-
-  --color-paper:       oklch(96%   0.014 72);
-  --color-paper-2:     oklch(92.5% 0.016 70);
-  --color-paper-3:     oklch(98.5% 0.010 74);
-
-  --color-ink:         oklch(19%   0.014 48);
-  --color-ink-2:       oklch(38%   0.013 46);
-  --color-muted:       oklch(50%   0.012 50);
-
-  --color-rule:        oklch(84%   0.014 64);
-  --color-rule-2:      oklch(89%   0.012 66);
-  --color-rule-strong: oklch(60%   0.014 54);
-
-  /* Graphite — true-black graphic weight. Rules, blocks, the inverted band.
-     A surface colour, not a text colour. */
-  --color-graphite:    oklch(16%   0.010 50);
-  --color-on-graphite: oklch(96%   0.014 72);
-
-  /* Burnt orange — the ONLY accent. ≤3% of any viewport. */
-  --color-accent:      oklch(56%   0.145 44);   /* borders, large, marks   */
-  --color-accent-deep: oklch(44%   0.135 42);   /* accent TEXT + fills, AA */
-  --color-accent-ink:  oklch(96%   0.014 72);   /* text on accent fill     */
-  --color-focus:       oklch(54%   0.19  44);
-
-  /* Surface washes off the board — tints only, never text/border/state. */
-  --wash-olive:  oklch(88% 0.055 118);
-  --wash-rust:   oklch(87% 0.060  42);
-  --wash-cherry: oklch(86% 0.065  22);
-  --wash-slate:  oklch(88% 0.035 240);
-
-  --grain-opacity: 0.035;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   DARK · warm near-black ground, cream ink. Elevation is
-   LIGHTER, never darker. Hue anchors never move between modes.
-   ═══════════════════════════════════════════════════════════ */
-
+/* Auto dark -- applies only when the visitor has made no explicit choice.
+   The :not() guard lets the manual toggle win in both directions. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
+    --color-paper: oklch(17% 0.016 56);
+    --color-paper-2: oklch(21% 0.017 56);
+    --color-paper-3: oklch(25.5% 0.018 58);
+
+    --color-ink: oklch(93% 0.014 78);
+    --color-ink-2: oklch(76% 0.013 74);
+    --color-muted: oklch(63% 0.012 62);
+
+    --color-rule: oklch(32% 0.016 58);
+    --color-rule-strong: oklch(54% 0.016 58);
+
+    --color-flip: oklch(93% 0.014 78);
+    --color-on-flip: oklch(17% 0.014 50);
+
+    --color-accent: oklch(70% 0.145 27);
+    --color-accent-deep: oklch(79% 0.120 30);
+    --color-on-accent: oklch(17% 0.014 50);
+    --color-focus: oklch(74% 0.170 27);
+
+    --wash-marigold: oklch(28% 0.042 80);
+    --wash-olive: oklch(27% 0.034 112);
+    --wash-rose: oklch(28% 0.030 10);
+    --wash-blue: oklch(28% 0.030 248);
+    --wash-cherry: oklch(28% 0.038 26);
+
+    /* Tape must sit LIGHTER than the card it holds down. At the light-mode
+       value it disappeared into the dark washes entirely. */
+    --color-tape: oklch(60% 0.045 90);
+    --color-tape-edge: oklch(70% 0.045 88);
+
+    /* Elevation on dark is carried by lightness, not shadow -- a glow around
+       a card on a dark ground is the shadow-glow tell. These stay tight. */
+    --shadow-pin: 0 1px 2px oklch(6% 0.014 50 / 0.45);
+    --shadow-pin-lift: 0 4px 14px -6px oklch(6% 0.014 50 / 0.6);
+    --shadow-sticker: 0 4px 10px -6px oklch(6% 0.014 50 / 0.55);
+
+    /* Noise reads louder on a dark ground. */
+    --grain-opacity: 0.035;
+
     color-scheme: dark;
-
-    --color-paper:       oklch(16% 0.012 50);
-    --color-paper-2:     oklch(20% 0.013 50);
-    --color-paper-3:     oklch(24% 0.013 52);
-
-    --color-ink:         oklch(93% 0.012 74);
-    --color-ink-2:       oklch(76% 0.011 70);
-    --color-muted:       oklch(62% 0.010 60);
-
-    --color-rule:        oklch(32% 0.012 54);
-    --color-rule-2:      oklch(26% 0.012 54);
-    --color-rule-strong: oklch(55% 0.013 54);
-
-    /* Inverted: on a dark ground the graphic block is cream, not black. */
-    --color-graphite:    oklch(93% 0.012 74);
-    --color-on-graphite: oklch(16% 0.012 50);
-
-    --color-accent:      oklch(68% 0.125 46);
-    --color-accent-deep: oklch(76% 0.115 48);
-    --color-accent-ink:  oklch(16% 0.012 50);
-    --color-focus:       oklch(72% 0.16  46);
-
-    --wash-olive:  oklch(28% 0.040 118);
-    --wash-rust:   oklch(28% 0.045  42);
-    --wash-cherry: oklch(27% 0.048  22);
-    --wash-slate:  oklch(28% 0.028 240);
-
-    /* Grain reads louder on a dark ground — pull it back. */
-    --grain-opacity: 0.022;
   }
 }
 
-/* Explicit choice wins over the OS in both directions. Values must be
-   duplicated, not inherited — a media query can't be re-triggered by an
-   attribute. */
+/* Explicit choice wins over the OS in both directions. */
 :root[data-theme='dark'] {
+  --color-paper: oklch(17% 0.016 56);
+  --color-paper-2: oklch(21% 0.017 56);
+  --color-paper-3: oklch(25.5% 0.018 58);
+
+  --color-ink: oklch(93% 0.014 78);
+  --color-ink-2: oklch(76% 0.013 74);
+  --color-muted: oklch(63% 0.012 62);
+
+  --color-rule: oklch(32% 0.016 58);
+  --color-rule-strong: oklch(54% 0.016 58);
+
+  --color-flip: oklch(93% 0.014 78);
+  --color-on-flip: oklch(17% 0.014 50);
+
+  --color-accent: oklch(70% 0.145 27);
+  --color-accent-deep: oklch(79% 0.120 30);
+  --color-on-accent: oklch(17% 0.014 50);
+  --color-focus: oklch(74% 0.170 27);
+
+  --wash-marigold: oklch(28% 0.042 80);
+  --wash-olive: oklch(27% 0.034 112);
+  --wash-rose: oklch(28% 0.030 10);
+  --wash-blue: oklch(28% 0.030 248);
+  --wash-cherry: oklch(28% 0.038 26);
+
+  --color-tape: oklch(60% 0.045 90);
+  --color-tape-edge: oklch(70% 0.045 88);
+
+  --shadow-pin: 0 1px 2px oklch(6% 0.014 50 / 0.45);
+  --shadow-pin-lift: 0 4px 14px -6px oklch(6% 0.014 50 / 0.6);
+  --shadow-sticker: 0 4px 10px -6px oklch(6% 0.014 50 / 0.55);
+
+  --grain-opacity: 0.035;
+
   color-scheme: dark;
-
-  --color-paper:       oklch(16% 0.012 50);
-  --color-paper-2:     oklch(20% 0.013 50);
-  --color-paper-3:     oklch(24% 0.013 52);
-
-  --color-ink:         oklch(93% 0.012 74);
-  --color-ink-2:       oklch(76% 0.011 70);
-  --color-muted:       oklch(62% 0.010 60);
-
-  --color-rule:        oklch(32% 0.012 54);
-  --color-rule-2:      oklch(26% 0.012 54);
-  --color-rule-strong: oklch(55% 0.013 54);
-
-  --color-graphite:    oklch(93% 0.012 74);
-  --color-on-graphite: oklch(16% 0.012 50);
-
-  --color-accent:      oklch(68% 0.125 46);
-  --color-accent-deep: oklch(76% 0.115 48);
-  --color-accent-ink:  oklch(16% 0.012 50);
-  --color-focus:       oklch(72% 0.16  46);
-
-  --wash-olive:  oklch(28% 0.040 118);
-  --wash-rust:   oklch(28% 0.045  42);
-  --wash-cherry: oklch(27% 0.048  22);
-  --wash-slate:  oklch(28% 0.028 240);
-
-  --grain-opacity: 0.022;
 }

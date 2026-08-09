@@ -24,7 +24,16 @@ export default function SpotifyNowPlaying() {
     return () => clearInterval(interval);
   }, []);
 
-  if (loading) return null;
+  // The widget now lives in its own pin on the board, so it can no longer
+  // return null — an empty tile reads as a broken card rather than as "nothing
+  // is playing". Every branch below renders something.
+  if (loading) {
+    return (
+      <div className="spotify-now-playing">
+        <p className="spotify-idle-text">checking spotify…</p>
+      </div>
+    );
+  }
 
   const spotifySearchUrl = nowPlaying?.title
     ? `https://open.spotify.com/search/${encodeURIComponent(
@@ -60,7 +69,11 @@ export default function SpotifyNowPlaying() {
             {nowPlaying.title.toLowerCase()}
           </span>
         </a>
-      ) : null}
+      ) : (
+        <p className="spotify-idle-text">
+          nothing playing right now — the speakers are resting.
+        </p>
+      )}
     </div>
   );
 }

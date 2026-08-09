@@ -2,7 +2,26 @@
   {
     "date": "2026-08-09",
     "scope": "app",
-    "macrostructure": "Ecosystem Index (home) \u00b7 Portfolio Grid (projects) \u00b7 Catalogue (work, writing) \u00b7 Letter (contact)",
+    "macrostructure": "Bento Grid",
+    "genre": "playful",
+    "theme": "custom",
+    "theme_axes": "light+dark / geometric-sans / warm-cherry ~25",
+    "vibe": "vintage scrapbook, pinned, sun-warmed, graphic",
+    "nav": "N3 Side-rail",
+    "footer": "Ft8 Marquee scroll",
+    "enrichment": "14 own sticker cut-outs (real alpha, WebP) + sticker-trail cursor + SVG grain + tonal-flip marquee band",
+    "design_system": "design.md",
+    "brief": "kalina kazmierczak portfolio · whimsical icon-dense one-page pinboard, Pinterest-leaning",
+    "modes": "light + dark (auto via prefers-color-scheme, manual override persisted)",
+    "palette_source": "sampled from the sticker cut-outs — marigold ~74 · cherry ~25 · olive ~108 · ink-blue ~248",
+    "structure_change": "five-tab SPA collapsed to one long scroll; every tab is now a section id",
+    "dial": "loud but legible",
+    "contrast": "266 pairs across both modes, 0 failures, floor 5.08:1"
+  },
+  {
+    "date": "2026-08-09",
+    "scope": "app",
+    "macrostructure": "Ecosystem Index (home) · Portfolio Grid (projects) · Catalogue (work, writing) · Letter (contact)",
     "theme": "custom",
     "theme_axes": "light+dark / roman-serif / chromatic-burnt-orange",
     "vibe": "retro-editorial, earthy, graphic, high-contrast",
@@ -10,8 +29,8 @@
     "footer": "Ft6 Letter close",
     "enrichment": "rotating marginalia (own imagery, decorative) + E7 SVG grain (theme-scaled) + graphite band",
     "design_system": "design.md",
-    "brief": "kalina kazmierczak portfolio \u00b7 Pinterest-native editorial redesign + dark mode",
+    "brief": "kalina kazmierczak portfolio · Pinterest-native editorial redesign + dark mode",
     "modes": "light + dark (auto via prefers-color-scheme, manual override persisted)",
-    "palette_source": "pinterest.com/kalinakazmie \u2014 olive \u00b7 rust \u00b7 cherry \u00b7 slate"
+    "palette_source": "pinterest.com/kalinakazmie — olive · rust · cherry · slate"
   }
 ]

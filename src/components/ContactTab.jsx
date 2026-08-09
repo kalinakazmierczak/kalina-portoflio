@@ -1,5 +1,7 @@
-/** 12 · Letter — first-person, no buttons in the fold. */
-export default function ContactTab() {
+import Sticker from './Sticker';
+
+/** The close — first-person, no buttons in the fold. Copy unchanged. */
+export default function Contact() {
   const links = [
     {
       label: 'email',
@@ -21,34 +23,38 @@ export default function ContactTab() {
   ];
 
   return (
-    <div className="shell page">
-      <section className="band band--tight letter">
-        <p className="eyebrow">get in touch</p>
-        <h1 className="band__title">contact</h1>
-
-        <p className="letter__body">
+    <section className="band" id="contact">
+      <div className="band__head">
+        <h2 className="band__title">contact</h2>
+        <p className="band__desc">
           i&rsquo;d love to chat, whether it&rsquo;s about a role, a project, or just to
           say hi. currently based in dc.
         </p>
+      </div>
 
-        <div className="letter__rows">
+      <div className="letter">
+        <dl className="letter__rows">
           {links.map((link) => (
             <div key={link.label} className="letter__row">
-              <span className="letter__label">{link.label}</span>
-              <a
-                className="letter__value link"
-                href={link.href}
-                {...(link.external && {
-                  target: '_blank',
-                  rel: 'noopener noreferrer',
-                })}
-              >
-                {link.text}
-              </a>
+              <dt className="letter__label">{link.label}</dt>
+              <dd className="letter__value">
+                <a
+                  className="link"
+                  href={link.href}
+                  {...(link.external && {
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                  })}
+                >
+                  {link.text}
+                </a>
+              </dd>
             </div>
           ))}
-        </div>
-      </section>
-    </div>
+        </dl>
+
+        <Sticker of="kitty" className="letter__mark" width="8rem" />
+      </div>
+    </section>
   );
 }

@@ -1,9 +1,15 @@
 import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import bunapetitPresentation from '../assets/Copy of Capstone Project .pptx.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
+import Sticker from './Sticker';
 
-/** 18 · Portfolio Grid — masonry-varied spans, wash-tinted surfaces. */
-export default function ProjectsTab() {
+/**
+ * The project board — masonry-varied pins, wash-tinted, each tagged with a
+ * cut-out chosen for what the project *is* rather than at random: eyes on the
+ * hidden-figures visualisation, an apple on the food-journaling app, a
+ * hummingbird on the kinetic sculpture.
+ */
+export default function Projects() {
   const projects = [
     {
       title: 'spindle',
@@ -18,7 +24,9 @@ export default function ProjectsTab() {
         },
       ],
       span: 'wide',
-      wash: 'rust',
+      wash: 'cherry',
+      sticker: 'horses',
+      markWidth: '5.5rem',
     },
     {
       title: 'bun appétit',
@@ -31,6 +39,10 @@ export default function ProjectsTab() {
         { label: 'overview', url: bunapetitPresentation },
       ],
       wash: 'olive',
+      sticker: 'apple',
+      // Below ~4.5rem the star-shaped core stops resolving and the slice
+      // reads as a plain disc.
+      markWidth: '4.5rem',
     },
     {
       title: 'seemore kinetic sculpture',
@@ -44,7 +56,8 @@ export default function ProjectsTab() {
           url: 'https://sc24.supercomputing.org/proceedings/poster/poster_files/post214s2-file3.pdf',
         },
       ],
-      wash: 'slate',
+      wash: 'blue',
+      sticker: 'hummingbird',
     },
     {
       title: 'mabawa scratch coding',
@@ -53,7 +66,8 @@ export default function ProjectsTab() {
         'taught coding in nyamyumba, rwanda using scratch and creative storytelling. designed curriculum for women and 3rd graders. emily specchio foundation scholarship recipient.',
       tags: ['education', 'scratch', 'curriculum design'],
       links: [{ label: 'slides', url: scratchCodingDeck }],
-      wash: 'cherry',
+      wash: 'marigold',
+      sticker: 'flower',
     },
     {
       title: 'hidden figures in hpc',
@@ -73,59 +87,66 @@ export default function ProjectsTab() {
       ],
       // Spindle is the only wide card. A second one would leave a hole in the
       // row above it — five cards divide as 6 / 3+3 / 3+3.
-      wash: 'rust',
+      wash: 'rose',
+      sticker: 'eyes',
+      // The eyes are 553x143 — at the default 3.5rem they shrink to a smudge.
+      markWidth: '6rem',
     },
   ];
 
   return (
-    <div className="shell page">
-      <section className="band band--tight">
-        <div className="band__head">
-          <p className="eyebrow">selected work</p>
-          <h1 className="band__title">projects</h1>
-          <p className="band__desc">things i&rsquo;ve designed, built, and shipped.</p>
-        </div>
+    <section className="band" id="projects">
+      <div className="band__head">
+        <h2 className="band__title">projects</h2>
+        <p className="band__desc">things i&rsquo;ve designed, built, and shipped.</p>
+        <Sticker of="lotus" className="band__mark" width="5rem" />
+      </div>
 
-        <div className="projects">
-          {projects.map((project, i) => (
-            <article
-              key={i}
-              className={`project wash-${project.wash}${
-                project.span ? ` project--${project.span}` : ''
-              }`}
-            >
-              <div className="project__top">
-                <h2 className="project__title">{project.title}</h2>
-                <p className="project__year">{project.year}</p>
-              </div>
+      <div className="board">
+        {projects.map((project) => (
+          <article
+            key={project.title}
+            className={`pin pin--${project.wash} project${
+              project.span ? ` project--${project.span}` : ''
+            }`}
+          >
+            <Sticker
+              of={project.sticker}
+              className="project__mark"
+              width={project.markWidth ?? '3.5rem'}
+            />
 
-              <p className="project__desc">{project.description}</p>
+            <div className="project__top">
+              <h3 className="project__title">{project.title}</h3>
+              <p className="project__year">{project.year}</p>
+            </div>
 
-              <div className="tags">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            <p className="project__desc">{project.description}</p>
 
-              <div className="project__links">
-                {project.links.map((link) => (
-                  <a
-                    key={link.label}
-                    className="project__link"
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.label} ↗
-                  </a>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </div>
+            <div className="tags">
+              {project.tags.map((tag) => (
+                <span key={tag} className="tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="project__links">
+              {project.links.map((link) => (
+                <a
+                  key={link.label}
+                  className="link"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label} ↗
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }

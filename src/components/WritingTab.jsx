@@ -1,8 +1,9 @@
 import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
+import Sticker from './Sticker';
 
-/** 11 · Catalogue — hairline-ruled index of published work. */
-export default function WritingTab() {
+/** Published work, as a hairline-ruled index. Copy unchanged. */
+export default function Writing() {
   const entries = [
     {
       title: 'hci capstone — bun appétit',
@@ -27,33 +28,30 @@ export default function WritingTab() {
   ];
 
   return (
-    <div className="shell page">
-      <section className="band band--tight">
-        <div className="band__head">
-          <p className="eyebrow">publications &amp; talks</p>
-          <h1 className="band__title">writing</h1>
-          <p className="band__desc">
-            papers, presentations, and things i&rsquo;ve written about along the way.
-          </p>
-        </div>
+    <section className="band" id="writing">
+      <div className="band__head">
+        <h2 className="band__title">writing</h2>
+        <p className="band__desc">
+          papers, presentations, and things i&rsquo;ve written about along the way.
+        </p>
+        <Sticker of="reader" className="band__mark" width="3rem" />
+      </div>
 
-        <div className="entries">
-          {entries.map((entry, i) => (
+      <ul className="index">
+        {entries.map((entry) => (
+          <li key={entry.title}>
             <a
-              key={i}
-              className="entry"
+              className="index__row"
               href={entry.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="entry__top">
-                <h2 className="entry__title">{entry.title} ↗</h2>
-                <p className="entry__meta">{entry.meta}</p>
-              </div>
+              <span className="index__title">{entry.title} ↗</span>
+              <span className="index__meta">{entry.meta}</span>
             </a>
-          ))}
-        </div>
-      </section>
-    </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
