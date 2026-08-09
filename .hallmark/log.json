@@ -8,7 +8,7 @@
     "vibe": "retro-editorial, earthy, graphic, high-contrast",
     "nav": "N6 Newspaper masthead",
     "footer": "Ft6 Letter close",
-    "enrichment": "real photography (own assets) + E7 SVG grain (theme-scaled) + graphite band",
+    "enrichment": "rotating marginalia (own imagery, decorative) + E7 SVG grain (theme-scaled) + graphite band",
     "design_system": "design.md",
     "brief": "kalina kazmierczak portfolio \u00b7 Pinterest-native editorial redesign + dark mode",
     "modes": "light + dark (auto via prefers-color-scheme, manual override persisted)",

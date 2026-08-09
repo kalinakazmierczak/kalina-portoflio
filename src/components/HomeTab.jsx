@@ -1,6 +1,6 @@
 import resumePDF from '../assets/Kalina_Kazmierczak_Resume_Website.pdf';
 import SpotifyNowPlaying from './SpotifyNowPlaying';
-import PinBoard from './PinBoard';
+import Marginalia from './Marginalia';
 import Ask from './Terminal';
 
 /** 20 · Ecosystem Index — intro, then titled discovery rails. */
@@ -65,24 +65,18 @@ export default function HomeTab() {
           </div>
         </div>
 
-        <div className="currently">
-          <p className="eyebrow">currently</p>
-          <div className="currently__list">
-            <p className="currently__item">full-stack engineer @ costar group</p>
-            <p className="currently__item">working with react, c#, and .net</p>
-            <SpotifyNowPlaying />
+        <div className="rail">
+          <div className="currently">
+            <p className="eyebrow">currently</p>
+            <div className="currently__list">
+              <p className="currently__item">full-stack engineer @ costar group</p>
+              <p className="currently__item">working with react, c#, and .net</p>
+              <SpotifyNowPlaying />
+            </div>
           </div>
-        </div>
-      </section>
 
-      <section className="band">
-        <div className="band__head">
-          <h2 className="band__title">what i&rsquo;ve been pinning</h2>
-          <p className="band__desc">
-            the boards i actually keep — colour, rooms, and things i&rsquo;ve built.
-          </p>
+          <Marginalia />
         </div>
-        <PinBoard />
       </section>
 
       <section className="band">

@@ -15,14 +15,24 @@ export default function Navigation({ activeTab, onTabChange }) {
       <div className="shell">
         <div className="masthead__top">
           <a
-            className="masthead__wordmark"
+            className="masthead__brand"
             href="#main"
             onClick={(e) => {
               e.preventDefault();
               onTabChange('home');
             }}
           >
-            kalina kazmierczak<span className="dot">.</span>
+            {/* Decorative: the wordmark beside it already names the link. */}
+            <img
+              className="masthead__key"
+              src="/plates/home-key.jpg"
+              alt=""
+              width={320}
+              height={306}
+            />
+            <span className="masthead__wordmark">
+              kalina kazmierczak<span className="dot">.</span>
+            </span>
           </a>
           <div className="masthead__right">
             <p className="masthead__issue">

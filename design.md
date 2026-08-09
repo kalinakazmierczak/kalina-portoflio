@@ -14,15 +14,18 @@ Built by `hallmark redesign` (multi-page flow) on 2026-08-08.
 
 - **Audience** · recruiters and hiring managers at design-forward companies, Pinterest specifically.
 - **Use case** · one action — read enough to reach out (email / résumé / LinkedIn).
-- **Tone** · soft editorial moodboard. Pinterest-native, curated, personal. Competent
-  engineer first, aesthetic second — the craft has to be legible under the softness.
+- **Tone** · retro-editorial. Earthy, graphic, high-contrast — sourced from Kalina's own
+  Pinterest board, not from a generic idea of "Pinterest aesthetic". Curated and personal.
+  Competent engineer first, aesthetic second; the craft has to stay legible.
+  *(Revised 2026-08-09. The first pass read the brief as soft pastel moodboard; the
+  actual board is muted-but-saturated with real black, so the palette was retuned.)*
 
 ## Macrostructure families
 
 Pages share the system; they vary only in macrostructure and component archetype.
 
-- **Index page (home)** · `20 · Ecosystem Index` — several discovery surfaces stacked
-  as titled rails: intro → currently → pin masonry → ask-me. Browsing *is* the value.
+- **Index page (home)** · `20 · Ecosystem Index`, reduced to two surfaces —
+  intro (with marginalia in the rail) → ask-me.
 - **Work pages (projects)** · `18 · Portfolio Grid` — masonry cards with size variation.
 - **List pages (work, writing)** · `11 · Catalogue` — hairline-ruled indexed rows.
 - **Close page (contact)** · `12 · Letter` — first-person, no buttons in the fold.
@@ -73,8 +76,8 @@ Burnt orange is the **only** accent. It marks the active tab, the focus ring, li
 hover, the wordmark period, and nothing else. Budget: ≤3% of any viewport.
 
 The four **washes** (`--wash-olive`, `--wash-rust`, `--wash-cherry`, `--wash-slate`)
-are **surface tints only**: pin cards, project cards. Never text, never borders, never
-state. They cycle in a fixed order keyed to item index, so the rhythm is deterministic.
+are **surface tints only**: project cards. Never text, never borders, never
+state.
 `--color-muted` must never sit on a wash — it only clears 4.24:1. Use `--color-ink-2`.
 
 ### Editorial register
@@ -107,7 +110,7 @@ Three families is the ceiling. Do not add a fourth.
 
 4-point named scale, values in [`tokens.css`](tokens.css). Pages use named tokens
 (`var(--space-md)`), never raw values. Section rhythm is deliberately uneven — the
-intro band is tighter than the pin rail, which is tighter than the close.
+intro band is tighter than the ask-me band, which is tighter than the close.
 
 ## Motion
 
@@ -134,10 +137,48 @@ intro band is tighter than the pin rail, which is tighter than the close.
 - Copy pattern · lowercase, verb-first, short. "read the paper", not "Click here to
   learn more about this research".
 
+## Marginalia
+
+The only imagery on the site. Ambient photographs from Kalina's own collection,
+pinned in the home page's right rail beneath "currently".
+
+- **No captions, no links.** They are decoration, and they say so.
+- **A different pick every reload.** One image drawn at random from a pool of six
+  (`src/components/Marginalia.jsx`). Fisher–Yates shuffle, so a multi-image slot
+  could never repeat itself within one load.
+- **The pick is random; the placement is not.** Tilt is fixed per slot rather than
+  per image, so the rail is the same shape on every visit — only the picture changes.
+- `alt=""` is deliberate. These carry no information the page depends on, so
+  announcing them mid-bio would be noise. WCAG treats decorative images as empty-alt.
+- Intrinsic `width`/`height` are declared per image so the rail reserves the right
+  height before the file loads — otherwise a random pick would shift the layout
+  differently on every visit.
+- Capped at `19rem`. At full rail width they read as a second feature column rather
+  than something pinned in a margin.
+- Two-layer drop shadow, ~2° tilt, so they read as physical objects on the page.
+- Hidden below 60rem, where there is no margin for them to sit in.
+
+The rail no longer sticks. An earlier version pinned "currently" to fill dead space;
+the marginalia gives the rail real height, and sticky would have pinned the image too.
+
+### The `Home` keycap
+
+A 26px photo of a physical `Home` key sits left of the wordmark and links home. The
+source is a light object on a white ground, so it is composited rather than masked:
+`mix-blend-mode: multiply` drops the white into the cream paper; dark mode applies
+`filter: invert(1)` first so `screen` drops it into the near-black and the cap reads
+as a dark key. `alt=""` — the wordmark beside it already names the link.
+
+### Removed
+
+The home page previously carried a linked-image module — first a Pinterest-fed pin
+grid, then a fixed "editorial plates" grid, then a scatter of five profile links. All
+of it is gone; home now runs intro → ask me things. Assets live on in `public/plates/`
+and feed the marginalia pool.
+
 ## Per-page allowances
 
-- Home MAY carry imagery (the pin masonry + real photography). It is the only page
-  with a dense image surface.
+- Home MAY carry imagery (the marginalia). It is the only page with imagery at all.
 - Projects MAY carry one image per card.
 - Work, Writing, Contact are **typography only**. No enrichment.
 - No page may use a fake browser bar, phone frame, or terminal window chrome.

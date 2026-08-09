@@ -69,7 +69,7 @@ export default function Ask() {
     if (logRef.current) logRef.current.scrollTop = logRef.current.scrollHeight;
   }, [history]);
 
-  const run = (raw) => {
+  function runCommand(raw) {
     const cmd = raw.trim().toLowerCase();
     if (!cmd) return;
 
@@ -86,7 +86,7 @@ export default function Ask() {
 
     setHistory(next);
     setInput('');
-  };
+  }
 
   return (
     <div className="ask">
@@ -102,7 +102,7 @@ export default function Ask() {
         className="ask__form"
         onSubmit={(e) => {
           e.preventDefault();
-          run(input);
+          runCommand(input);
         }}
       >
         <span className="ask__prompt" aria-hidden="true">
@@ -127,7 +127,7 @@ export default function Ask() {
             type="button"
             className="ask__hint"
             onClick={() => {
-              run(hint);
+              runCommand(hint);
               inputRef.current?.focus();
             }}
           >

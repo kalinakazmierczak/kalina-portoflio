@@ -267,6 +267,38 @@ ul, ol { list-style: none; }
   padding-block: var(--space-sm) var(--space-2xs);
 }
 
+.masthead__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+/* The keycap photo is a light object on a white ground. `multiply` drops the
+   white into the cream paper; in dark mode we invert first so `screen` drops
+   it into the near-black instead, and the cap reads as a dark key. */
+.masthead__key {
+  width: 26px;
+  height: auto;
+  flex-shrink: 0;
+  mix-blend-mode: multiply;
+}
+
+:root[data-theme='dark'] .masthead__key {
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .masthead__key {
+    filter: invert(1);
+    mix-blend-mode: screen;
+  }
+}
+
+@media (max-width: 30rem) {
+  .masthead__key { width: 21px; }
+}
+
 .masthead__wordmark {
   font-family: var(--font-display);
   font-variation-settings: var(--display-axes);
@@ -475,14 +507,9 @@ ul, ol { list-style: none; }
   padding-top: var(--space-sm);
 }
 
-/* The rail is short and the prose column is tall. Rather than leave the
-   asymmetry as dead space, let the rail travel with the reader. */
-@media (min-width: 60rem) {
-  .currently {
-    position: sticky;
-    top: 7rem;
-  }
-}
+/* The rail now carries marginalia below "currently", so it has real height and
+   no longer needs to stick — an earlier version pinned it to fill dead space.
+   Sticky here would also pin the images, which defeats the point of them. */
 
 .currently__list {
   display: flex;
@@ -501,6 +528,39 @@ ul, ol { list-style: none; }
   content: '·';
   color: var(--color-accent);
   flex-shrink: 0;
+}
+
+/* Marginalia — ambient images in the right rail. Decorative only: no captions,
+   no links, a different pick each reload. Hidden below 60rem, where there is no
+   margin for them to sit in. */
+.marginalia { display: none; }
+
+@media (min-width: 60rem) {
+  .marginalia {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .marginalia__img {
+    /* Capped well under the rail width — at full width these read as a second
+       feature column rather than something pinned in the margin. */
+    width: 100%;
+    max-width: 19rem;
+    height: auto;
+    border: var(--rule-hair) solid var(--color-rule);
+    border-radius: 2px;
+    /* Two-layer drop so a tilted image reads as a physical thing resting on the
+       page rather than a div that happens to be rotated. */
+    box-shadow: 0 1px 2px color-mix(in oklab, var(--color-ink) 8%, transparent),
+                0 8px 20px color-mix(in oklab, var(--color-ink) 7%, transparent);
+  }
+
+  /* Alternating tilt, fixed per slot rather than per image — the pick is random,
+     the placement is not, so the rail looks the same shape on every load. */
+  .marginalia__img--a { transform: rotate(-2.2deg); }
+  .marginalia__img--b { transform: rotate(2.6deg); }
 }
 
 /* ── Spotify · container styling only. Logic untouched. ── */
@@ -534,72 +594,6 @@ ul, ol { list-style: none; }
 }
 
 .spotify-idle { color: var(--color-muted); }
-
-/* ═══════════════════════════════════════════════════════════
-   PIN BOARD · masonry
-   ═══════════════════════════════════════════════════════════ */
-
-.pins__grid {
-  columns: 2;
-  column-gap: var(--space-sm);
-}
-
-/* Three is the ceiling. Four makes each pin too small to read and leaves the
-   grid visibly ragged at the 6–12 pin counts this module actually returns. */
-@media (min-width: 48rem) { .pins__grid { columns: 3; } }
-
-.pin {
-  break-inside: avoid;
-  margin-bottom: var(--space-sm);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-}
-
-.pin--skeleton { width: 100%; }
-
-.pin__link { display: block; }
-
-.pin__img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-card) var(--radius-card) 0 0;
-  transition: opacity var(--dur-mid) var(--ease-out);
-}
-
-/* One hover signal, not four. */
-@media (hover: hover) and (pointer: fine) {
-  .pin__link:hover .pin__img { opacity: 0.82; }
-}
-
-.pin__meta {
-  display: block;
-  padding: var(--space-2xs) var(--space-xs) var(--space-xs);
-}
-
-.pin__title {
-  display: block;
-  font-size: var(--text-sm);
-  line-height: 1.35;
-  color: var(--color-ink);
-}
-
-.pin__board {
-  display: block;
-  margin-top: var(--space-4xs);
-  font-family: var(--font-outlier);
-  font-size: var(--text-xs);
-  letter-spacing: 0.06em;
-  color: var(--color-ink-2);
-}
-
-.pins__note,
-.pins__fallback {
-  margin-top: var(--space-2xs);
-  font-family: var(--font-outlier);
-  font-size: var(--text-xs);
-  letter-spacing: 0.04em;
-  color: var(--color-muted);
-}
 
 /* ═══════════════════════════════════════════════════════════
    ASK · the reskinned terminal. No window chrome (gate 47).
