@@ -13,7 +13,7 @@ import Sticker from './Sticker';
  * lets go.
  */
 
-const LINE = 'kalina kazmierczak · software engineer · dc · nyc · lets talk · ';
+const LINE = 'kalina kazmierczak · software engineer · lover of the creative and whimsical · ';
 
 export default function SiteClose() {
   const run = (
@@ -38,9 +38,9 @@ export default function SiteClose() {
       </div>
 
       <div className="close__inner">
-        <p className="close__signoff">built with care by kalina, in dc.</p>
+        <p className="close__signoff">thanks for scrolling this far!</p>
         <p className="close__ps">
-          p.s. — if you got this far, we should probably talk.
+          let's take this to the next step, <a href="mailto:kalinakazmie@gmail.com">let's talk :)</a>
         </p>
         <p className="close__meta">
           <a href="mailto:kalinakazmie@gmail.com">email</a>
@@ -58,7 +58,6 @@ export default function SiteClose() {
           >
             linkedin
           </a>
-          <span>© {new Date().getFullYear()}</span>
         </p>
       </div>
     </footer>
