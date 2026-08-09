@@ -70,6 +70,11 @@ export const handler = async () => {
               isPlaying: false,
               title: lastTrack.name,
               artist: lastTrack.artists.map((a) => a.name).join(', '),
+              // Smallest image that still resolves on the record label (~64px
+              // rendered). Spotify sorts images largest-first.
+              albumArt: lastTrack.album?.images?.at(-1)?.url ?? null,
+              album: lastTrack.album?.name ?? null,
+              songUrl: lastTrack.external_urls?.spotify ?? null,
             }),
           };
         }
@@ -107,6 +112,11 @@ export const handler = async () => {
               isPlaying: false,
               title: lastTrack.name,
               artist: lastTrack.artists.map((a) => a.name).join(', '),
+              // Smallest image that still resolves on the record label (~64px
+              // rendered). Spotify sorts images largest-first.
+              albumArt: lastTrack.album?.images?.at(-1)?.url ?? null,
+              album: lastTrack.album?.name ?? null,
+              songUrl: lastTrack.external_urls?.spotify ?? null,
             }),
           };
         }
@@ -123,6 +133,9 @@ export const handler = async () => {
       isPlaying: data.is_playing,
       title: data.item.name,
       artist: data.item.artists.map((a) => a.name).join(', '),
+      albumArt: data.item.album?.images?.at(-1)?.url ?? null,
+      album: data.item.album?.name ?? null,
+      songUrl: data.item.external_urls?.spotify ?? null,
     };
 
     return {

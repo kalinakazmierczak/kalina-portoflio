@@ -164,12 +164,51 @@ twice running. Off under `(pointer: coarse)` and `prefers-reduced-motion`.
 Nodes are created and removed directly — at ~8 spawns/second, React state would
 re-render the tree for a purely decorative layer.
 
+## The turntable ("on repeat")
+
+The Spotify pin is a CSS-built deck: platter, grooves, album-art label, spindle,
+and a tonearm on a pivot post that sits **off** the disc, the way a real deck is
+built. Tier A (pure CSS) — a disc, a label and an arm are three rounded boxes and
+a gradient; a Lottie for that would be 50–500 KB for something CSS does in bytes.
+
+**The motion is the status readout, which is the only reason an infinite
+animation is allowed here.** The platter spins *only* while audio is actually
+playing and stops on its own the moment it isn't — the same category as a
+progress indicator, not decoration. The arm reports the same state by position,
+so the information survives `prefers-reduced-motion`, where the spin and the
+accent pip both stop outright.
+
+Arm geometry is worked from the pivot, not eyeballed:
+
+| State | Rotation | Where the tip lands |
+| --- | --- | --- |
+| playing | `32deg` | on the grooves, between label and rim |
+| has a track, not playing | `10deg` | clear of the rim — lifted |
+| nothing loaded | `2deg` | fully parked |
+
+**Three states, all of which must render something.** `currently listening to` ·
+`last listened to` (Kalina asked for this one specifically — it is the
+`isPlaying: false` + `title` branch) · and a quiet "nothing on" fallback. The
+widget can never return `null`: it has its own pin now, and an empty tile reads
+as a broken card rather than as silence.
+
+### Dark-mode rim — load-bearing, not decoration
+
+A record has to be the darkest thing on the card, but the dark washes are
+themselves `L 27–28`. At `L 31` the disc measured **1.13:1** against
+`--wash-olive` and effectively disappeared. Two dark values cannot reach 3:1
+against each other, so the *boundary* carries it: `--color-vinyl-rim` gives
+**4.27:1** against the pin and **5.18:1** against the disc. The disc was also
+dropped to `L 20` so it reads as darker than its card. **Do not remove the rim.**
+
 ## Preserved, do not redesign
 
-- `netlify/functions/now-playing.js` — untouched.
-- `src/components/SpotifyNowPlaying.jsx` — fetch/poll logic untouched. Only the
-  render fallback changed: it now lives in its own pin, so it can no longer
-  return `null` (an empty tile reads as a broken card). Every branch renders.
+- `netlify/functions/now-playing.js` — fetch/refresh/fallback logic untouched.
+  **Additive change only:** the responses now also carry `albumArt` (Spotify's
+  smallest image — it sorts largest-first), `album`, and `songUrl`. Field names
+  and meanings of the originals are unchanged, so a stale deployed function
+  degrades to a bare label and a search link instead of breaking.
+- `src/components/SpotifyNowPlaying.jsx` — fetch/poll logic untouched.
 - All project, work, and writing copy.
 
 ## Known inconsistency, not fixed

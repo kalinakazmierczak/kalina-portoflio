@@ -26,22 +26,22 @@ export default function Intro() {
           </h1>
 
           <p className="hero__standfirst">
-            <strong>software engineer</strong> &amp; <strong>design engineer</strong> —
-            crafting interfaces that are as thoughtful as they are functional. virginia
-            tech cs &rsquo;25, based in dc.
+            <strong>software engineer</strong> &amp; <strong>design engineer</strong> <br />
+            thanks for stopping by! <br /> i love crafting beautiful, functional interfaces. <br />
+            virginia tech cs &rsquo;25,
           </p>
 
           <p className="prose">
-            i&rsquo;m a full-stack engineer with a deep appreciation for the intersection
-            of design and engineering. i studied computer science at virginia tech with an
+            hi! i&rsquo;m a full-stack engineer with a deep appreciation for the intersection
+            of design and engineering. I am a lover of the whimsical and love to create
+            delightful user experiences ♥ I studied computer science at virginia tech with an
             hci minor, which shaped my focus on the details that make software feel
             intentional and polished.
           </p>
           <p className="prose">
-            i&rsquo;ve presented research at supercomputing conferences, taught coding in
-            rwanda, placed first in undergraduate competitions, and built component
-            libraries from figma to production. outside of work, i enjoy vintage shopping,
-            going to festivals, and being outside on a 70 degree day!
+            my journey to where i am today is a whirlwind! i&rsquo;ve presented research at supercomputing conferences, taught coding in
+            rwanda, been (and won!) computing competitions, went from figma to prd, created and shipped an ai chatbot on aws bedrock that helps devs at my current company, and a lot.. lot more. i'd love to chat about it! <p> </p>but outside of work, i enjoy vintage shopping,
+            going to music festivals, and taking the amtrak to new cities!
           </p>
 
           <div className="chips">
@@ -74,8 +74,8 @@ export default function Intro() {
             inline custom property, which would outrank the responsive rules. */}
         <div className="hero__cluster" aria-hidden="true">
           <Sticker of="sticky" className="hero__note" eager />
-          <Sticker of="catPatch" className="hero__patch" eager />
-          <Sticker of="unicorn" className="hero__unicorn" eager />
+          <Sticker of="catPatch" className="hero__patch" />
+          <Sticker of="unicorn" className="hero__unicorn" />
         </div>
       </div>
     </section>

@@ -137,6 +137,14 @@
   --color-tape: oklch(88% 0.050 92);
   --color-tape-edge: oklch(80% 0.055 90);
 
+  /* Turntable. Vinyl stays dark in both modes -- records are black -- but it
+     lifts in dark mode so the disc doesn't dissolve into the pin behind it. */
+  --color-vinyl: oklch(24% 0.016 52);
+  --color-vinyl-groove: oklch(33% 0.014 54);
+  --color-vinyl-sheen: oklch(62% 0.020 70);
+  --color-vinyl-rim: oklch(46% 0.014 56);
+  --color-arm: oklch(64% 0.014 62);
+
   --shadow-pin:
     0 1px 1px oklch(19% 0.018 42 / 0.05),
     0 6px 14px -8px oklch(19% 0.018 42 / 0.22);
@@ -185,6 +193,15 @@
     --color-tape: oklch(60% 0.045 90);
     --color-tape-edge: oklch(70% 0.045 88);
 
+    /* Darker than the washes, not lighter: a record reads as the darkest thing
+       on the card. The rim is what makes it legible -- at L31 the disc measured
+       1.13:1 against --wash-olive and effectively disappeared. */
+    --color-vinyl: oklch(20% 0.014 52);
+    --color-vinyl-groove: oklch(30% 0.012 54);
+    --color-vinyl-sheen: oklch(70% 0.020 72);
+    --color-vinyl-rim: oklch(63% 0.016 60);
+    --color-arm: oklch(74% 0.014 64);
+
     /* Elevation on dark is carried by lightness, not shadow -- a glow around
        a card on a dark ground is the shadow-glow tell. These stay tight. */
     --shadow-pin: 0 1px 2px oklch(6% 0.014 50 / 0.45);
@@ -227,6 +244,15 @@
 
   --color-tape: oklch(60% 0.045 90);
   --color-tape-edge: oklch(70% 0.045 88);
+
+  /* Darker than the washes, not lighter: a record reads as the darkest thing
+     on the card. The rim is what makes it legible -- at L31 the disc measured
+     1.13:1 against --wash-olive and effectively disappeared. */
+  --color-vinyl: oklch(20% 0.014 52);
+  --color-vinyl-groove: oklch(30% 0.012 54);
+  --color-vinyl-sheen: oklch(70% 0.020 72);
+  --color-vinyl-rim: oklch(63% 0.016 60);
+  --color-arm: oklch(74% 0.014 64);
 
   --shadow-pin: 0 1px 2px oklch(6% 0.014 50 / 0.45);
   --shadow-pin-lift: 0 4px 14px -6px oklch(6% 0.014 50 / 0.6);
