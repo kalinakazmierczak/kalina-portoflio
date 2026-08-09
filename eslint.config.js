@@ -5,7 +5,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // `.netlify/` holds generated function bundles — not our source.
+  globalIgnores(['dist', '.netlify']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -24,6 +25,13 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+  {
+    // Serverless functions run on Node, not in the browser.
+    files: ['netlify/functions/**/*.js'],
+    languageOptions: {
+      globals: { ...globals.node },
     },
   },
 ])

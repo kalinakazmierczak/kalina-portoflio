@@ -3,18 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="kalina kazmierczak — software engineer & design engineer · dc" />
-    <meta name="theme-color" content="#f5ede6" />
-    
+    <meta name="theme-color" content="#f8f0e8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#120c09" media="(prefers-color-scheme: dark)" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://i.pinimg.com" crossorigin />
+
     <meta property="og:type" content="website" />
     <meta property="og:title" content="kalina kazmierczak" />
     <meta property="og:description" content="software engineer & design engineer · dc" />
-    
+
     <title>kalina kazmierczak</title>
+
+    <!-- Resolve the theme before first paint. Inline and synchronous on
+         purpose: deferring this to React guarantees a light flash on a dark
+         machine. Only writes the attribute when there's an explicit stored
+         choice — otherwise CSS prefers-color-scheme decides. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-theme', saved);
+          }
+        } catch (e) {
+          /* private mode / storage disabled — fall through to the OS setting */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

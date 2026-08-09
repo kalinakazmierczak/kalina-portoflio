@@ -1,0 +1,15 @@
+{
+  "scanned": "2026-08-08",
+  "framework": "Vite 5 + React 19 SPA (tab state in src/App.jsx, not react-router)",
+  "fonts_before": "IBM Plex Mono + Space Grotesk (Google Fonts @import)",
+  "fonts_after": "Fraunces (display) + Switzer (body, Fontshare) + IBM Plex Mono (outlier, kept)",
+  "palette_before": "hex custom properties, warm paper #F5F0EB / coral #E07460 / teal #3AAFA9",
+  "palette_after": "custom OKLCH, anchor hue 34 clay — see tokens.css",
+  "motion": "framer-motion 12 in deps but unused in src/ — left installed, not adopted",
+  "spacing": "was hard-coded px; now a 4pt named scale in tokens.css",
+  "serverless": ["netlify/functions/now-playing.js (preserved verbatim)", "netlify/functions/pinning.js (added)"],
+  "conflicts_flagged_not_fixed": [
+    "src/app/{page,layout}.tsx + globals.css — dead Next.js scaffold, unreachable from the Vite entry",
+    "tailwind.config.js and tailwind.config.ts both present; @tailwindcss/postcss wired but no @tailwind directives in the live stylesheet"
+  ]
+}

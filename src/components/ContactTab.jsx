@@ -1,3 +1,4 @@
+/** 12 · Letter — first-person, no buttons in the fold. */
 export default function ContactTab() {
   const links = [
     {
@@ -20,35 +21,34 @@ export default function ContactTab() {
   ];
 
   return (
-    <div className="page">
-      <p className="section-subheader">get in touch</p>
-      <h1 className="section-header">contact</h1>
-      <p className="contact-note">
-        i'd love to chat, whether it's about a role, a project, or just to say hi.
-        currently based in dc.
-      </p>
-      <div className="contact-links">
-        {links.map((link, i) => (
-          <div key={i} className="contact-item">
-            <span className="contact-label">{link.label}</span>
-            <a
-              className="contact-value"
-              href={link.href}
-              {...(link.external && {
-                target: '_blank',
-                rel: 'noopener noreferrer',
-              })}
-            >
-              {link.text}
-            </a>
-          </div>
-        ))}
-      </div>
-      <div className="contact-footer">
-        <p className="contact-footer-text">
-          built with care by kalina · dc ♡
+    <div className="shell page">
+      <section className="band band--tight letter">
+        <p className="eyebrow">get in touch</p>
+        <h1 className="band__title">contact</h1>
+
+        <p className="letter__body">
+          i&rsquo;d love to chat, whether it&rsquo;s about a role, a project, or just to
+          say hi. currently based in dc.
         </p>
-      </div>
+
+        <div className="letter__rows">
+          {links.map((link) => (
+            <div key={link.label} className="letter__row">
+              <span className="letter__label">{link.label}</span>
+              <a
+                className="letter__value link"
+                href={link.href}
+                {...(link.external && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
+              >
+                {link.text}
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

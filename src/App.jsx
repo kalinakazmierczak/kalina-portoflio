@@ -1,16 +1,24 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import HomeTab from './components/HomeTab';
 import WorkTab from './components/WorkTab';
 import ProjectsTab from './components/ProjectsTab';
 import WritingTab from './components/WritingTab';
 import ContactTab from './components/ContactTab';
+import SiteClose from './components/SiteClose';
 import './styles/globals.css';
+
+const TABS = {
+  home: HomeTab,
+  work: WorkTab,
+  projects: ProjectsTab,
+  writing: WritingTab,
+  contact: ContactTab,
+};
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [transitioning, setTransitioning] = useState(false);
-  const contentRef = useRef(null);
 
   const handleTabChange = (tab) => {
     if (tab === activeTab) return;
@@ -18,41 +26,29 @@ function App() {
     setTimeout(() => {
       setActiveTab(tab);
       setTransitioning(false);
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }, 150);
   };
 
-  const renderTab = () => {
-    switch (activeTab) {
-      case 'home':
-        return <HomeTab onNavigate={handleTabChange} />;
-      case 'work':
-        return <WorkTab />;
-      case 'projects':
-        return <ProjectsTab />;
-      case 'writing':
-        return <WritingTab />;
-      case 'contact':
-        return <ContactTab />;
-      default:
-        return <HomeTab onNavigate={handleTabChange} />;
-    }
-  };
+  // Reduced-motion users skip the spatial half of the transition entirely.
+  useEffect(() => {
+    document.title =
+      activeTab === 'home'
+        ? 'kalina kazmierczak'
+        : `${activeTab} — kalina kazmierczak`;
+  }, [activeTab]);
+
+  const Active = TABS[activeTab] ?? HomeTab;
 
   return (
     <>
       <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
-      <main className="main-content" ref={contentRef}>
-        <div
-          className="tab-content"
-          style={{
-            opacity: transitioning ? 0 : 1,
-            transform: transitioning ? 'translateY(8px)' : 'translateY(0)',
-            transition: 'opacity 200ms ease, transform 200ms ease',
-          }}
-        >
-          {renderTab()}
+      <main className="main" id="main">
+        <div className="tabview" data-transitioning={transitioning}>
+          <Active onNavigate={handleTabChange} />
         </div>
       </main>
+      <SiteClose />
     </>
   );
 }

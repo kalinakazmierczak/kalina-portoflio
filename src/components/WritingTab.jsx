@@ -1,6 +1,7 @@
 import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
 
+/** 11 · Catalogue — hairline-ruled index of published work. */
 export default function WritingTab() {
   const entries = [
     {
@@ -26,26 +27,33 @@ export default function WritingTab() {
   ];
 
   return (
-    <div className="page">
-      <p className="section-subheader">publications & talks</p>
-      <h1 className="section-header">writing</h1>
-      <p className="section-desc">
-        papers, presentations, and things i've written about along the way.
-      </p>
-      <div className="writing-list">
-        {entries.map((entry, i) => (
-          <a
-            key={i}
-            className="writing-entry"
-            href={entry.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <p className="writing-title">{entry.title} ↗</p>
-            <p className="writing-meta">{entry.meta}</p>
-          </a>
-        ))}
-      </div>
+    <div className="shell page">
+      <section className="band band--tight">
+        <div className="band__head">
+          <p className="eyebrow">publications &amp; talks</p>
+          <h1 className="band__title">writing</h1>
+          <p className="band__desc">
+            papers, presentations, and things i&rsquo;ve written about along the way.
+          </p>
+        </div>
+
+        <div className="entries">
+          {entries.map((entry, i) => (
+            <a
+              key={i}
+              className="entry"
+              href={entry.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="entry__top">
+                <h2 className="entry__title">{entry.title} ↗</h2>
+                <p className="entry__meta">{entry.meta}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

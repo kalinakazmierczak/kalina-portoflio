@@ -1,6 +1,4 @@
-import snorlaxImage from '../assets/snorlax.png';
-import gengarImage from '../assets/gengar.png';
-
+/** 11 · Catalogue — hairline-ruled index of experience. */
 export default function WorkTab() {
   const experiences = [
     {
@@ -38,37 +36,52 @@ export default function WorkTab() {
     },
   ];
 
-  return (
-    <div className="page">
-      <p className="section-subheader">experience</p>
-      <h1 className="section-header">work</h1>
-      <p className="section-desc">
-        places i've built things that mattered.
-      </p>
-      <div className="work-list">
-        {experiences.map((exp, i) => (
-          <div key={i} className="work-entry">
-            <div className="work-top">
-              <span className="work-company">{exp.company}</span>
-              <span className="work-role-date">
-                {exp.role} · {exp.period}
-              </span>
-            </div>
-            <p className="work-location">{exp.location}</p>
-            <div className="work-description">
-              {exp.highlights.map((h, j) => (
-                <p key={j} className="work-highlight">{h}</p>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+  const toolkit = [
+    'react', 'typescript', 'c#', '.net', 'node.js', 'python',
+    'tailwind', 'figma', 'aws', 'git', 'next.js', 'framer motion',
+  ];
 
-      <div className="tag-row">
-        {['react', 'typescript', 'c#', '.net', 'node.js', 'python', 'tailwind', 'figma', 'aws', 'git', 'next.js', 'framer motion'].map((tag) => (
-          <span key={tag} className="tag-pill">{tag}</span>
-        ))}
-      </div>
+  return (
+    <div className="shell page">
+      <section className="band band--tight">
+        <div className="band__head">
+          <p className="eyebrow">experience</p>
+          <h1 className="band__title">work</h1>
+          <p className="band__desc">places i&rsquo;ve built things that mattered.</p>
+        </div>
+
+        <div className="entries">
+          {experiences.map((exp, i) => (
+            <article key={i} className="entry">
+              <div className="entry__top">
+                <h2 className="entry__title">{exp.company}</h2>
+                <p className="entry__meta">
+                  {exp.role} · {exp.period}
+                </p>
+              </div>
+              <p className="entry__where">{exp.location}</p>
+              <div className="entry__points">
+                {exp.highlights.map((h, j) => (
+                  <p key={j} className="entry__point">
+                    {h}
+                  </p>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="band band--tight toolkit">
+        <p className="eyebrow">toolkit</p>
+        <div className="tags">
+          {toolkit.map((tag) => (
+            <span key={tag} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import bunapetitPresentation from '../assets/Copy of Capstone Project .pptx.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
 
+/** 18 · Portfolio Grid — masonry-varied spans, wash-tinted surfaces. */
 export default function ProjectsTab() {
   const projects = [
     {
@@ -16,7 +17,8 @@ export default function ProjectsTab() {
           url: 'https://github.com/kalinakazmierczak/SpotifyAlbumCollage',
         },
       ],
-      featured: true,
+      span: 'wide',
+      wash: 'rust',
     },
     {
       title: 'bun appétit',
@@ -28,7 +30,7 @@ export default function ProjectsTab() {
         { label: 'case study', url: bunapetitPaper },
         { label: 'overview', url: bunapetitPresentation },
       ],
-      featured: true,
+      wash: 'olive',
     },
     {
       title: 'seemore kinetic sculpture',
@@ -42,6 +44,7 @@ export default function ProjectsTab() {
           url: 'https://sc24.supercomputing.org/proceedings/poster/poster_files/post214s2-file3.pdf',
         },
       ],
+      wash: 'slate',
     },
     {
       title: 'mabawa scratch coding',
@@ -50,12 +53,13 @@ export default function ProjectsTab() {
         'taught coding in nyamyumba, rwanda using scratch and creative storytelling. designed curriculum for women and 3rd graders. emily specchio foundation scholarship recipient.',
       tags: ['education', 'scratch', 'curriculum design'],
       links: [{ label: 'slides', url: scratchCodingDeck }],
+      wash: 'cherry',
     },
     {
       title: 'hidden figures in hpc',
       year: '2023',
       description:
-        'interactive visualizations for underrepresented voices in hpc. built database of 300+ profiles for "i am hpc" initiative. full scholarship to present at sc23.',
+        'interactive visualizations for underrepresented voices in hpc. built database of 300+ profiles for “i am hpc” initiative. full scholarship to present at sc23.',
       tags: ['d3.js', 'data viz', 'research', 'sc23'],
       links: [
         {
@@ -67,37 +71,49 @@ export default function ProjectsTab() {
           url: 'https://news.vt.edu/articles/2024/02/eng-cs-students-find-hidden-figures-in-computing.html',
         },
       ],
+      // Spindle is the only wide card. A second one would leave a hole in the
+      // row above it — five cards divide as 6 / 3+3 / 3+3.
+      wash: 'rust',
     },
   ];
 
   return (
-    <div className="page">
-      <p className="section-subheader">selected work</p>
-      <h1 className="section-header">projects</h1>
-      <p className="section-desc">
-        things i've designed, built, and shipped.
-      </p>
-      <div className="projects-grid">
-        {projects.map((project, i) => (
-          <div key={i} className={`project-card${project.featured ? ' featured' : ''}`}>
-            <div className="project-top">
-              <span className="project-title">{project.title}</span>
-              <span className="project-year">{project.year}</span>
-            </div>
-            <p className="project-desc">{project.description}</p>
-            {project.tags && (
-              <div className="project-tags">
-                {project.tags.map((tag, j) => (
-                  <span key={j} className="project-tag">{tag}</span>
+    <div className="shell page">
+      <section className="band band--tight">
+        <div className="band__head">
+          <p className="eyebrow">selected work</p>
+          <h1 className="band__title">projects</h1>
+          <p className="band__desc">things i&rsquo;ve designed, built, and shipped.</p>
+        </div>
+
+        <div className="projects">
+          {projects.map((project, i) => (
+            <article
+              key={i}
+              className={`project wash-${project.wash}${
+                project.span ? ` project--${project.span}` : ''
+              }`}
+            >
+              <div className="project__top">
+                <h2 className="project__title">{project.title}</h2>
+                <p className="project__year">{project.year}</p>
+              </div>
+
+              <p className="project__desc">{project.description}</p>
+
+              <div className="tags">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
+                  </span>
                 ))}
               </div>
-            )}
-            {project.links && project.links.length > 0 && (
-              <div className="project-links">
-                {project.links.map((link, j) => (
+
+              <div className="project__links">
+                {project.links.map((link) => (
                   <a
-                    key={j}
-                    className="project-link"
+                    key={link.label}
+                    className="project__link"
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -106,10 +122,10 @@ export default function ProjectsTab() {
                   </a>
                 ))}
               </div>
-            )}
-          </div>
-        ))}
-      </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

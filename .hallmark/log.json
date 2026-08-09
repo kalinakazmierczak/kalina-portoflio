@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-08-09",
+    "scope": "app",
+    "macrostructure": "Ecosystem Index (home) \u00b7 Portfolio Grid (projects) \u00b7 Catalogue (work, writing) \u00b7 Letter (contact)",
+    "theme": "custom",
+    "theme_axes": "light+dark / roman-serif / chromatic-burnt-orange",
+    "vibe": "retro-editorial, earthy, graphic, high-contrast",
+    "nav": "N6 Newspaper masthead",
+    "footer": "Ft6 Letter close",
+    "enrichment": "real photography (own assets) + E7 SVG grain (theme-scaled) + graphite band",
+    "design_system": "design.md",
+    "brief": "kalina kazmierczak portfolio \u00b7 Pinterest-native editorial redesign + dark mode",
+    "modes": "light + dark (auto via prefers-color-scheme, manual override persisted)",
+    "palette_source": "pinterest.com/kalinakazmie \u2014 olive \u00b7 rust \u00b7 cherry \u00b7 slate"
+  }
+]

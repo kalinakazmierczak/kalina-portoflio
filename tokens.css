@@ -1,0 +1,189 @@
+/* Hallmark · tokens · kalina kazmierczak portfolio
+ * theme: custom (tuned) · vibe: "retro-editorial, earthy, graphic, high-contrast"
+ * axes: light+dark / roman-serif / chromatic-burnt-orange
+ *
+ * Retuned from the pinterest.com/kalinakazmie board: olive, rust, cherry and
+ * slate off nail-art and mid-century interiors, warm cream grounds, true black
+ * carrying graphic weight. Not pastel — muted but saturated.
+ *
+ * Portable token set. Every colour + font + space value in the build resolves
+ * here. Dark mode redefines ONLY colour; type, space, motion and shape are
+ * mode-independent and live outside the theme blocks.
+ *
+ * Contrast verified in BOTH modes (WCAG AA — body 4.5, large/UI 3.0):
+ *   light  ink 16.5 · ink-2 8.9 · muted 5.4 · accent-deep 7.3 · rule-strong 3.5
+ *   dark   ink 15.8 · ink-2 9.0 · muted 5.3 · accent-deep 8.7 · rule-strong 4.0
+ *   ink-2 clears 4.5 on every surface wash in both modes.
+ */
+
+:root {
+  /* ── mode-independent · type ───────────────────────────── */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body:    "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Fraunces variable axes — soft, slightly wonky, never corporate */
+  --display-axes: "SOFT" 32, "WONK" 1;
+
+  /* ── scale · major third 1.25 from 16px ────────────────── */
+  --text-xs:      0.75rem;
+  --text-sm:      0.875rem;
+  --text-base:    1rem;
+  --text-md:      1.125rem;
+  --text-lg:      1.375rem;
+  --text-xl:      1.75rem;
+  --text-2xl:     2.25rem;
+  --text-3xl:     2.875rem;
+  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.5rem);
+  --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+
+  /* ── space · 4pt scale (4xs is the sub-grid hairline step) ─ */
+  --space-4xs: 0.125rem;
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2rem;
+  --space-xl:  3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 7rem;
+
+  /* ── motion ────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short:  180ms;
+  --dur-mid:    280ms;
+  --dur-long:   520ms;
+
+  /* ── shape ─────────────────────────────────────────────── */
+  --radius-card:  10px;
+  --radius-pill:  999px;
+  --radius-input: 6px;
+  --rule-hair:    1px;
+  --rule-thick:   2px;   /* editorial double-rule + section rules */
+
+  /* ── elevation · named z-scale, no magic numbers ───────── */
+  --z-base:       0;
+  --z-raised:     10;
+  --z-sticky:     100;
+  --z-sticky-nav: 300;
+  --z-overlay:    200;
+  --z-modal:      400;
+  --z-toast:      500;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LIGHT · the default. Warm cream ground, near-black ink.
+   ═══════════════════════════════════════════════════════════ */
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-paper:       oklch(96%   0.014 72);
+  --color-paper-2:     oklch(92.5% 0.016 70);
+  --color-paper-3:     oklch(98.5% 0.010 74);
+
+  --color-ink:         oklch(19%   0.014 48);
+  --color-ink-2:       oklch(38%   0.013 46);
+  --color-muted:       oklch(50%   0.012 50);
+
+  --color-rule:        oklch(84%   0.014 64);
+  --color-rule-2:      oklch(89%   0.012 66);
+  --color-rule-strong: oklch(60%   0.014 54);
+
+  /* Graphite — true-black graphic weight. Rules, blocks, the inverted band.
+     A surface colour, not a text colour. */
+  --color-graphite:    oklch(16%   0.010 50);
+  --color-on-graphite: oklch(96%   0.014 72);
+
+  /* Burnt orange — the ONLY accent. ≤3% of any viewport. */
+  --color-accent:      oklch(56%   0.145 44);   /* borders, large, marks   */
+  --color-accent-deep: oklch(44%   0.135 42);   /* accent TEXT + fills, AA */
+  --color-accent-ink:  oklch(96%   0.014 72);   /* text on accent fill     */
+  --color-focus:       oklch(54%   0.19  44);
+
+  /* Surface washes off the board — tints only, never text/border/state. */
+  --wash-olive:  oklch(88% 0.055 118);
+  --wash-rust:   oklch(87% 0.060  42);
+  --wash-cherry: oklch(86% 0.065  22);
+  --wash-slate:  oklch(88% 0.035 240);
+
+  --grain-opacity: 0.035;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DARK · warm near-black ground, cream ink. Elevation is
+   LIGHTER, never darker. Hue anchors never move between modes.
+   ═══════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --color-paper:       oklch(16% 0.012 50);
+    --color-paper-2:     oklch(20% 0.013 50);
+    --color-paper-3:     oklch(24% 0.013 52);
+
+    --color-ink:         oklch(93% 0.012 74);
+    --color-ink-2:       oklch(76% 0.011 70);
+    --color-muted:       oklch(62% 0.010 60);
+
+    --color-rule:        oklch(32% 0.012 54);
+    --color-rule-2:      oklch(26% 0.012 54);
+    --color-rule-strong: oklch(55% 0.013 54);
+
+    /* Inverted: on a dark ground the graphic block is cream, not black. */
+    --color-graphite:    oklch(93% 0.012 74);
+    --color-on-graphite: oklch(16% 0.012 50);
+
+    --color-accent:      oklch(68% 0.125 46);
+    --color-accent-deep: oklch(76% 0.115 48);
+    --color-accent-ink:  oklch(16% 0.012 50);
+    --color-focus:       oklch(72% 0.16  46);
+
+    --wash-olive:  oklch(28% 0.040 118);
+    --wash-rust:   oklch(28% 0.045  42);
+    --wash-cherry: oklch(27% 0.048  22);
+    --wash-slate:  oklch(28% 0.028 240);
+
+    /* Grain reads louder on a dark ground — pull it back. */
+    --grain-opacity: 0.022;
+  }
+}
+
+/* Explicit choice wins over the OS in both directions. Values must be
+   duplicated, not inherited — a media query can't be re-triggered by an
+   attribute. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-paper:       oklch(16% 0.012 50);
+  --color-paper-2:     oklch(20% 0.013 50);
+  --color-paper-3:     oklch(24% 0.013 52);
+
+  --color-ink:         oklch(93% 0.012 74);
+  --color-ink-2:       oklch(76% 0.011 70);
+  --color-muted:       oklch(62% 0.010 60);
+
+  --color-rule:        oklch(32% 0.012 54);
+  --color-rule-2:      oklch(26% 0.012 54);
+  --color-rule-strong: oklch(55% 0.013 54);
+
+  --color-graphite:    oklch(93% 0.012 74);
+  --color-on-graphite: oklch(16% 0.012 50);
+
+  --color-accent:      oklch(68% 0.125 46);
+  --color-accent-deep: oklch(76% 0.115 48);
+  --color-accent-ink:  oklch(16% 0.012 50);
+  --color-focus:       oklch(72% 0.16  46);
+
+  --wash-olive:  oklch(28% 0.040 118);
+  --wash-rust:   oklch(28% 0.045  42);
+  --wash-cherry: oklch(27% 0.048  22);
+  --wash-slate:  oklch(28% 0.028 240);
+
+  --grain-opacity: 0.022;
+}
