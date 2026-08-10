@@ -13,8 +13,9 @@ export default function Work() {
       wash: 'cherry',
       highlights: [
         'full-stack development with react, c#, and .net',
+        'implemented REST and data models for internal tools',
         'building reusable ui component libraries',
-        'taking features from figma to production',
+        'built an ai-powered developer knowledge layer using aws bedrock',
       ],
     },
     {
