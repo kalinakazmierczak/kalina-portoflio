@@ -22,6 +22,7 @@ const POOL = [
   { src: '/plates/flowers.jpg', width: 648, height: 800 },
   { src: '/plates/newyork.jpg', width: 595, height: 900 },
   { src: '/plates/dog-nails.jpg', width: 567, height: 760 },
+  { src: '/plates/keep-creating.jpg', width: 736, height: 606 },
 ];
 
 /** Fisher–Yates, then take the first `count`. Guarantees no repeat in one load. */

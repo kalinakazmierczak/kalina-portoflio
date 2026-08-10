@@ -1,6 +1,8 @@
 import SpotifyNowPlaying from './SpotifyNowPlaying';
 import Marginalia from './Marginalia';
 import Sticker from './Sticker';
+import Scatter from './Scatter';
+import { SCATTER } from '../stickers';
 
 /**
  * "now" — the bento row.
@@ -15,19 +17,20 @@ export default function Currently() {
     <section className="band" id="now">
       <div className="band__head">
         <h2 className="band__title">now</h2>
-        <p className="band__desc">what i&rsquo;m doing, and what&rsquo;s on.</p>
+        <p className="band__desc">what i'm up to right now</p>
       </div>
 
       <div className="bento">
         <article className="pin pin--marigold bento__a">
           <Sticker of="ctrl" className="pin__mark" width="3rem" />
           <p className="pin__label">role</p>
-          <p className="pin__lead">full-stack engineer @ costar group</p>
+          <p className="pin__lead">software engineer 1 @ costar group</p>
         </article>
 
         <article className="pin pin--blue bento__b">
+          <Sticker of="coffee" className="pin__mark" width="3.25rem" />
           <p className="pin__label">stack</p>
-          <p className="pin__lead">react, c#, and .net</p>
+          <p className="pin__lead">mainly working with react, c#, and .net</p>
         </article>
 
         <article className="pin pin--olive bento__c">
@@ -39,6 +42,7 @@ export default function Currently() {
           <Marginalia />
         </div>
       </div>
+      <Scatter items={SCATTER.now} />
     </section>
   );
 }

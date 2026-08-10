@@ -2,6 +2,8 @@ import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import bunapetitPresentation from '../assets/Copy of Capstone Project .pptx.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
 import Sticker from './Sticker';
+import Scatter from './Scatter';
+import { SCATTER } from '../stickers';
 
 /**
  * The project board — masonry-varied pins, wash-tinted, each tagged with a
@@ -98,8 +100,9 @@ export default function Projects() {
     <section className="band" id="projects">
       <div className="band__head">
         <h2 className="band__title">projects</h2>
-        <p className="band__desc">things i&rsquo;ve designed, built, and shipped.</p>
+        <p className="band__desc">projects i&rsquo;ve designed, and built.</p>
         <Sticker of="lotus" className="band__mark" width="5rem" />
+        <Sticker of="koi" className="band__mark band__mark--b" width="3.25rem" />
       </div>
 
       <div className="board">
@@ -147,6 +150,7 @@ export default function Projects() {
           </article>
         ))}
       </div>
+      <Scatter items={SCATTER.projects} />
     </section>
   );
 }

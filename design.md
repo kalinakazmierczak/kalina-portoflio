@@ -134,7 +134,7 @@ sits tight beneath it, `projects` and `contact` open up again.
 
 ## The stickers
 
-The site's whole personality. 14 cut-outs in `public/stickers/`, drawn from
+The site's whole personality. **32 cut-outs** in `public/stickers/`, drawn from
 Kalina's own collection.
 
 - **Real alpha, not `mix-blend-mode`.** The sources are JPEGs on white/cream
@@ -152,10 +152,40 @@ Kalina's own collection.
 - Two assets need special handling: **snoopy** is a 148px sprite and carries
   `image-rendering: pixelated`; **eyes** is 553×143 and needs ≥6rem or it
   shrinks to a smudge.
+- **`kitty-records`** doubles as the turntable's no-album-art label — it is
+  literally a record label, so the fallback reads as intentional.
+- Two source files in the intake folder — `cool_cat.png` and `horseshoe.png` —
+  are **fully transparent** (alpha range 0–0). They are broken exports, not
+  cut-out failures, and are excluded. Re-export them if they're wanted.
+
+### Where they go — three placements, three rules
+
+1. **Anchored marks** (`band__mark`, `pin__mark`, `project__mark`) — tied to
+   meaning: eyes on hidden-figures, an apple on the food app, a Ctrl keycap on
+   the engineering role, GRL PWR on the work history, coffee on the stack.
+2. **Scatter** (`Scatter.jsx` + `SCATTER` in `stickers.js`) — loose pins in the
+   *gap below* each section. **Never over content:** the band's own bottom
+   padding is the only strip guaranteed empty at every width no matter how the
+   copy reflows, so a pin parked there can't land on a line of text. Verified by
+   rect-intersection against every text-bearing element — zero overlaps at 320 /
+   375 / 414 / 768 / desktop. Pins flagged `sm: true` survive on phones; the
+   rest appear from 46rem, where there's margin to park in.
+3. **The trail** — see below.
+
+There is deliberately **no collage/gallery section**. A wall of stickers was
+tried and cut: the icons belong scattered through the page, not quarantined
+into an exhibit.
 
 ### The sticker trail (cursor)
 
-Cut-outs drop behind the pointer as it travels. Deliberately **not** a
+Cut-outs drop behind the pointer as it travels, sized **18–30px**. They were
+34–58px and covered the body copy — at the ceiling a pin masked most of a line.
+Alongside the size cut, each pin now starts fading at 35% of its life instead of
+60%, so it spends less time opaque over text. The pool is also restricted to
+cut-outs that still read at that size; the finely detailed ones (the libra tarot
+card, the Kitty Records label, the eyes) turn to mush and are excluded.
+
+Deliberately **not** a
 cursor-follower dot: nothing lags the pointer and nothing replaces the native
 cursor. Spawning is keyed to **distance travelled** (~90px), not to time or
 event count, so density is identical whether you flick or drag, and a stationary

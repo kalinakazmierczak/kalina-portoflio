@@ -1,4 +1,6 @@
 import Sticker from './Sticker';
+import Scatter from './Scatter';
+import { SCATTER } from '../stickers';
 
 /** Experience, as pinned cards. Copy unchanged from the tabbed build. */
 export default function Work() {
@@ -50,8 +52,9 @@ export default function Work() {
     <section className="band" id="work">
       <div className="band__head">
         <h2 className="band__title">work</h2>
-        <p className="band__desc">places i&rsquo;ve built things that mattered.</p>
+        <p className="band__desc">places i have worked and created at.</p>
         <Sticker of="bee" className="band__mark" width="4rem" />
+        <Sticker of="grlPwr" className="band__mark band__mark--b" width="3.5rem" />
       </div>
 
       <div className="stack">
@@ -83,6 +86,7 @@ export default function Work() {
           ))}
         </div>
       </div>
+      <Scatter items={SCATTER.work} />
     </section>
   );
 }

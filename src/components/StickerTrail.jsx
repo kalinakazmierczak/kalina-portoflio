@@ -22,8 +22,11 @@ import { TRAIL_POOL } from '../stickers';
 const SPAWN_DISTANCE = 90; // px of travel between drops
 const LIFETIME = 950; // ms, matches the CSS animation
 const MAX_LIVE = 12; // hard cap; oldest is evicted first
-const MIN_SIZE = 34;
-const MAX_SIZE = 58;
+// Small on purpose: at 34–58px the trail sat on top of body copy and you
+// couldn't read through it. These read as confetti beside the pointer rather
+// than as objects covering the page.
+const MIN_SIZE = 18;
+const MAX_SIZE = 30;
 
 export default function StickerTrail() {
   const layerRef = useRef(null);

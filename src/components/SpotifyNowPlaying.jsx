@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { STICKERS } from '../stickers';
 
 const POLL_INTERVAL = 30000; // 30 seconds
 
@@ -63,18 +64,19 @@ export default function SpotifyNowPlaying() {
       <span className="tt__platter">
         <span className="tt__grooves" />
         <span className="tt__label">
-          {art ? (
-            <img
-              className="tt__art"
-              src={art}
-              alt=""
-              width={64}
-              height={64}
-              loading="lazy"
-              decoding="async"
-              referrerPolicy="no-referrer"
-            />
-          ) : null}
+          {/* No album art (nothing loaded, or a deployed function that predates
+              the field) falls back to Kalina's own Kitty Records label — which
+              is, conveniently, an actual record label. */}
+          <img
+            className="tt__art"
+            src={art ?? STICKERS.kittyRecords.src}
+            alt=""
+            width={64}
+            height={64}
+            loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
+          />
           <span className="tt__spindle" />
         </span>
       </span>

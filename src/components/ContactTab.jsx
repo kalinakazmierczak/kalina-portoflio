@@ -53,7 +53,11 @@ export default function Contact() {
           ))}
         </dl>
 
-        <Sticker of="kitty" className="letter__mark" width="8rem" />
+        <div className="letter__marks">
+          <Sticker of="kitty" className="letter__mark" width="7rem" />
+          <Sticker of="nyc" className="letter__mark letter__mark--b" width="3.25rem" />
+          <Sticker of="clover" className="letter__mark letter__mark--c" width="3rem" />
+        </div>
       </div>
     </section>
   );

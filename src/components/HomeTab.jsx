@@ -40,8 +40,10 @@ export default function Intro() {
           </p>
           <p className="prose">
             my journey to where i am today is a whirlwind! i&rsquo;ve presented research at supercomputing conferences, taught coding in
-            rwanda, been (and won!) computing competitions, went from figma to prd, created and shipped an ai chatbot on aws bedrock that helps devs at my current company, and a lot.. lot more. i'd love to chat about it! <p> </p>but outside of work, i enjoy vintage shopping,
-            going to music festivals, and taking the amtrak to new cities!
+            rwanda, competed in (and won!) computing competitions, went from figma to prd, created and shipped an ai chatbot on aws bedrock that helps devs at my current company, and a lot... lot more. i'd love to chat about it! <p> </p>
+          </p>
+          <p className="prose">
+            but outside of work, i enjoy vintage shopping, going to music festivals, and taking the amtrak to new cities!
           </p>
 
           <div className="chips">

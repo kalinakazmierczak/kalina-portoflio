@@ -9,6 +9,8 @@ import Ask from './components/Terminal';
 import Contact from './components/ContactTab';
 import SiteClose from './components/SiteClose';
 import Sticker from './components/Sticker';
+import Scatter from './components/Scatter';
+import { SCATTER } from './stickers';
 import './styles/globals.css';
 
 /**
@@ -46,6 +48,7 @@ export default function App() {
               <Sticker of="snoopy" className="band__mark" width="2.75rem" />
             </div>
             <Ask />
+            <Scatter items={SCATTER.ask} />
           </section>
 
           <Contact />

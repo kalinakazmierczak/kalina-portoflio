@@ -41,12 +41,15 @@ const COMMANDS = {
   ],
   fun: () => {
     const facts = [
-      'i taught coding in rwanda using scratch & storytelling',
-      'i revived a 10-year-old kinetic art sculpture with raspberry pi',
-      'i’ve presented research at supercomputing conferences twice',
-      'i placed first for a gamified food journaling app at vturcs',
-      'i practice hot yoga regularly',
-      'i am obsessed with pokopia',
+      'i taught coding fundamentals to children in rwanda',
+      'i’ve presented research at sc23 and sc24 supercomputing conferences',
+      `i am currently working with aws bedrock to build an ai chatbot that helps devs at my company`,
+      'i love calico critters and jellycats',
+      'i lift weights and do pilates (best of both worlds!)',
+      `i love to draw`,
+      `i am from poland and speak it fluently`,
+      `i love to travel and have been to over 15 countries`,
+      `i go to music festivals and love live music`,
     ];
     const fact = facts[Math.floor(Math.random() * facts.length)];
     return [{ text: `→ ${fact}`, type: 'highlight' }];

@@ -1,6 +1,8 @@
 import bunapetitPaper from '../assets/annotated-HCI Capstone Final Paper.pdf';
 import scratchCodingDeck from '../assets/scratch_coding_deck.pdf';
 import Sticker from './Sticker';
+import Scatter from './Scatter';
+import { SCATTER } from '../stickers';
 
 /** Published work, as a hairline-ruled index. Copy unchanged. */
 export default function Writing() {
@@ -32,9 +34,10 @@ export default function Writing() {
       <div className="band__head">
         <h2 className="band__title">writing</h2>
         <p className="band__desc">
-          papers, presentations, and things i&rsquo;ve written about along the way.
+          papers, presentations, and cool things i&rsquo;ve done about along the way.
         </p>
         <Sticker of="reader" className="band__mark" width="3rem" />
+        <Sticker of="libra" className="band__mark band__mark--b" width="3.5rem" />
       </div>
 
       <ul className="index">
@@ -52,6 +55,7 @@ export default function Writing() {
           </li>
         ))}
       </ul>
+      <Scatter items={SCATTER.writing} />
     </section>
   );
 }
