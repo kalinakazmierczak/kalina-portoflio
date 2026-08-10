@@ -74,7 +74,20 @@ export default function Intro() {
 
         {/* Sizes come from CSS, not from the `width` prop — the prop writes an
             inline custom property, which would outrank the responsive rules. */}
-        <div className="hero__cluster" aria-hidden="true">
+        <div className="hero__cluster">
+          {/* Not aria-hidden and not alt="" — unlike the cut-outs, this one
+              carries information: it is who the page is about. */}
+          <figure className="hero__portrait">
+            <img
+              src="/photos/kalina.webp"
+              alt="kalina kazmierczak on graduation day, wearing a teal stole"
+              width={640}
+              height={853}
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+
           <Sticker of="sticky" className="hero__note" eager />
           <Sticker of="catPatch" className="hero__patch" />
           <Sticker of="unicorn" className="hero__unicorn" />

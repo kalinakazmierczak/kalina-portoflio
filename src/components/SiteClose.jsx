@@ -1,64 +1,79 @@
 import Sticker from './Sticker';
 
 /**
- * Ft8 · Marquee scroll.
+ * The close — the back of a postcard.
  *
- * The animated track is `aria-hidden` and duplicated — the duplicate is what
- * makes a -50% translate loop seamlessly. The real sentence is exposed once,
- * visually hidden, so assistive tech reads it a single time instead of
- * announcing the repetition.
+ * Replaces an Ft8 marquee. An infinite horizontal scroll is decoration doing a
+ * job the last thing on the page shouldn't be doing: it pulls the eye, never
+ * settles, and by 2026 reads as a template flourish rather than as a voice.
  *
- * `prefers-reduced-motion: reduce` stops the track in CSS; an infinite
- * horizontal scroll is exactly the kind of motion that pulls the eye and never
- * lets go.
+ * A postcard back earns the space instead, because the shape *is* the content:
+ * a real one is divided message-left / address-right by a rule, with the stamp
+ * and postmark in the corner. That gives the contact links a reason to be laid
+ * out the way they are, rather than being a row of links with a border above.
+ *
+ * The card is paper on the flipped band, so it reads as an object lying on a
+ * dark surface rather than as another section.
  */
-
-const LINE = 'kalina kazmierczak · software engineer · lover of the creative and whimsical · ';
-
 export default function SiteClose() {
-  const run = (
-    <span className="marquee__run">
-      {LINE}
-      <Sticker of="snoopy" className="marquee__sticker" width="1.6rem" />
-      {LINE}
-      <Sticker of="bee" className="marquee__sticker" width="1.6rem" />
-    </span>
-  );
+  const year = new Date().getFullYear();
 
   return (
     <footer className="close">
-      <div className="marquee">
-        <div className="marquee__track" aria-hidden="true">
-          {run}
-          {run}
-        </div>
-        <p className="visually-hidden">
-          kalina kazmierczak · software engineer · dc · nyc
-        </p>
-      </div>
+      <div className="postcard">
+        {/* Stuck on the card, hanging off the corner, so it reads as applied
+            to the postcard rather than as another floating page sticker. */}
+        <Sticker of="seagull" className="postcard__applied" />
 
-      <div className="close__inner">
-        <p className="close__signoff">thanks for scrolling this far!</p>
-        <p className="close__ps">
-          let's take this to the next step, <a href="mailto:kalinakazmie@gmail.com">let's talk :)</a>
-        </p>
-        <p className="close__meta">
-          <a href="mailto:kalinakazmie@gmail.com">email</a>
-          <a
-            href="https://github.com/kalinakazmierczak"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            github
-          </a>
-          <a
-            href="https://www.linkedin.com/in/kalinakazmierczak/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            linkedin
-          </a>
-        </p>
+        <div className="postcard__note">
+          <p className="postcard__hello">thanks for scrolling this far!</p>
+          <p className="postcard__body">
+            let&rsquo;s take this to the next step,{' '}
+            <a className="link" href="mailto:kalinakazmie@gmail.com">
+              let&rsquo;s talk :)
+            </a>
+          </p>
+          <p className="postcard__sign">&mdash; kalina</p>
+        </div>
+
+        <div className="postcard__side">
+          <div className="postcard__franking">
+            {/* Stamp: a paper rectangle with punched perforations, one of
+                Kalina's cut-outs as the engraving. */}
+            <div className="postcard__stamp">
+              <Sticker of="bee" className="postcard__stamp-art" width="2.5rem" />
+              <span className="postcard__denom">nyc</span>
+            </div>
+
+            {/* Postmark: ring plus cancellation bars, struck at an angle the
+                way a hand-cancel lands half off the stamp. */}
+            <div className="postcard__postmark" aria-hidden="true">
+              <span className="postcard__ring">
+                <span className="postcard__ring-line">{year}</span>
+              </span>
+              <span className="postcard__bars" />
+            </div>
+          </div>
+
+          <address className="postcard__address">
+            <span className="postcard__to">to</span>
+            <a href="mailto:kalinakazmie@gmail.com">kalinakazmie@gmail.com</a>
+            <a
+              href="https://github.com/kalinakazmierczak"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/kalinakazmierczak
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kalinakazmierczak/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              linkedin.com/in/kalinakazmierczak
+            </a>
+          </address>
+        </div>
       </div>
     </footer>
   );

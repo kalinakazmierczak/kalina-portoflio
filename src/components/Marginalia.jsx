@@ -18,11 +18,29 @@ const POOL = [
   { src: '/plates/snoopy.jpg', width: 900, height: 900 },
   { src: '/plates/records.jpg', width: 900, height: 881 },
   { src: '/plates/keys.jpg', width: 675, height: 900 },
-  { src: '/plates/mouse.jpg', width: 700, height: 700 },
+  {
+    src: '/photos/seed.webp',
+    width: 736,
+    height: 739,
+    // Text baked into the image: it needs a real description, and it must not
+    // be cropped. `cover` in this taller slot clips ~13% off top and bottom,
+    // which lands squarely on the last word.
+    fit: 'contain',
+    alt: 'a chihuahua in a straw hat standing in a vegetable garden, captioned “the day you plant the seed is not the day you eat the fruit”',
+  },
   { src: '/plates/flowers.jpg', width: 648, height: 800 },
   { src: '/plates/newyork.jpg', width: 595, height: 900 },
   { src: '/plates/dog-nails.jpg', width: 567, height: 760 },
   { src: '/plates/keep-creating.jpg', width: 736, height: 606 },
+  {
+    src: '/photos/ahead.webp',
+    width: 860,
+    height: 630,
+    // Landscape with the caption running nearly edge to edge, dropped into a
+    // portrait slot: `cover` would clip both ends of the sentence.
+    fit: 'contain',
+    alt: 'four calico critters figures standing on a road between cornfields, captioned “we have so much ahead of us”',
+  },
 ];
 
 /** Fisher–Yates, then take the first `count`. Guarantees no repeat in one load. */
@@ -41,13 +59,15 @@ export default function Marginalia({ count = 1 }) {
   const [chosen] = useState(() => pick(count));
 
   return (
-    <div className="marginalia" aria-hidden="true">
+    <div className="marginalia">
       {chosen.map((img, i) => (
         <img
           key={img.src}
-          className={`marginalia__img marginalia__img--${i % 2 ? 'b' : 'a'}`}
+          className={`marginalia__img marginalia__img--${i % 2 ? 'b' : 'a'}${
+            img.fit === 'contain' ? ' marginalia__img--contain' : ''
+          }`}
           src={img.src}
-          alt=""
+          alt={img.alt ?? ''}
           width={img.width}
           height={img.height}
           loading="lazy"

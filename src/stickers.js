@@ -96,7 +96,9 @@ export const TRAIL_POOL = [
 export const SCATTER = {
   now: [
     { of: 'ladybug', size: 's', tilt: 14, side: 'l', inset: '6%', dy: '-1.5rem', sm: true },
-    { of: 'mermaid', size: 'm', tilt: -8, side: 'r', inset: '3%', dy: '-2.5rem' },
+    // Left, not right: the right column now holds a plate whose caption runs to
+    // its bottom edge, and a pin over there landed on the last word.
+    { of: 'mermaid', size: 'm', tilt: -8, side: 'l', inset: '32%', dy: '-2.25rem' },
   ],
   work: [
     { of: 'skippy', size: 'm', tilt: -6, side: 'l', inset: '9%', dy: '-3rem' },

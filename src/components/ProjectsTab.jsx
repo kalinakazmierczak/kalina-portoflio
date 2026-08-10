@@ -42,6 +42,10 @@ export default function Projects() {
       ],
       wash: 'olive',
       sticker: 'apple',
+      photo: {
+        src: '/photos/vturcs.webp',
+        alt: 'the bun app\u00e9tit team holding their vturcs certificates at virginia tech',
+      },
       // Below ~4.5rem the star-shaped core stops resolving and the slice
       // reads as a plain disc.
       markWidth: '4.5rem',
@@ -70,6 +74,10 @@ export default function Projects() {
       links: [{ label: 'slides', url: scratchCodingDeck }],
       wash: 'marigold',
       sticker: 'flower',
+      photo: {
+        src: '/photos/rwanda.webp',
+        alt: 'kalina showing scratch on a laptop to students in a classroom in nyamyumba, rwanda',
+      },
     },
     {
       title: 'hidden figures in hpc',
@@ -91,6 +99,10 @@ export default function Projects() {
       // row above it — five cards divide as 6 / 3+3 / 3+3.
       wash: 'rose',
       sticker: 'eyes',
+      photo: {
+        src: '/photos/sc23.webp',
+        alt: 'the \u201ci am hpc\u201d team standing in front of their posters at the sc23 conference',
+      },
       // The eyes are 553x143 — at the default 3.5rem they shrink to a smudge.
       markWidth: '6rem',
     },
@@ -119,9 +131,24 @@ export default function Projects() {
               width={project.markWidth ?? '3.5rem'}
             />
 
-            <div className="project__top">
-              <h3 className="project__title">{project.title}</h3>
-              <p className="project__year">{project.year}</p>
+            <div className="project__head">
+              {project.photo ? (
+                <figure className="project__photo">
+                  <img
+                    src={project.photo.src}
+                    alt={project.photo.alt}
+                    width={560}
+                    height={420}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              ) : null}
+
+              <div className="project__top">
+                <h3 className="project__title">{project.title}</h3>
+                <p className="project__year">{project.year}</p>
+              </div>
             </div>
 
             <p className="project__desc">{project.description}</p>

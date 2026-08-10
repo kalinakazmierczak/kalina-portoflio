@@ -39,7 +39,22 @@ with a stable `id` so the rail and any old deep links resolve:
 - **Nav** · `N3 Side-rail` — fixed vertical rail ≥64rem, one sticker per section.
   Below that, a sticky two-row top bar: brand + toggle above, a full-width
   horizontal link scroller below.
-- **Footer** · `Ft8 Marquee scroll` — a tonal-flip band, then the signoff.
+- **Footer** · **postcard close** — a cream postcard lying on the tonal-flip
+  band: message left, address right, divided by a rule the way a real postcard
+  back is. Stamp + postmark in the corner, one cut-out stuck on the card.
+
+  **It replaced an Ft8 marquee, which was cut for reading as templated.** An
+  infinite horizontal scroll is decoration doing a job the last thing on the
+  page shouldn't be doing — it pulls the eye and never settles. The postcard
+  earns the space because the *shape is the content*: the divided back is why
+  the contact links are laid out the way they are, instead of being a row of
+  links under a border.
+
+  Two implementation notes worth keeping: the stamp's perforations are a dotted
+  border drawn in the **postcard's** colour, so the dots read as holes punched
+  through to the card beneath. A `mask-composite: intersect` recipe was tried
+  first and erased the stamp entirely — `repeat-x`/`repeat-y` edge layers each
+  cover only a single strip, so intersecting all five leaves nothing.
 
 ## Theme
 
