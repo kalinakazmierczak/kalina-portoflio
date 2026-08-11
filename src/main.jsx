@@ -10,7 +10,6 @@ const art = [
   '║   █ █ █▀█ █▄▄ █ █ ▀█ █▀█            ║',
   '║                                      ║',
   '║   software engineer                  ║',
-  '║   design engineer                    ║',
   '║   looking to move to nyc             ║',
   '║                                      ║',
   '╠══════════════════════════════════════╣',

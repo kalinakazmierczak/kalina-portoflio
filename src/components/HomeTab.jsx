@@ -26,7 +26,7 @@ export default function Intro() {
           </h1>
 
           <p className="hero__standfirst">
-            <strong>software engineer</strong> &amp; <strong>design engineer</strong> <br />
+            <strong>software engineer</strong> <br />
             thanks for stopping by! <br /> i love crafting beautiful, functional interfaces. <br />
             virginia tech cs &rsquo;25,
           </p>

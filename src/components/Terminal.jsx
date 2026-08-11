@@ -20,7 +20,7 @@ const COMMANDS = {
   ],
   about: () => [
     { text: 'kalina kazmierczak', type: 'highlight' },
-    { text: '  software engineer & design engineer based in dc.', type: 'output' },
+    { text: '  software engineer based in dc.', type: 'output' },
     { text: '', type: 'output' },
     { text: '  i focus on building interfaces that are as thoughtful', type: 'output' },
     { text: '  as they are functional. the details that make software', type: 'output' },
