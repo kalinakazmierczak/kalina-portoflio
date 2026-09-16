@@ -51,7 +51,7 @@ export const handler = async () => {
     });
 
     // 204 = no content (nothing playing), fetch last played instead
-    if (response.status === 204 || response.status > 400) {
+    if (response.status === 204 || response.status >= 400) {
       const recentResponse = await fetch(RECENTLY_PLAYED_ENDPOINT, {
         headers: { Authorization: `Bearer ${access_token}` },
       });
@@ -148,10 +148,16 @@ export const handler = async () => {
     };
   } catch (error) {
     console.error('Spotify now-playing error:', error);
+    // Still a 200 so the widget degrades quietly for visitors, but carry the
+    // reason: a revoked refresh token used to be indistinguishable from
+    // genuinely having nothing playing, which hid an outage for weeks.
     return {
       statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ isPlaying: false }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-store',
+      },
+      body: JSON.stringify({ isPlaying: false, error: error.message }),
     };
   }
 };
