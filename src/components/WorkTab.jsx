@@ -10,6 +10,7 @@ export default function Work() {
       role: 'software engineer 1',
       period: 'jul 2025 – present',
       location: 'arlington, va',
+      promotion: 'promoted from associate, jul 2026',
       wash: 'cherry',
       highlights: [
         'built an ai knowledge layer over composable etl models, answering natural-language questions on model behavior, lineage, and dependencies with cited documentation',
@@ -71,6 +72,12 @@ export default function Work() {
             <p className="entry__role">
               {exp.role} · {exp.location}
             </p>
+            {/* Optional: only the roles that were a step up carry this. */}
+            {exp.promotion ? (
+              <p className="entry__promo">
+                <span className="tag">↑ {exp.promotion}</span>
+              </p>
+            ) : null}
             <ul className="entry__points">
               {exp.highlights.map((h, j) => (
                 <li key={j}>{h}</li>

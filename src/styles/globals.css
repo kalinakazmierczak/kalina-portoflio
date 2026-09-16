@@ -820,6 +820,10 @@ a {
   font-size: var(--text-sm);
 }
 
+.entry__promo {
+  margin-top: var(--space-2xs);
+}
+
 .entry__points {
   margin-top: var(--space-sm);
   display: grid;
