@@ -112,7 +112,6 @@ export default function Projects() {
     <section className="band" id="projects">
       <div className="band__head">
         <h2 className="band__title">projects</h2>
-        <p className="band__desc">projects i&rsquo;ve designed, and built.</p>
         <Sticker of="lotus" className="band__mark" width="5rem" />
         <Sticker of="koi" className="band__mark band__mark--b" width="3.25rem" />
       </div>
