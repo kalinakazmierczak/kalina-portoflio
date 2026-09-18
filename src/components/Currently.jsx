@@ -17,7 +17,6 @@ export default function Currently() {
     <section className="band" id="now">
       <div className="band__head">
         <h2 className="band__title">now</h2>
-        <p className="band__desc">what i'm up to right now</p>
       </div>
 
       <div className="bento">
