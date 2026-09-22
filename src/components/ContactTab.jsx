@@ -28,7 +28,7 @@ export default function Contact() {
         <h2 className="band__title">contact</h2>
         <p className="band__desc">
           i&rsquo;d love to chat, whether it&rsquo;s about a role, a project, or just to
-          say hi. currently based in dc.
+          say hi.
         </p>
       </div>
 
