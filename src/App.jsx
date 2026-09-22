@@ -42,9 +42,6 @@ export default function App() {
           <section className="band" id="ask">
             <div className="band__head">
               <h2 className="band__title">ask me things</h2>
-              <p className="band__desc">
-                type a command. it works exactly like you&rsquo;d expect.
-              </p>
               <Sticker of="snoopy" className="band__mark" width="2.75rem" />
             </div>
             <Ask />
