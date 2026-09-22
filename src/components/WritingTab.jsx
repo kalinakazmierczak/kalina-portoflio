@@ -33,9 +33,6 @@ export default function Writing() {
     <section className="band" id="writing">
       <div className="band__head">
         <h2 className="band__title">writing</h2>
-        <p className="band__desc">
-          papers, presentations, and cool things i&rsquo;ve done about along the way.
-        </p>
         <Sticker of="reader" className="band__mark" width="3rem" />
         <Sticker of="libra" className="band__mark band__mark--b" width="3.5rem" />
       </div>
