@@ -1,5 +1,6 @@
 import SpotifyNowPlaying from './SpotifyNowPlaying';
 import Marginalia from './Marginalia';
+import TarotOfTheDay from './TarotOfTheDay';
 import Sticker from './Sticker';
 import Scatter from './Scatter';
 import { SCATTER } from '../stickers';
@@ -7,9 +8,9 @@ import { SCATTER } from '../stickers';
 /**
  * "now" — the bento row.
  *
- * Four pins of deliberately unequal size. The rhythm is the size variation,
+ * Five pins of deliberately unequal size. The rhythm is the size variation,
  * not a row of matching cards: two small facts, one wide live feed, one tall
- * photograph. Uniform cards here would flatten it back into the 3-column
+ * photograph, and a daily tarot draw along the bottom. Uniform cards here would flatten it back into the 3-column
  * feature grid every generated page ships.
  */
 export default function Currently() {
@@ -40,6 +41,11 @@ export default function Currently() {
         <div className="bento__d">
           <Marginalia />
         </div>
+
+        <article className="pin pin--rose bento__e">
+          <p className="pin__label">card of the day</p>
+          <TarotOfTheDay />
+        </article>
       </div>
       <Scatter items={SCATTER.now} />
     </section>

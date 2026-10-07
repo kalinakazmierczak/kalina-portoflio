@@ -768,12 +768,14 @@ a {
     grid-template-areas:
       'a d'
       'b d'
-      'c c';
+      'c c'
+      'e e';
   }
   .bento__a { grid-area: a; }
   .bento__b { grid-area: b; }
   .bento__c { grid-area: c; }
   .bento__d { grid-area: d; }
+  .bento__e { grid-area: e; }
 }
 
 @media (min-width: 60rem) {
@@ -783,7 +785,55 @@ a {
        are uneven by construction rather than by accident. */
     grid-template-areas:
       'a b d'
-      'c c d';
+      'c c d'
+      'e e e';
+  }
+}
+
+/* ============================================================= tarot ===== */
+
+/* Card on the left, reading on the right. The card art comes in mixed sizes,
+   so the slot fixes the ratio and lets `cover` absorb the difference. */
+.tarot {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.tarot__card {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 300 / 525;
+  object-fit: cover;
+  border-radius: var(--radius-input);
+  border: var(--rule-hair) solid var(--color-rule);
+  box-shadow: var(--shadow-pin);
+  rotate: -2deg;
+}
+
+.tarot__meaning,
+.tarot__more p {
+  margin-top: var(--space-2xs);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--color-ink-2);
+  max-width: 62ch;
+}
+
+.tarot__more summary {
+  margin-top: var(--space-2xs);
+  font-family: var(--font-outlier);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-ink-2);
+  cursor: pointer;
+}
+
+@media (min-width: 40rem) {
+  .tarot {
+    grid-template-columns: 7.5rem minmax(0, 1fr);
   }
 }
 
