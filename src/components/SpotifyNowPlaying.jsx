@@ -105,7 +105,7 @@ export default function SpotifyNowPlaying() {
         <span className="spotify__text">
           <span className="spotify__state">quiet right now</span>
           <span className="spotify__title spotify__title--quiet">
-            suprisingly nothing on right now!
+            surprisingly nothing on right now!
           </span>
         </span>
       </div>

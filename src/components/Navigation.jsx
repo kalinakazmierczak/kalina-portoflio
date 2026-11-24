@@ -16,9 +16,9 @@ import Sticker from './Sticker';
 
 const SECTIONS = [
   { id: 'hello', label: 'hello', sticker: 'kitty' },
-  { id: 'now', label: 'now', sticker: 'bee' },
   { id: 'work', label: 'work', sticker: 'ctrl' },
   { id: 'projects', label: 'projects', sticker: 'horses' },
+  { id: 'now', label: 'now', sticker: 'bee' },
   { id: 'writing', label: 'writing', sticker: 'reader' },
   { id: 'ask', label: 'ask', sticker: 'snoopy' },
   { id: 'contact', label: 'contact', sticker: 'lotus' },

@@ -26,24 +26,13 @@ export default function Intro() {
           </h1>
 
           <p className="hero__standfirst">
-            <strong>software engineer</strong> <br />
-            thanks for stopping by! <br /> i love crafting beautiful, functional interfaces. <br />
-            virginia tech cs &rsquo;25,
+            <strong>full-stack engineer building AI tools people actually enjoy using.</strong>
           </p>
 
           <p className="prose">
-            hi! i&rsquo;m a full-stack engineer with a deep appreciation for the intersection
-            of design and engineering. I am a lover of the whimsical and love to create
-            delightful user experiences ♥ I studied computer science at virginia tech with an
-            hci minor, which shaped my focus on the details that make software feel
-            intentional and polished.
-          </p>
-          <p className="prose">
-            my journey to where i am today is a whirlwind! i&rsquo;ve presented research at supercomputing conferences, taught coding in
-            rwanda, competed in (and won!) computing competitions, created components in figma and developed them up to prd, created and shipped an ai chatbot on aws bedrock that helps devs at my current company, and a lot... lot more. i'd love to chat about it! <p> </p>
-          </p>
-          <p className="prose">
-            but outside of work, i enjoy vintage shopping, going to music festivals, and taking the amtrak to new cities!
+            i&rsquo;m a software engineer at CoStar Group, where i built a RAG assistant
+            covering 2,641 data models for hundreds of engineers. Virginia Tech CS + HCI
+            &rsquo;25. 
           </p>
 
           <div className="chips">
@@ -70,6 +59,17 @@ export default function Intro() {
               linkedin
             </a>
           </div>
+
+          <p className="prose">
+            i love the whimsical, and i care about the details that make software feel
+            intentional and polished. along the way i&rsquo;ve presented research at
+            supercomputing conferences, taught coding in Rwanda, and won a computing
+            competition. i&rsquo;d love to chat about any of it ♥
+          </p>
+          <p className="prose">
+            outside of work, i enjoy vintage shopping, going to music festivals, and taking
+            the Amtrak to new cities!
+          </p>
         </div>
 
         {/* Sizes come from CSS, not from the `width` prop — the prop writes an

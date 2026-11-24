@@ -4,26 +4,26 @@ import Sticker from './Sticker';
 import Scatter from './Scatter';
 import { SCATTER } from '../stickers';
 
-/** Published work, as a hairline-ruled index. Copy unchanged. */
+/** Published work, as a hairline-ruled index. */
 export default function Writing() {
   const entries = [
     {
-      title: 'hci capstone — bun appétit',
+      title: 'HCI capstone — bun appétit',
       meta: '2025 · research paper',
       url: bunapetitPaper,
     },
     {
-      title: 'seemore kinetic sculpture — sc24 poster',
+      title: 'seemore kinetic sculpture — SC24 poster',
       meta: '2024 · conference poster',
       url: 'https://sc24.supercomputing.org/proceedings/poster/poster_files/post214s2-file3.pdf',
     },
     {
-      title: 'scratch coding in rwanda — curriculum deck',
+      title: 'Scratch coding in Rwanda — curriculum deck',
       meta: '2024 · teaching materials',
       url: scratchCodingDeck,
     },
     {
-      title: 'hidden figures in hpc — virginia tech news',
+      title: 'hidden figures in HPC — Virginia Tech News',
       meta: '2023 · feature article',
       url: 'https://news.vt.edu/articles/2024/02/eng-cs-students-find-hidden-figures-in-computing.html',
     },

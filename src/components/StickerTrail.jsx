@@ -95,6 +95,12 @@ export default function StickerTrail() {
     };
 
     const onMove = (e) => {
+      // Hero only: below it the page is for reading, and stickers would land
+      // on the copy.
+      if (!e.target.closest?.('#hello')) {
+        onLeave();
+        return;
+      }
       if (lastX === null) {
         lastX = e.clientX;
         lastY = e.clientY;

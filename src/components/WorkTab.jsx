@@ -2,55 +2,56 @@ import Sticker from './Sticker';
 import Scatter from './Scatter';
 import { SCATTER } from '../stickers';
 
-/** Experience, as pinned cards. Copy unchanged from the tabbed build. */
+/** Experience, as pinned cards. Figures mirror the résumé PDF: update both together. */
 export default function Work() {
   const experiences = [
     {
-      company: 'costar group',
+      company: 'CoStar Group',
       role: 'software engineer 1',
       period: 'jul 2025 – present',
-      location: 'arlington, va',
+      location: 'Arlington, VA',
       promotion: 'promoted from associate, jul 2026',
       wash: 'cherry',
       highlights: [
-        'built an ai knowledge layer over composable etl models, answering natural-language questions on model behavior, lineage, and dependencies with cited documentation',
-        'integrated s3-backed data sources with vector stores for semantic retrieval over internal documentation and model metadata',
-        'integrated datadog, snowflake, and scoped azure repos access',
-        'designed and implemented restful apis and data models for internal developer tools',
-        'built reusable react component systems used across teams and products',
+        'designed, built, and deployed a RAG assistant covering 2,641 internal data models, answering hundreds of engineers’ questions on model behavior, lineage, and dependencies with cited sources',
+        'grounded answers in Azure Repos code search, with Entra ID guardrails so it only reads repositories the person asking is authorized to access',
+        'integrated live Snowflake and Datadog access, so answers carry current metrics instead of static documentation',
+        'automated the documentation corpus with a Python parser and an LLM extraction pass running in Azure Pipelines',
+        'shipped RESTful APIs and data models for internal developer tools, plus a reusable React component system that cut UI build time by 40%',
       ],
     },
     {
-      company: 'virginia tech',
-      role: 'undergraduate researcher',
-      period: 'jan 2023 – may 2025',
-      location: 'blacksburg, va',
-      wash: 'olive',
-      highlights: [
-        'reverse-engineered and restored a legacy kinetic sculpture system, migrating a non-functional 2014 mac mini installation to raspberry pi',
-        'built javascript visualizations and contributed to a python/flask backend for hidden figures in hpc',
-        'selected as 1 of 5 students to present at sc23, a conference of 13,000+ attendees',
-        'mentored new contributors in an open-source environment',
-      ],
-    },
-    {
-      company: 'costar group',
+      company: 'CoStar Group',
       role: 'software engineer intern',
       period: 'jun 2024 – aug 2024',
-      location: 'richmond, va',
+      location: 'Richmond, VA',
       wash: 'marigold',
       highlights: [
-        'designed and shipped a production dashboard for monitoring aws cloudwatch sqs queues, used daily by multiple teams for operations and incident response',
-        'owned end-to-end product development: identified user needs, designed for information density and speed, implemented with react and highcharts',
-        'built filtering and customization features with keyboard-first interaction',
-        'shipped iteratively, refining based on real usage patterns',
+        'designed and shipped a production dashboard over AWS CloudWatch and SQS that ten teams still use daily for operations and incident response',
+        'cut time to spot a queue backlog by 60%',
+        'owned it end to end in React and Highcharts, from user needs through filtering, customization, and keyboard-first interaction',
+        'deployed weekly, refining it on feedback from 15 daily users',
+      ],
+    },
+    {
+      company: 'Virginia Tech',
+      role: 'undergraduate researcher',
+      period: 'jan 2023 – may 2025',
+      location: 'Blacksburg, VA',
+      wash: 'olive',
+      highlights: [
+        'built a Python/Flask backend and JavaScript visualizations for hidden figures in HPC, installed at the main entrance of SC23 (13,000+ attendees)',
+        'selected as 1 of 5 students to present the work at SC23',
+        'restored an undocumented kinetic sculpture system, reverse-engineering it and migrating it from a dead 2014 Mac mini to Raspberry Pi',
+        'mentored new contributors in an open-source environment',
       ],
     },
   ];
 
   const toolkit = [
-    'react', 'typescript', 'c#', '.net', 'node.js', 'python',
-    'tailwind', 'figma', 'aws', 'git', 'next.js', 'framer motion',
+    'React', 'TypeScript', 'Python', 'C#', '.NET', 'Node.js', 'Next.js', 'SQL',
+    'RAG', 'vector search', 'LLM tool calling', 'Snowflake', 'AWS', 'Datadog',
+    'Figma', 'Tailwind', 'Git',
   ];
 
   return (

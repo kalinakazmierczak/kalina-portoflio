@@ -34,9 +34,9 @@ export default function App() {
       <main className="main" id="main">
         <div className="shell">
           <Intro />
-          <Currently />
           <Work />
           <Projects />
+          <Currently />
           <Writing />
 
           <section className="band" id="ask">

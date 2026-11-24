@@ -34,7 +34,7 @@ the work behind a click, and a recruiter reads a portfolio in one scroll.
 variation**, never from a row of matching cards. Sections, in DOM order, each
 with a stable `id` so the rail and any old deep links resolve:
 
-`#hello` → `#now` → `#work` → `#projects` → `#writing` → `#ask` → `#contact`
+`#hello` → `#work` → `#projects` → `#now` → `#writing` → `#ask` → `#contact`
 
 - **Nav** · `N3 Side-rail` — fixed vertical rail ≥64rem, one sticker per section.
   Below that, a sticky two-row top bar: brand + toggle above, a full-width
@@ -205,7 +205,8 @@ cursor-follower dot: nothing lags the pointer and nothing replaces the native
 cursor. Spawning is keyed to **distance travelled** (~90px), not to time or
 event count, so density is identical whether you flick or drag, and a stationary
 pointer emits nothing. Capped at 12 live, ~950ms life, never the same sticker
-twice running. Off under `(pointer: coarse)` and `prefers-reduced-motion`.
+twice running. Hero only (`#hello`), so nothing
+lands on copy people are reading. Off under `(pointer: coarse)` and `prefers-reduced-motion`.
 Nodes are created and removed directly — at ~8 spawns/second, React state would
 re-render the tree for a purely decorative layer.
 

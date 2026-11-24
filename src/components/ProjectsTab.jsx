@@ -17,8 +17,8 @@ export default function Projects() {
       title: 'spindle',
       year: '2026',
       description:
-        'vinyl-inspired ui to visualize spotify listening data. integrated nextauth for oauth, canvas api for exportable story images, and hover-to-spin animations.',
-      tags: ['next.js', 'spotify api', 'canvas', 'oauth'],
+        'turns your Spotify listening history into a wall of spinning vinyl. filter by time range, switch between tracks and albums, and export the wall as a shareable image. NextAuth handles OAuth; the Canvas API renders the export.',
+      tags: ['Next.js', 'Spotify API', 'Canvas', 'OAuth'],
       links: [
         {
           label: 'github',
@@ -26,6 +26,10 @@ export default function Projects() {
         },
       ],
       span: 'wide',
+      shot: {
+        src: '/photos/spindle.jpg',
+        alt: 'spindle showing a four by four grid of top tracks as vinyl records',
+      },
       wash: 'cherry',
       sticker: 'horses',
       markWidth: '5.5rem',
@@ -34,8 +38,8 @@ export default function Projects() {
       title: 'bun appétit',
       year: '2025',
       description:
-        'gamified food journaling app for families using ai meal recognition. computer vision for food identification and nutrition tracking. 1st place, vturcs.',
-      tags: ['react', 'computer vision', 'hci', 'gamification'],
+        'gamified food journaling app for families, with AI meal recognition, custom LLM prompts, and location-based features. tuned confidence thresholds against playtest results. 1st place of 25 projects, VTURCS.',
+      tags: ['React', 'computer vision', 'HCI', 'gamification'],
       links: [
         { label: 'case study', url: bunapetitPaper },
         { label: 'overview', url: bunapetitPresentation },
@@ -54,8 +58,8 @@ export default function Projects() {
       title: 'seemore kinetic sculpture',
       year: '2024',
       description:
-        'revived a 10-year-old kinetic art installation, migrated to raspberry pi. reverse-engineered 2014 servo motor controls. presented at sc24 in atlanta.',
-      tags: ['raspberry pi', 'python', 'hardware', 'sc24'],
+        'revived a 10-year-old kinetic art installation, migrated to Raspberry Pi. reverse-engineered 2014 servo motor controls. presented at SC24 in Atlanta.',
+      tags: ['Raspberry Pi', 'Python', 'hardware', 'SC24'],
       links: [
         {
           label: 'poster',
@@ -69,8 +73,8 @@ export default function Projects() {
       title: 'mabawa scratch coding',
       year: '2024',
       description:
-        'taught coding in nyamyumba, rwanda using scratch and creative storytelling. designed curriculum for women and 3rd graders. emily specchio foundation scholarship recipient.',
-      tags: ['education', 'scratch', 'curriculum design'],
+        'taught coding in Nyamyumba, Rwanda using Scratch and creative storytelling. designed curriculum for women and 3rd graders. Emily Specchio Foundation scholarship recipient.',
+      tags: ['education', 'Scratch', 'curriculum design'],
       links: [{ label: 'slides', url: scratchCodingDeck }],
       wash: 'marigold',
       sticker: 'flower',
@@ -80,11 +84,11 @@ export default function Projects() {
       },
     },
     {
-      title: 'hidden figures in hpc',
+      title: 'hidden figures in HPC',
       year: '2023',
       description:
-        'interactive visualizations for underrepresented voices in hpc. built database of 300+ profiles for “i am hpc” initiative. full scholarship to present at sc23.',
-      tags: ['d3.js', 'data viz', 'research', 'sc23'],
+        'interactive visualizations for underrepresented voices in HPC. built database of 300+ profiles for “i am HPC” initiative. full scholarship to present at SC23.',
+      tags: ['D3.js', 'data viz', 'research', 'SC23'],
       links: [
         {
           label: 'demo',
@@ -124,6 +128,19 @@ export default function Projects() {
               project.span ? ` project--${project.span}` : ''
             }`}
           >
+            {project.shot ? (
+              <figure className="project__shot">
+                <img
+                  src={project.shot.src}
+                  alt={project.shot.alt}
+                  width={492}
+                  height={612}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            ) : null}
+
             <Sticker
               of={project.sticker}
               className="project__mark"

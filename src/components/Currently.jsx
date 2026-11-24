@@ -24,13 +24,13 @@ export default function Currently() {
         <article className="pin pin--marigold bento__a">
           <Sticker of="ctrl" className="pin__mark" width="3rem" />
           <p className="pin__label">role</p>
-          <p className="pin__lead">software engineer 1 @ costar group</p>
+          <p className="pin__lead">software engineer 1 @ CoStar Group</p>
         </article>
 
         <article className="pin pin--blue bento__b">
           <Sticker of="coffee" className="pin__mark" width="3.25rem" />
           <p className="pin__label">stack</p>
-          <p className="pin__lead">mainly working with react, c#, and .net</p>
+          <p className="pin__lead">AI tooling, React, Python, C#, and .NET</p>
         </article>
 
         <article className="pin pin--olive bento__c">
