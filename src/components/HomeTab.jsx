@@ -26,7 +26,7 @@ export default function Intro() {
           </h1>
 
           <p className="hero__standfirst">
-            <strong>full-stack engineer building AI tools people actually enjoy using.</strong>
+            <strong>full stack engineer building AI tools people actually enjoy using.</strong>
           </p>
 
           <p className="prose">
